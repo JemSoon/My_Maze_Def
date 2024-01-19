@@ -8,13 +8,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - WallCollider
+  - Monster
+  - Player_Wall
+  - Monster_Wall
   - 
   - 
   - 
