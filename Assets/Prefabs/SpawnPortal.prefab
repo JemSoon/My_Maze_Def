@@ -151,3 +151,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59902d434281594489169f251bc19b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnData:
+  - spawnTime: 1
+    spriteType: 0
+    hp: 10
+    speed: 1.5
+  - spawnTime: 0.3
+    spriteType: 0
+    hp: 10
+    speed: 5
+  seconds: 10

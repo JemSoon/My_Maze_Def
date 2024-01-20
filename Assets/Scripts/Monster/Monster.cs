@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public int hp;
+    //public int hp;
     public GameObject targetObject;
     public float moveSpeed;
     public GameObject portal;
@@ -17,13 +17,22 @@ public class Monster : MonoBehaviour
     public bool isArrived = false;
     float arrivalDistanceSquared; //목적지 도착 오차범위
 
+    [Header("골드메탈 센세")]
+    public RuntimeAnimatorController[] animCon;
+    public float hp;
+    public float maxHp;
+    Rigidbody2D rigid;
+    //Animator anim;
+    bool isLive = true;
+
 
     public Vector2 GetCurrentPos => this.transform.position;
     public bool isAlive => 0 < this.hp && this.gameObject.activeSelf;
 
     private void Start()
     {
-        Activate_Func();
+        rigid = GetComponent<Rigidbody2D>();
+        //anim = GetComponent<Animator>();
     }
 
     public void Activate_Func()
@@ -32,12 +41,11 @@ public class Monster : MonoBehaviour
 
         this.transform.position = portal.transform.position;
         this.waypointID = 0;
-        this.hp = 5;
         this.isMoving = true;
         StartCoroutine(Moving());
     }
 
-    void Update()
+    void FixedUpdate()
     {
         //나중에 길이 오픈되었을때 한번 호출하게끔 바꾸자
         if(isArrived && !isMoving) 
@@ -48,6 +56,8 @@ public class Monster : MonoBehaviour
 
     IEnumerator Moving()
     {
+        if (!isLive) { yield break; }
+
         while (isMoving)
         {
             Vector2 dir = (((Vector2)targetObject.transform.position) - (Vector2)transform.position).normalized;
@@ -56,7 +66,7 @@ public class Monster : MonoBehaviour
             Vector2 targetPosition = targetObject.transform.position;
             Vector2 currentPosition = transform.position;
 
-            arrivalDistanceSquared = Mathf.Pow(Vector2.Distance(targetPosition, currentPosition) +0.9f, 2);
+            arrivalDistanceSquared = Mathf.Pow(Vector2.Distance(targetPosition, currentPosition) + 0.9f, 2);
 
             //if (dir == Vector2.zero)
             if (dir.sqrMagnitude >= arrivalDistanceSquared) //오차 범위내에 도착했다면
@@ -104,5 +114,21 @@ public class Monster : MonoBehaviour
             moveSpeed = 0;
             isMoving = false;
         }
+    }
+
+    private void OnEnable()
+    {
+        //풀링으로 되살아나거나 새로 만들어져 액티브 됬을 때
+        isLive = true;
+        hp = maxHp;
+        Activate_Func();
+    }
+
+    public void Init(SpawnData data)
+    {
+        //anim.runtimeAnimatorController = animCon[data.spriteType];
+        moveSpeed = data.speed;
+        maxHp = data.hp;
+        hp = data.hp;
     }
 }

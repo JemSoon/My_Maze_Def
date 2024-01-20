@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 6329378258456484822}
   - component: {fileID: 6329378258456484823}
   m_Layer: 7
-  m_Name: Monster_00
+  m_Name: Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,12 +134,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   targetObject: {fileID: 2690540140214263102, guid: 6846a5275d8101c4f96c8c8f68f9e8b4, type: 3}
-  moveSpeed: 3
+  moveSpeed: 0
   portal: {fileID: 8719701004784322265, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
   waypointID: 0
   monsterCollider: {fileID: 6329378258596052924}
   monsterColliderTyep: 2
   isMoving: 0
+  isArrived: 0
 --- !u!50 &6329378258456484822
 Rigidbody2D:
   serializedVersion: 4
