@@ -21,7 +21,7 @@ public class Scanner : MonoBehaviour
     {
         Transform result = null;
 
-        //거리
+        //거리(이 반경보다 작으면 가져옴)
         float diff = 100;
 
         foreach(RaycastHit2D target in targets)

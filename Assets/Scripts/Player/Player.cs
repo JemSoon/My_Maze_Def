@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Player Inst { get; private set; }
-    void Awake() => Inst = this;
 
     public Rigidbody2D rigid = null;
     public PlayerCollider[] collidersArr = null;
@@ -15,6 +14,14 @@ public class Player : MonoBehaviour
     public float speed;
     Vector2 moveVec;
     //readonly private List<Monster> InRangeMonsterList; //공격 범위 안에 들어온 몬스터
+    public Scanner scanner;
+
+    private void Awake()
+    {
+        Inst = this;
+        rigid = GetComponent<Rigidbody2D>();
+        scanner = GetComponent<Scanner>();
+    }
 
     private void FixedUpdate()
     {

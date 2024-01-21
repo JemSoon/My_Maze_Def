@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6329378257581125062}
   m_Layer: 7
   m_Name: Sprite
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 6329378258456484823}
   m_Layer: 7
   m_Name: Monster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,7 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a00f623747e4f4d49b150e9efc446a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
   targetObject: {fileID: 2690540140214263102, guid: 6846a5275d8101c4f96c8c8f68f9e8b4, type: 3}
   moveSpeed: 0
   portal: {fileID: 8719701004784322265, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
@@ -141,6 +140,9 @@ MonoBehaviour:
   monsterColliderTyep: 2
   isMoving: 0
   isArrived: 0
+  animCon: []
+  hp: 0
+  maxHp: 0
 --- !u!50 &6329378258456484822
 Rigidbody2D:
   serializedVersion: 4
@@ -194,7 +196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6329378258596052927
 Transform:
   m_ObjectHideFlags: 0

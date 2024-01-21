@@ -131,4 +131,28 @@ public class Monster : MonoBehaviour
         maxHp = data.hp;
         hp = data.hp;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(!collision.CompareTag("Bullet"))
+        { return; }
+
+        hp -= collision.GetComponent<Bullet>().damage;
+
+        if(hp > 0)
+        {
+            //히트액션
+        }
+        else
+        {
+            //쥬금
+            Dead();
+        }
+
+    }
+
+    void Dead()
+    {
+        gameObject.SetActive(false);
+    }
 }

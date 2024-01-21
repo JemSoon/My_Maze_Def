@@ -25,11 +25,6 @@ public class Spawner : MonoBehaviour
             timer = 0;
             Spawn();
         }
-
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            GameManager.Inst.poolManager.Get(0);
-        }
     }
 
     void Spawn()

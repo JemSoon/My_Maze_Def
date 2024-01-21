@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerCollider.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\PoolManager.cs" />
+    <Compile Include="Assets\Scripts\Player\Weapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -840,6 +841,12 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
