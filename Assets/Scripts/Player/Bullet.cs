@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
         this.damage = damage;
         this.per = per;
 
-        if (per > -1)
+        if (per >= 0)
         {
             rigid.velocity = dir * 15f;//원하는 속력 커스텀
         }    
@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!collision.CompareTag("Monster") || per == -1)
+        if(!collision.CompareTag("Monster") || per == -100)
         { return; }
 
         per--;
