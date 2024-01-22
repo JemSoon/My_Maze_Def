@@ -109,7 +109,7 @@ public class Monster : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 0)
+        if (collision.gameObject.layer == 6)
         {
             moveSpeed = 0;
             isMoving = false;
