@@ -22,17 +22,19 @@ public class Monster : MonoBehaviour
     public float hp;
     public float maxHp;
     Rigidbody2D rigid;
-    //Animator anim;
+    Animator anim;
+    SpriteRenderer sprite;
     bool isLive = true;
 
 
     public Vector2 GetCurrentPos => this.transform.position;
     public bool isAlive => 0 < this.hp && this.gameObject.activeSelf;
 
-    private void Start()
+    private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-        //anim = GetComponent<Animator>();
+        sprite= GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     public void Activate_Func()
@@ -42,41 +44,60 @@ public class Monster : MonoBehaviour
         this.transform.position = portal.transform.position;
         this.waypointID = 0;
         this.isMoving = true;
-        StartCoroutine(Moving());
+        //StartCoroutine(Moving());
     }
 
     void FixedUpdate()
     {
+        #region 코루틴 무빙
         //나중에 길이 오픈되었을때 한번 호출하게끔 바꾸자
-        if(isArrived && !isMoving) 
-        { 
-            FindWayPoint(waypointID); 
-        }
+        //if(isArrived && !isMoving) 
+        //{ 
+        //    FindWayPoint(waypointID); 
+        //}
+        #endregion
+
+        if (!isLive) { return; }
+
+        Move();
     }
 
-    IEnumerator Moving()
+    void LateUpdate()
     {
-        if (!isLive) { yield break; }
+        if (!isLive) { return; }
 
-        while (isMoving)
+        sprite.flipX = targetObject.transform.position.x < rigid.position.x;
+        anim.SetBool("isMoving", isMoving);
+    }
+
+    public void Move()
+    {
+        if (isMoving)
         {
-            Vector2 dir = (((Vector2)targetObject.transform.position) - (Vector2)transform.position).normalized;
-            transform.Translate(dir * Time.deltaTime * moveSpeed);
+            Vector2 dirVec = (Vector2)targetObject.transform.position - rigid.position;
+            Vector2 nextVec = dirVec.normalized * moveSpeed * Time.fixedDeltaTime;
+            rigid.velocity = Vector2.zero; //플레이어 밀리지 않게
 
-            Vector2 targetPosition = targetObject.transform.position;
-            Vector2 currentPosition = transform.position;
+            float arrivalDistance = 0.01f; //도착 거리 오차 범위
 
-            arrivalDistanceSquared = Mathf.Pow(Vector2.Distance(targetPosition, currentPosition) + 0.9f, 2);
-
-            //if (dir == Vector2.zero)
-            if (dir.sqrMagnitude >= arrivalDistanceSquared) //오차 범위내에 도착했다면
+            if (dirVec.magnitude <= arrivalDistance)
             {
-                isArrived = true;
-                ++waypointID;
-                FindWayPoint(waypointID);
-            }
+                //오차 범위 내에 들어오면
+                Debug.Log("목표 도착");
 
-            yield return null;
+                ++waypointID;
+                isMoving = false;
+                FindWayPoint(waypointID); //이미 다음 목적지가 열려있을수도 있으니
+            }
+            else
+            {
+                rigid.MovePosition(rigid.position + nextVec);
+            }
+        }
+        else
+        {
+            //움직이지 않고 있다면 계속 목표지점 생겼는지 검색
+            FindWayPoint(waypointID);
         }
     }
 
@@ -95,7 +116,7 @@ public class Monster : MonoBehaviour
                 isArrived = false;
                 targetObject = point.gameObject;
                 isFound = true;
-                StartCoroutine(Moving());
+                //StartCoroutine(Moving());
                 break;
             }
         }
@@ -153,6 +174,35 @@ public class Monster : MonoBehaviour
 
     void Dead()
     {
+        isLive=false;
         gameObject.SetActive(false);
     }
+
+    #region 코루틴 무빙
+    //IEnumerator Moving()
+    //{
+    //    if (!isLive) { yield break; }
+
+    //    while (isMoving)
+    //    {
+    //        Vector2 dir = (((Vector2)targetObject.transform.position) - (Vector2)transform.position).normalized;
+    //        transform.Translate(dir * Time.deltaTime * moveSpeed);
+
+    //        Vector2 targetPosition = targetObject.transform.position;
+    //        Vector2 currentPosition = transform.position;
+
+    //        arrivalDistanceSquared = Mathf.Pow(Vector2.Distance(targetPosition, currentPosition) + 0.9f, 2);
+
+    //        //if (dir == Vector2.zero)
+    //        if (dir.sqrMagnitude >= arrivalDistanceSquared) //오차 범위내에 도착했다면
+    //        {
+    //            isArrived = true;
+    //            ++waypointID;
+    //            FindWayPoint(waypointID);
+    //        }
+
+    //        yield return null;
+    //    }
+    //}
+    #endregion
 }
