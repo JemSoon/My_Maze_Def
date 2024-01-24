@@ -25,6 +25,7 @@ public class Monster : MonoBehaviour
     Animator anim;
     SpriteRenderer sprite;
     bool isLive = true;
+    WaitForFixedUpdate wait;
 
 
     public Vector2 GetCurrentPos => this.transform.position;
@@ -35,6 +36,7 @@ public class Monster : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         sprite= GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        wait = new WaitForFixedUpdate();
     }
 
     public void Activate_Func()
@@ -57,7 +59,11 @@ public class Monster : MonoBehaviour
         //}
         #endregion
 
-        if (!isLive) { return; }
+        if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Monster_Hit")) //그래프에 그려진 이름..
+        {
+            //죽었거나 맞는 상태라면 행동 스탑
+            return; 
+        }
 
         Move();
     }
@@ -128,15 +134,6 @@ public class Monster : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == 6)
-        {
-            moveSpeed = 0;
-            isMoving = false;
-        }
-    }
-
     private void OnEnable()
     {
         //풀링으로 되살아나거나 새로 만들어져 액티브 됬을 때
@@ -159,10 +156,12 @@ public class Monster : MonoBehaviour
         { return; }
 
         hp -= collision.GetComponent<Bullet>().damage;
+        StartCoroutine(KnockBack());
 
         if(hp > 0)
         {
             //히트액션
+            anim.SetTrigger("Hit");
         }
         else
         {
@@ -170,6 +169,18 @@ public class Monster : MonoBehaviour
             Dead();
         }
 
+    }
+
+    IEnumerator KnockBack()
+    {
+        yield return wait; //다음 하나의 물리 프레임 딜레이
+
+        //플레이어의 위치
+        Vector3 playerPos = GameManager.Inst.player.transform.position;
+        //플레이어의 반대방향으로 가기(플레이어의 위치를 빼서)
+        Vector3 dirVec = transform.position - playerPos;
+        //노멀라이즈화 된(크기빼고 방향만 가진) dirVec에 밀리는 힘(3), 포스모드
+        rigid.AddForce(dirVec.normalized * 2, ForceMode2D.Impulse); 
     }
 
     void Dead()
