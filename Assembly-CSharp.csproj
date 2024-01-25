@@ -71,8 +71,8 @@
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCollider.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
-    <Compile Include="Assets\Scripts\PoolManager.cs" />
     <Compile Include="Assets\Scripts\Monster\WallChecker.cs" />
+    <Compile Include="Assets\Scripts\PoolManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

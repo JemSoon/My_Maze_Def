@@ -188,7 +188,18 @@ public class Monster : MonoBehaviour
         if (isDownWall && dirVec.y < 0f)
         {
             dirVec.y = 0;
-            Debug.Log(dirVec);
+        }
+        if(isTopWall && dirVec.y > 0f)
+        { 
+            dirVec.y = 0;
+        }
+        if(isLeftWall && dirVec.x < 0f)
+        {
+            dirVec.x = 0;
+        }
+        if(isRightWall && dirVec.x > 0f)
+        {
+            dirVec.x = 0;
         }
 
         //노멀라이즈화 된(크기빼고 방향만 가진) dirVec에 밀리는 힘(3), 포스모드
