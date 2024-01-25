@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public enum ColType { Down, Top, Left, Right }
 public class WallChecker : MonoBehaviour
@@ -12,11 +13,16 @@ public class WallChecker : MonoBehaviour
     public BoxCollider2D colRight;
     public Monster monster;
 
+    public ParticleSystem particle;
+
     public ColType myColType;
     private void Awake()
     {
         //colDown = GetComponent<BoxCollider2D>();
         monster = GetComponentInParent<Monster>();
+        particle = GetComponent<ParticleSystem>();
+        
+        particle.Stop();
         MakeMyColType();
     }
 
@@ -63,18 +69,42 @@ public class WallChecker : MonoBehaviour
             case ColType.Down:
                 Debug.Log("아래 충돌 인식 : " + isTouching);
                 monster.isDownWall = isTouching;
+                
+                if(isTouching)
+                { particle.Play(); }
+                else
+                { particle.Stop(); }
+
                 break;
             case ColType.Top:
                 Debug.Log("위 충돌 인식 : " + isTouching);
                 monster.isTopWall = isTouching;
+
+                if (isTouching)
+                { particle.Play(); }
+                else
+                { particle.Stop(); }
+
                 break;
             case ColType.Left:
                 Debug.Log("왼쪽 충돌 인식 : " + isTouching);
                 monster.isLeftWall = isTouching;
+
+                if (isTouching)
+                { particle.Play(); }
+                else
+                { particle.Stop(); }
+
                 break;
             case ColType.Right:
                 Debug.Log("오른쪽 충돌 인식 : " + isTouching);
                 monster.isRightWall = isTouching;
+
+                if (isTouching)
+                { particle.Play(); }
+                else
+                { particle.Stop(); }
+
                 break;
 
             default:

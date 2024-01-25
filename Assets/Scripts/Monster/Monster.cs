@@ -33,6 +33,8 @@ public class Monster : MonoBehaviour
     public bool isRightWall = false;
     public bool isLeftWall = false;
 
+    public bool isKnockBacking = false;
+
     public Vector2 GetCurrentPos => this.transform.position;
     public bool isAlive => 0 < this.hp && this.gameObject.activeSelf;
 
@@ -203,7 +205,7 @@ public class Monster : MonoBehaviour
         }
 
         //노멀라이즈화 된(크기빼고 방향만 가진) dirVec에 밀리는 힘(3), 포스모드
-        rigid.AddForce(dirVec.normalized * 2, ForceMode2D.Impulse); 
+        rigid.AddForce(dirVec.normalized * 2, ForceMode2D.Impulse);
     }
 
     void Dead()
