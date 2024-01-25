@@ -16,12 +16,27 @@ public class Player : MonoBehaviour
     //readonly private List<Monster> InRangeMonsterList; //공격 범위 안에 들어온 몬스터
     public Scanner scanner;
 
-    public int keyCount;
+    private int _keyCount = 0;
+    public int keyCount
+    {
+        get { return _keyCount; }
+        set
+        {
+            _keyCount = value;
+            OnKeyCountChanged?.Invoke(_keyCount);
+        }
+    }
+    public event System.Action<int> OnKeyCountChanged;
+
+    public void IncrementKeyCount(int value)
+    {
+        keyCount += value;
+    }
 
     private void Awake()
     {
         Inst = this;
-        Inst.keyCount = 0;
+        Inst._keyCount = 0;
         rigid = GetComponent<Rigidbody2D>();
         scanner = GetComponent<Scanner>();
     }

@@ -16,11 +16,18 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Inst = this;
+        player.OnKeyCountChanged += UpdateKeyCountText;
     }
 
     private void Update()
     {
         gameTime += Time.deltaTime;
-        tmp.text = "¿­¼è : "+player.keyCount.ToString();
+        //tmp.text = "¿­¼è : "+player.keyCount.ToString();
+    }
+
+    private void UpdateKeyCountText(int keyCount)
+    {
+        // keyCountTextÀÇ text ¼Ó¼ºÀ» ¾÷µ¥ÀÌÆ®
+        tmp.text = "¿­¼è : " + keyCount;
     }
 }
