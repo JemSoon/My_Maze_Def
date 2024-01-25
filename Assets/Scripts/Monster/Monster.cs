@@ -27,6 +27,11 @@ public class Monster : MonoBehaviour
     bool isLive = true;
     WaitForFixedUpdate wait;
 
+    [Header("벽 충돌 체크")]
+    public bool isDownWall = false;
+    public bool isTopWall = false;
+    public bool isRightWall = false;
+    public bool isLeftWall = false;
 
     public Vector2 GetCurrentPos => this.transform.position;
     public bool isAlive => 0 < this.hp && this.gameObject.activeSelf;
@@ -179,6 +184,13 @@ public class Monster : MonoBehaviour
         Vector3 playerPos = GameManager.Inst.player.transform.position;
         //플레이어의 반대방향으로 가기(플레이어의 위치를 빼서)
         Vector3 dirVec = transform.position - playerPos;
+
+        if (isDownWall && dirVec.y < 0f)
+        {
+            dirVec.y = 0;
+            Debug.Log(dirVec);
+        }
+
         //노멀라이즈화 된(크기빼고 방향만 가진) dirVec에 밀리는 힘(3), 포스모드
         rigid.AddForce(dirVec.normalized * 2, ForceMode2D.Impulse); 
     }
