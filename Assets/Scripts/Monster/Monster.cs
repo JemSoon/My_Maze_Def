@@ -35,6 +35,9 @@ public class Monster : MonoBehaviour
 
     public bool isKnockBacking = false;
 
+    [Header("몬스터가 주는 벽 해금 재화")]
+    public int giveKeyCount;
+
     public Vector2 GetCurrentPos => this.transform.position;
     public bool isAlive => 0 < this.hp && this.gameObject.activeSelf;
 
@@ -155,6 +158,7 @@ public class Monster : MonoBehaviour
         moveSpeed = data.speed;
         maxHp = data.hp;
         hp = data.hp;
+        giveKeyCount = data.giveKeyCount;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -212,6 +216,8 @@ public class Monster : MonoBehaviour
     {
         isLive=false;
         gameObject.SetActive(false);
+
+        GameManager.Inst.player.keyCount += giveKeyCount;
     }
 
     #region 코루틴 무빙

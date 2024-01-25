@@ -156,11 +156,11 @@ MonoBehaviour:
     spriteType: 0
     hp: 10
     speed: 1.5
-    giveKey: 1
+    giveKeyCount: 1
   - spawnTime: 0.5
     spriteType: 0
     hp: 10
     speed: 5
-    giveKey: 2
+    giveKeyCount: 2
   spawnCount: 0
   seconds: 60

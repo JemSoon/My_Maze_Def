@@ -53,5 +53,5 @@ public class SpawnData
     public int hp;
     public float speed;
 
-    public int giveKey;
+    public int giveKeyCount;
 }
