@@ -26,6 +26,12 @@ public class WallChecker : MonoBehaviour
         MakeMyColType();
     }
 
+    private void OnEnable()
+    {
+        particle.Stop();
+        MakeMyColType();
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         // 충돌한 Collider가 원하는 레이어인지 확인

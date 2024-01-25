@@ -27,6 +27,13 @@ public class Spawner : MonoBehaviour
             timer = 0;
             Spawn();
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ++spawnCount;
+            ++nowCount;
+            Spawn();
+        }
     }
 
     void Spawn()
@@ -45,4 +52,6 @@ public class SpawnData
     public int spriteType;
     public int hp;
     public float speed;
+
+    public int giveKey;
 }

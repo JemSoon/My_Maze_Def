@@ -38,7 +38,7 @@ public class Weapon : MonoBehaviour
         }
 
         //Test LevelUp
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             LevelUp(10, 1); //데미지, 관통수
         }

@@ -16,9 +16,12 @@ public class Player : MonoBehaviour
     //readonly private List<Monster> InRangeMonsterList; //공격 범위 안에 들어온 몬스터
     public Scanner scanner;
 
+    public int keyCount;
+
     private void Awake()
     {
         Inst = this;
+        Inst.keyCount = 0;
         rigid = GetComponent<Rigidbody2D>();
         scanner = GetComponent<Scanner>();
     }
