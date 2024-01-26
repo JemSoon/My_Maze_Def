@@ -17,6 +17,7 @@ public class WallChecker : MonoBehaviour
 
     public ColType myColType;
     public bool isTouching = false;
+    public List<Collider2D> overlappingColliders = new List<Collider2D>();
     private void Awake()
     {
         //colDown = GetComponent<BoxCollider2D>();
@@ -39,6 +40,7 @@ public class WallChecker : MonoBehaviour
         // 충돌한 Collider가 원하는 레이어인지 확인
         if (other.gameObject.layer == 6)
         {
+            overlappingColliders.Add(other);
             isTouching = true;
             CheckMyColType(myColType, isTouching);
         }
@@ -47,7 +49,8 @@ public class WallChecker : MonoBehaviour
     {
         if (other.gameObject.layer == 6)
         {
-             isTouching = false;
+            overlappingColliders.Remove(other);
+            isTouching = overlappingColliders.Count > 0;
             CheckMyColType(myColType, isTouching);
         }
     }

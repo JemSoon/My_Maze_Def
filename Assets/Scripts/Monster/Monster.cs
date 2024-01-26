@@ -160,6 +160,7 @@ public class Monster : MonoBehaviour
     private void OnEnable()
     {
         //풀링으로 되살아나거나 새로 만들어져 액티브 됬을 때
+        waypointID = 0;
         isLive = true;
         hp = maxHp;
         Activate_Func();
