@@ -16,6 +16,7 @@ public class WallChecker : MonoBehaviour
     public ParticleSystem particle;
 
     public ColType myColType;
+    public bool isTouching = false;
     private void Awake()
     {
         //colDown = GetComponent<BoxCollider2D>();
@@ -28,6 +29,7 @@ public class WallChecker : MonoBehaviour
 
     private void OnEnable()
     {
+        isTouching = false;
         particle.Stop();
         MakeMyColType();
     }
@@ -37,14 +39,16 @@ public class WallChecker : MonoBehaviour
         // 충돌한 Collider가 원하는 레이어인지 확인
         if (other.gameObject.layer == 6)
         {
-            CheckMyColType(myColType, true);
+            isTouching = true;
+            CheckMyColType(myColType, isTouching);
         }
     }
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.layer == 6)
         {
-            CheckMyColType(myColType, false);
+             isTouching = false;
+            CheckMyColType(myColType, isTouching);
         }
     }
 
@@ -68,7 +72,7 @@ public class WallChecker : MonoBehaviour
         }
     }
 
-    void CheckMyColType(ColType colType, bool isTouching)
+    public void CheckMyColType(ColType colType, bool isTouching)
     {
         switch (colType)
         {

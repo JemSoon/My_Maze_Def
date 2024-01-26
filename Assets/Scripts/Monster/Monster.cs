@@ -22,7 +22,7 @@ public class Monster : MonoBehaviour
     public float hp;
     public float maxHp;
     Rigidbody2D rigid;
-    Animator anim;
+    public Animator anim;
     SpriteRenderer sprite;
     bool isLive = true;
     WaitForFixedUpdate wait;
@@ -37,6 +37,8 @@ public class Monster : MonoBehaviour
 
     [Header("몬스터가 주는 벽 해금 재화")]
     public int giveKeyCount;
+
+    public WallChecker[] wallCheckers;
 
     public Vector2 GetCurrentPos => this.transform.position;
     public bool isAlive => 0 < this.hp && this.gameObject.activeSelf;
@@ -71,6 +73,7 @@ public class Monster : MonoBehaviour
 
         if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Monster_Hit")) //그래프에 그려진 이름..
         {
+            isKnockBacking = true;
             //죽었거나 맞는 상태라면 행동 스탑
             return; 
         }
@@ -88,6 +91,16 @@ public class Monster : MonoBehaviour
 
     public void Move()
     {
+        if(isKnockBacking)
+        {
+            foreach (var item in wallCheckers)
+            {
+                item.CheckMyColType(item.myColType, item.isTouching);
+            }
+            isKnockBacking = false;
+        }
+        
+
         if (isMoving)
         {
             Vector2 dirVec = (Vector2)targetObject.transform.position - rigid.position;
@@ -186,6 +199,11 @@ public class Monster : MonoBehaviour
     {
         yield return wait; //다음 하나의 물리 프레임 딜레이
 
+        foreach(var item in wallCheckers)
+        {
+            item.particle.Stop();
+        }
+
         //플레이어의 위치
         Vector3 playerPos = GameManager.Inst.player.transform.position;
         //플레이어의 반대방향으로 가기(플레이어의 위치를 빼서)
@@ -216,7 +234,7 @@ public class Monster : MonoBehaviour
     {
         isLive=false;
         gameObject.SetActive(false);
-
+        waypointID = 0;
         GameManager.Inst.player.keyCount += giveKeyCount;
     }
 

@@ -80,6 +80,7 @@ MonoBehaviour:
   monster: {fileID: 0}
   particle: {fileID: 0}
   myColType: 0
+  isTouching: 0
 --- !u!198 &7299082377701268303
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4918,7 +4919,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 3}
+  m_Size: {x: 2, y: 3}
   m_EdgeRadius: 0
 --- !u!114 &2114871200876269905
 MonoBehaviour:
@@ -4939,6 +4940,7 @@ MonoBehaviour:
   monster: {fileID: 0}
   particle: {fileID: 0}
   myColType: 0
+  isTouching: 0
 --- !u!198 &579567715707258626
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -9798,6 +9800,7 @@ MonoBehaviour:
   monster: {fileID: 0}
   particle: {fileID: 0}
   myColType: 0
+  isTouching: 0
 --- !u!198 &2733388709491984347
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -14641,10 +14644,18 @@ MonoBehaviour:
   animCon: []
   hp: 0
   maxHp: 0
+  anim: {fileID: 0}
   isDownWall: 0
   isTopWall: 0
   isRightWall: 0
   isLeftWall: 0
+  isKnockBacking: 0
+  giveKeyCount: 0
+  wallCheckers:
+  - {fileID: 4920482366889050456}
+  - {fileID: 2992099783784925565}
+  - {fileID: 2114871200876269905}
+  - {fileID: 6233951243222598095}
 --- !u!212 &5073797119252156117
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14685,7 +14696,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 43bb3f26ed13b4e4e9ef611bde744b6d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -14862,7 +14873,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 3}
+  m_Size: {x: 2, y: 3}
   m_EdgeRadius: 0
 --- !u!114 &6233951243222598095
 MonoBehaviour:
@@ -14883,6 +14894,7 @@ MonoBehaviour:
   monster: {fileID: 0}
   particle: {fileID: 0}
   myColType: 0
+  isTouching: 0
 --- !u!198 &5451633852550261442
 ParticleSystem:
   m_ObjectHideFlags: 0
