@@ -24,7 +24,7 @@ public class Gate : MonoBehaviour
             //0.1초마다 플레이어의 열쇠 호로록
             GameManager.Inst.player.keyCount--;
             needKey--;
-
+            text.SetText(needKey.ToString());
             if(needKey == 0)
             {
                 OpenField(nextField);
