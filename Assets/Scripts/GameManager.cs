@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public PoolManager poolManager;
     public Player player;
     public TextMeshProUGUI tmp;
+    public bool isGameOver;
 
     private void Awake()
     {
@@ -29,5 +30,12 @@ public class GameManager : MonoBehaviour
     {
         // keyCountText의 text 속성을 업데이트
         tmp.text = "열쇠 : " + keyCount;
+    }
+
+    public  void GameEnd()
+    {
+
+        Time.timeScale = 0f;
+        
     }
 }

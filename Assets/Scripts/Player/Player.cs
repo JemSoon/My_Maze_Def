@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     Vector2 moveVec;
     //readonly private List<Monster> InRangeMonsterList; //공격 범위 안에 들어온 몬스터
     public Scanner scanner;
+    Vector3 beginPos;//처음 시작 위치 저장
 
     private int _keyCount = 0;
     public int keyCount
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
         Inst._keyCount = 0;
         rigid = GetComponent<Rigidbody2D>();
         scanner = GetComponent<Scanner>();
+        Inst.beginPos = this.gameObject.transform.position;
     }
 
     private void FixedUpdate()
@@ -57,5 +59,20 @@ public class Player : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Monster"))
+        {
+            Debug.Log("몬스터와 충돌");
+            GameManager.Inst.GameEnd();
+        }
+    }
+
+    public void ResetPlayerPos()
+    {
+        //처음 게임 시작위치로
+        Inst.transform.position = Inst.beginPos;
     }
 }

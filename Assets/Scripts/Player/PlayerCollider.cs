@@ -12,8 +12,4 @@ public class PlayerCollider : MonoBehaviour
 {
     [SerializeField] private Collider2D playerCollider = null;
     [SerializeField] private ColliderType colliderType = ColliderType.None;
-
-    
-
-
 }
