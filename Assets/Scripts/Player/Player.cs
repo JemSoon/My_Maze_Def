@@ -74,5 +74,7 @@ public class Player : MonoBehaviour
     {
         //처음 게임 시작위치로
         Inst.transform.position = Inst.beginPos;
+        Inst._keyCount = 0;
+        Inst.keyCount = 0;
     }
 }

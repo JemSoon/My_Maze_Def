@@ -5,13 +5,41 @@ using UnityEngine;
 public class PoolManager : MonoBehaviour
 {
     public GameObject[] prefabs;
-    List<GameObject>[] pools;
+    public List<GameObject>[] pools;
 
     private void Awake()
     {
         pools = new List<GameObject>[prefabs.Length];
         
         for(int index = 0; index < pools.Length; ++index )
+        {
+            pools[index] = new List<GameObject>();
+        }
+    }
+
+    public void ResetPoolManager()
+    {
+        #region 풀링된 모든 오브젝트 디스트로이(몬스터,근접무기(?),총알 등)
+        int x = prefabs.Length;
+        for (int i = 0; i < x; i++)
+        {
+            // 각 리스트의 길이를 가져옴
+            int y = pools[i].Count;
+
+            // pools[i][j]에 접근하기 위한 이중 포문
+            for (int j = 0; j < y; j++)
+            {
+                // pools[i][j]에 접근하여 원하는 작업 수행
+                GameObject currentObject = pools[i][j];
+                Destroy(currentObject);
+                currentObject = null;
+            }
+        }
+        #endregion
+
+        pools = new List<GameObject>[prefabs.Length];
+
+        for (int index = 0; index < pools.Length; ++index)
         {
             pools[index] = new List<GameObject>();
         }

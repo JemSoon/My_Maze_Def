@@ -9,11 +9,17 @@ public class Gate : MonoBehaviour
     public BoxCollider2D col;
     public TextMeshProUGUI text;
     public WaitForSeconds time = new WaitForSeconds(1);
-    public int needKey = 2;
+    public int needKey;
+    int beginNeedKey;
 
     [Header("다음 필드")]
     public GameObject nextField;
     public GameObject[] offCollision;
+
+    private void Awake()
+    {
+        beginNeedKey = needKey;
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -42,5 +48,12 @@ public class Gate : MonoBehaviour
         }
 
         this.gameObject.SetActive(false);
+    }
+
+    public void ResetNeedKey()
+    {
+        needKey = beginNeedKey;
+        text.SetText(needKey.ToString());
+        this.gameObject.SetActive(true);
     }
 }

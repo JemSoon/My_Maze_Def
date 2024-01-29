@@ -7,12 +7,19 @@ public class Spawner : MonoBehaviour
     public SpawnData[] spawnData;
 
     public int spawnCount = 0;//총 소환할 마리수
+    int beginSpawnCount; //초기 설정 소환 마리수
     int nowCount = 0; //현재 소환한 마리수
     int level;
     float timer;
     [Header("몇초마다 단계를 올립니까?")]
     public float seconds;
     //public Transform[] spanwPoint;
+
+    private void Awake()
+    {
+        //기본 소환 마리수 저장해두기
+        beginSpawnCount = spawnCount;
+    }
 
     // Update is called once per frame
     void Update()
@@ -42,6 +49,13 @@ public class Spawner : MonoBehaviour
         //monster.transform.position = spawnPoint[]
         monster.GetComponent<Monster>().Init(spawnData[level]);
         ++nowCount;
+    }
+
+    public void ResetSpawnner()
+    {
+        spawnCount = beginSpawnCount;
+        nowCount = 0;
+        level = 0;
     }
 }
 

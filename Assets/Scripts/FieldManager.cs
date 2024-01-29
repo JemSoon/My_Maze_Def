@@ -7,6 +7,7 @@ public class FieldManager : MonoBehaviour
     public static FieldManager Inst;
     public GameObject[] fields;
     bool[] fieldsStartActive;
+    public GameObject[] gates;
 
     private void Awake()
     {
@@ -36,6 +37,12 @@ public class FieldManager : MonoBehaviour
         for(int i  = 0; i < fields.Length; ++i)
         {
             fields[i].gameObject.SetActive(fieldsStartActive[i]);
+        }
+
+        foreach(GameObject gate in gates)
+        {
+            gate.gameObject.SetActive(true);
+
         }
     }
 }
