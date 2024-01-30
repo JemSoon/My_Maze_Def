@@ -8,11 +8,11 @@ public class Gate : MonoBehaviour
 {
     public BoxCollider2D col;
     public TextMeshProUGUI text;
-    public WaitForSeconds time = new WaitForSeconds(1f);
+    public WaitForSeconds time = new WaitForSeconds(0.1f);
     public int needKey;
     int beginNeedKey;
     bool isGiveKey;
-
+    public SpriteRenderer pencil;
 
     [Header("다음 필드")]
     public GameObject nextField;
@@ -57,6 +57,7 @@ public class Gate : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isGiveKey = false;
+            pencil.gameObject.SetActive(false);
         }
     }
 
@@ -89,6 +90,8 @@ public class Gate : MonoBehaviour
     {
         while(isGiveKey)
         {
+            pencil.gameObject.SetActive(true);
+            
             yield return time;
 
             if (GameManager.Inst.player.keyCount > 0)
