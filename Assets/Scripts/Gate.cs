@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using DG.Tweening;
 
 public class Gate : MonoBehaviour
 {
@@ -17,6 +16,8 @@ public class Gate : MonoBehaviour
     [Header("다음 필드")]
     public GameObject nextField;
     public GameObject[] offCollision;
+
+    private Tween pencilTween;
 
     private void Awake()
     {
@@ -58,6 +59,7 @@ public class Gate : MonoBehaviour
         {
             isGiveKey = false;
             pencil.gameObject.SetActive(false);
+            pencil.transform.DOKill();
         }
     }
 
@@ -90,8 +92,18 @@ public class Gate : MonoBehaviour
     {
         while(isGiveKey)
         {
-            pencil.gameObject.SetActive(true);
-            
+            if(GameManager.Inst.player.keyCount > 0)
+            {
+                //pencil.gameObject.SetActive(true);
+                //pencil.transform.DOMove(transform.position, 0.1f).SetEase(Ease.InOutQuad).SetLoops(-1);
+                DOMoveTween();
+            }
+            else
+            {
+                pencil.transform.DOKill();
+                pencil.gameObject.SetActive(false);
+            }
+
             yield return time;
 
             if (GameManager.Inst.player.keyCount > 0)
@@ -105,5 +117,15 @@ public class Gate : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void DOMoveTween()
+    {
+        // 플레이어의 현재 위치에서 목표 지점까지 이동하는 Tween을 생성
+        pencil.transform.position = GameManager.Inst.player.transform.position + new Vector3(0, 2, 0);
+        pencil.gameObject.SetActive(true);
+        pencilTween = pencil.transform.DOMove(transform.position + new Vector3(0,-3,0), 0.1f)
+            .SetEase(Ease.InOutQuad)
+            .OnComplete(DOMoveTween); // Tween이 완료될 때마다 DOMoveTween 함수를 재귀적으로 호출하여 반복 실행
     }
 }

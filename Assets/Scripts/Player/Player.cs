@@ -52,8 +52,6 @@ public class Player : MonoBehaviour
         rigid.MovePosition(rigid.position + moveVec);
 
         if(moveVec.sqrMagnitude == 0) { return; }
-
-
     }
 
     void Update()
