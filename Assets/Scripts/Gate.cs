@@ -124,6 +124,8 @@ public class Gate : MonoBehaviour
         // 플레이어의 현재 위치에서 목표 지점까지 이동하는 Tween을 생성
         pencil.transform.position = GameManager.Inst.player.transform.position + new Vector3(0, 2, 0);
         pencil.gameObject.SetActive(true);
+
+        //pecnilTween을 변수로 받아야하나? 싶지만 받아서 해야 좀 더 깔끔히 되는거같음? 안그럼 가끔 버벅임
         pencilTween = pencil.transform.DOMove(transform.position + new Vector3(0,-3,0), 0.1f)
             .SetEase(Ease.InOutQuad)
             .OnComplete(DOMoveTween); // Tween이 완료될 때마다 DOMoveTween 함수를 재귀적으로 호출하여 반복 실행
