@@ -80,7 +80,7 @@ public class WallChecker : MonoBehaviour
         switch (colType)
         {
             case ColType.Down:
-                Debug.Log("아래 충돌 인식 : " + isTouching);
+                //Debug.Log("아래 충돌 인식 : " + isTouching);
                 monster.isDownWall = isTouching;
                 
                 if(isTouching)
@@ -90,7 +90,7 @@ public class WallChecker : MonoBehaviour
 
                 break;
             case ColType.Top:
-                Debug.Log("위 충돌 인식 : " + isTouching);
+                //Debug.Log("위 충돌 인식 : " + isTouching);
                 monster.isTopWall = isTouching;
 
                 if (isTouching)
@@ -100,7 +100,7 @@ public class WallChecker : MonoBehaviour
 
                 break;
             case ColType.Left:
-                Debug.Log("왼쪽 충돌 인식 : " + isTouching);
+                //Debug.Log("왼쪽 충돌 인식 : " + isTouching);
                 monster.isLeftWall = isTouching;
 
                 if (isTouching)
@@ -110,7 +110,7 @@ public class WallChecker : MonoBehaviour
 
                 break;
             case ColType.Right:
-                Debug.Log("오른쪽 충돌 인식 : " + isTouching);
+                //Debug.Log("오른쪽 충돌 인식 : " + isTouching);
                 monster.isRightWall = isTouching;
 
                 if (isTouching)
@@ -121,7 +121,7 @@ public class WallChecker : MonoBehaviour
                 break;
 
             default:
-                Debug.Log("해당하는 콜타입이 없음");
+                //Debug.Log("해당하는 콜타입이 없음");
                 break;
         }
     }

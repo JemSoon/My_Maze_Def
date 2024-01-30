@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     private void UpdateKeyCountText(int keyCount)
     {
         // keyCountText의 text 속성을 업데이트
-        tmp.text = "열쇠 : " + keyCount;
+        tmp.text = "연필 : " + keyCount;
     }
 
     public void GameEnd()

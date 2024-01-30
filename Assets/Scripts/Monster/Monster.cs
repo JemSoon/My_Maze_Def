@@ -236,7 +236,7 @@ public class Monster : MonoBehaviour
         isLive=false;
         gameObject.SetActive(false);
         waypointID = 0;
-        GameManager.Inst.player.keyCount += giveKeyCount;
+        GameManager.Inst.player.keyCount += giveKeyCount*10;
     }
 
     #region 코루틴 무빙

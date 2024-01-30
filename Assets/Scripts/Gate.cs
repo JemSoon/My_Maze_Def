@@ -8,9 +8,11 @@ public class Gate : MonoBehaviour
 {
     public BoxCollider2D col;
     public TextMeshProUGUI text;
-    public WaitForSeconds time = new WaitForSeconds(1);
+    public WaitForSeconds time = new WaitForSeconds(1f);
     public int needKey;
     int beginNeedKey;
+    bool isGiveKey;
+
 
     [Header("다음 필드")]
     public GameObject nextField;
@@ -19,6 +21,18 @@ public class Gate : MonoBehaviour
     private void Awake()
     {
         beginNeedKey = needKey;
+        text.SetText(needKey.ToString());
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (GameManager.Inst.player.keyCount == 0) { return; }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isGiveKey = true;
+            StartCoroutine(DecreaseKey());
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -27,14 +41,22 @@ public class Gate : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            //0.1초마다 플레이어의 열쇠 호로록
-            GameManager.Inst.player.keyCount--;
-            needKey--;
-            text.SetText(needKey.ToString());
-            if(needKey == 0)
-            {
-                OpenField(nextField);
-            }
+            //GameManager.Inst.player.keyCount--;
+            //needKey--;
+            //text.SetText(needKey.ToString());
+            //if(needKey == 0)
+            //{
+            //    OpenField(nextField);
+            //}
+            //StartCoroutine(DecreaseKey());
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isGiveKey = false;
         }
     }
 
@@ -55,5 +77,30 @@ public class Gate : MonoBehaviour
         needKey = beginNeedKey;
         text.SetText(needKey.ToString());
         this.gameObject.SetActive(true);
+
+        //꺼진 콜리전도 다시 키기
+        foreach (GameObject offCol in offCollision)
+        {
+            offCol.SetActive(true);
+        }
+    }
+
+    IEnumerator DecreaseKey()
+    {
+        while(isGiveKey)
+        {
+            yield return time;
+
+            if (GameManager.Inst.player.keyCount > 0)
+            {
+                GameManager.Inst.player.keyCount--;
+                needKey--;
+                text.SetText(needKey.ToString());
+                if (needKey == 0)
+                {
+                    OpenField(nextField);
+                }
+            }
+        }
     }
 }

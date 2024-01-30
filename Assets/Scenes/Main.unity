@@ -244,7 +244,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0011024, y: 0.000023842}
+  m_AnchoredPosition: {x: 0.46, y: 2.73}
   m_SizeDelta: {x: 51.154, y: 29.904}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &208732692
@@ -826,14 +826,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: cbf60c1bb0a9a544ea18f0dbe6bb5d0b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1854,7 +1854,7 @@ GameObject:
   - component: {fileID: 733864837}
   m_Layer: 8
   m_Name: Wall_Collider
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2515,7 +2515,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224121342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.05, y: -0.05, z: 0}
+  m_LocalPosition: {x: 8.05, y: 2.39, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2536,11 +2536,11 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -3}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.78, y: 3.68}
+    oldSize: {x: 3.78, y: 9.8}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2590,7 +2590,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cb46b40369062d947999de076cce6f08, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf8ab253e53d2fe40831727bbeef6334, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2615,7 +2615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   col: {fileID: 1224121344}
   text: {fileID: 208732692}
-  needKey: 2
+  needKey: 99
   nextField: {fileID: 331048981}
   offCollision:
   - {fileID: 396386506}
@@ -2891,7 +2891,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC5F4\uC1E0 : 0"
+  m_text: "\uC5F0\uD544 : 0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4fa63328dde197d479c40f70611788b6, type: 2}
   m_sharedMaterial: {fileID: -2956500425069837124, guid: 4fa63328dde197d479c40f70611788b6, type: 2}
