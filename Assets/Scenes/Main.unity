@@ -3618,8 +3618,24 @@ PrefabInstance:
       value: SpawnPortal
       objectReference: {fileID: 0}
     - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
+      propertyPath: seconds
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
       propertyPath: spawnCount
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
+      propertyPath: spawnData.Array.data[1].speed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
+      propertyPath: spawnData.Array.data[1].spawnTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
+      propertyPath: spawnData.Array.data[1].spriteType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}

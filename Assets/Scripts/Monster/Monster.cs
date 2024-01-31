@@ -168,7 +168,7 @@ public class Monster : MonoBehaviour
 
     public void Init(SpawnData data)
     {
-        //anim.runtimeAnimatorController = animCon[data.spriteType];
+        anim.runtimeAnimatorController = animCon[data.spriteType];
         moveSpeed = data.speed;
         maxHp = data.hp;
         hp = data.hp;
