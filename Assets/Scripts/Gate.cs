@@ -8,6 +8,8 @@ public class Gate : MonoBehaviour
     public BoxCollider2D col;
     public TextMeshProUGUI text;
     public WaitForSeconds time = new WaitForSeconds(0.1f);
+
+    [Header("필요한 게이트 오픈 열쇠 수")]
     public int needKey;
     int beginNeedKey;
     bool isGiveKey;
