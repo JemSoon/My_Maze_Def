@@ -1471,6 +1471,7 @@ MonoBehaviour:
   joystick: {fileID: 843129182}
   speed: 5
   scanner: {fileID: 0}
+  sprite: {fileID: 0}
   anim: {fileID: 0}
 --- !u!114 &624373049
 MonoBehaviour:
@@ -3478,6 +3479,14 @@ PrefabInstance:
       propertyPath: offCollision.Array.data[0]
       value: 
       objectReference: {fileID: 396386506}
+    - target: {fileID: 1303824118327085430, guid: 501033bf15b62a9418672e1e29e566f4, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303824118327085430, guid: 501033bf15b62a9418672e1e29e566f4, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3.04
+      objectReference: {fileID: 0}
     - target: {fileID: 1303824118327086728, guid: 501033bf15b62a9418672e1e29e566f4, type: 3}
       propertyPath: m_Name
       value: Gate
@@ -3492,7 +3501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1303824118327086729, guid: 501033bf15b62a9418672e1e29e566f4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.39
+      value: 3.3
       objectReference: {fileID: 0}
     - target: {fileID: 1303824118327086729, guid: 501033bf15b62a9418672e1e29e566f4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3525,6 +3534,14 @@ PrefabInstance:
     - target: {fileID: 1303824118327086729, guid: 501033bf15b62a9418672e1e29e566f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303824119594844282, guid: 501033bf15b62a9418672e1e29e566f4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -10.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303824119594844282, guid: 501033bf15b62a9418672e1e29e566f4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 501033bf15b62a9418672e1e29e566f4, type: 3}

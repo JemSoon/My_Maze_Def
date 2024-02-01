@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     //readonly private List<Monster> InRangeMonsterList; //공격 범위 안에 들어온 몬스터
     public Scanner scanner;
     Vector3 beginPos;//처음 시작 위치 저장
+    public SpriteRenderer sprite;
 
     private int _keyCount = 0;
     public int keyCount
@@ -44,6 +45,7 @@ public class Player : MonoBehaviour
         scanner = GetComponent<Scanner>();
         Inst.beginPos = this.gameObject.transform.position;
         anim = GetComponent<Animator>();
+        sprite= GetComponentInChildren<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -53,8 +55,8 @@ public class Player : MonoBehaviour
 
         moveVec = new Vector2(x, y) * speed * Time.deltaTime;
         rigid.MovePosition(rigid.position + moveVec);
-
-        if(moveVec.sqrMagnitude == 0) 
+        sprite.flipX = moveVec.x > 0;
+        if (moveVec.sqrMagnitude == 0) 
         {
             anim.SetBool("isMoving", false);
             return; 

@@ -128,7 +128,7 @@ public class Gate : MonoBehaviour
         pencil.gameObject.SetActive(true);
 
         //pecnilTween을 변수로 받아야하나? 싶지만 받아서 해야 좀 더 깔끔히 되는거같음? 안그럼 가끔 버벅임
-        pencilTween = pencil.transform.DOMove(transform.position + new Vector3(0,-3,0), 0.1f)
+        pencilTween = pencil.transform.DOMove(transform.position/* + new Vector3(0,-3,0)*/, 0.1f)
             .SetEase(Ease.InOutQuad)
             .OnComplete(DOMoveTween); // Tween이 완료될 때마다 DOMoveTween 함수를 재귀적으로 호출하여 반복 실행
     }
