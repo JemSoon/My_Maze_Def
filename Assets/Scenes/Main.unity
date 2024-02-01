@@ -1404,6 +1404,7 @@ GameObject:
   - component: {fileID: 624373047}
   - component: {fileID: 624373049}
   - component: {fileID: 624373050}
+  - component: {fileID: 624373051}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -1470,6 +1471,7 @@ MonoBehaviour:
   joystick: {fileID: 843129182}
   speed: 5
   scanner: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!114 &624373049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1503,6 +1505,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1.8}
   m_Direction: 0
+--- !u!95 &624373051
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624373044}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fba8cc3264af0a448bf4fa9be19e788f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &683896139
 GameObject:
   m_ObjectHideFlags: 0

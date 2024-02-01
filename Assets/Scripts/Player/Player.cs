@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     }
     public event System.Action<int> OnKeyCountChanged;
 
+    public Animator anim;
+
     public void IncrementKeyCount(int value)
     {
         keyCount += value;
@@ -41,6 +43,7 @@ public class Player : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         scanner = GetComponent<Scanner>();
         Inst.beginPos = this.gameObject.transform.position;
+        anim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -51,7 +54,15 @@ public class Player : MonoBehaviour
         moveVec = new Vector2(x, y) * speed * Time.deltaTime;
         rigid.MovePosition(rigid.position + moveVec);
 
-        if(moveVec.sqrMagnitude == 0) { return; }
+        if(moveVec.sqrMagnitude == 0) 
+        {
+            anim.SetBool("isMoving", false);
+            return; 
+        }
+        else
+        {
+            anim.SetBool("isMoving", true);
+        }
     }
 
     void Update()
