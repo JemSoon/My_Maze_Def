@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
 {
     public SpawnData[] spawnData;
 
-    public int spawnCount = 0;//총 소환할 마리수
+    int spawnCount;//총 소환할 마리수
     int beginSpawnCount; //초기 설정 소환 마리수
     int nowCount = 0; //현재 소환한 마리수
     int index; //레벨에 따른 몬스터 종류
