@@ -11,9 +11,8 @@ public class Spawner : MonoBehaviour
     int nowCount = 0; //현재 소환한 마리수
     int index; //레벨에 따른 몬스터 종류
     float timer;
-    [Header("몇초마다 단계를 올립니까?")]
-    public float seconds;
-    //public Transform[] spanwPoint;
+    //[Header("몇초마다 단계를 올립니까?")]
+    //public float seconds;
 
     [Header("당신이 원하는 소환 순서")]
     public MonsterType[] monsterTypes;
