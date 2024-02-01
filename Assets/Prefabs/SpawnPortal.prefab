@@ -162,5 +162,11 @@ MonoBehaviour:
     hp: 10
     speed: 1.5
     giveKeyCount: 2
-  spawnCount: 2
-  seconds: 2
+  - spawnTime: 2
+    spriteType: 2
+    hp: 10
+    speed: 1.5
+    giveKeyCount: 3
+  spawnCount: 3
+  seconds: 3
+  monsterTypes: 02000000010000000000000001000000
