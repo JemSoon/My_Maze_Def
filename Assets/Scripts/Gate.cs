@@ -7,7 +7,7 @@ public class Gate : MonoBehaviour
 {
     public BoxCollider2D col;
     public TextMeshProUGUI text;
-    public WaitForSeconds time = new WaitForSeconds(0.1f);
+    public WaitForSeconds time = new WaitForSeconds(0.15f);//값 바꾸면 밑에 DOMoveTween()도 바꿔야함
 
     [Header("필요한 게이트 오픈 열쇠 수")]
     public int needKey;
@@ -127,9 +127,15 @@ public class Gate : MonoBehaviour
         pencil.transform.position = GameManager.Inst.player.transform.position + new Vector3(0, 2, 0);
         pencil.gameObject.SetActive(true);
 
-        //pecnilTween을 변수로 받아야하나? 싶지만 받아서 해야 좀 더 깔끔히 되는거같음? 안그럼 가끔 버벅임
-        pencilTween = pencil.transform.DOMove(transform.position/* + new Vector3(0,-3,0)*/, 0.1f)
+        // 직선반납 DOTween
+        ////pecnilTween을 변수로 받아야하나? 싶지만 받아서 해야 좀 더 깔끔히 되는거같음? 안그럼 가끔 버벅임
+        //pencilTween = pencil.transform.DOMove(transform.position/* + new Vector3(0,-3,0)*/, 0.1f)
+        //    .SetEase(Ease.InOutQuad)
+        //    .OnComplete(DOMoveTween); // Tween이 완료될 때마다 DOMoveTween 함수를 재귀적으로 호출하여 반복 실행
+
+        // 포물선 반납 DOTween
+        pencilTween = pencil.transform.DOJump(transform.position, 2.0f, 1, 0.15f)
             .SetEase(Ease.InOutQuad)
-            .OnComplete(DOMoveTween); // Tween이 완료될 때마다 DOMoveTween 함수를 재귀적으로 호출하여 반복 실행
+            .OnComplete(DOMoveTween);
     }
 }
