@@ -35,8 +35,8 @@ public class Monster : MonoBehaviour
 
     public bool isKnockBacking = false;
 
-    [Header("몬스터가 주는 벽 해금 재화")]
-    public int giveKeyCount;
+    [Header("몬스터가 주는 재화")]
+    public int giveGoldCount;
 
     public WallChecker[] wallCheckers;
 
@@ -172,7 +172,7 @@ public class Monster : MonoBehaviour
         moveSpeed = data.speed;
         maxHp = data.hp;
         hp = data.hp;
-        giveKeyCount = data.giveKeyCount;
+        giveGoldCount = data.giveGoldCount;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -236,7 +236,9 @@ public class Monster : MonoBehaviour
         isLive=false;
         gameObject.SetActive(false);
         waypointID = 0;
-        GameManager.Inst.player.keyCount += giveKeyCount*10;
+        
+        //키를 줄게 아니라 골드를 줘야함
+        //GameManager.Inst.player.keyCount += giveKeyCount*10;
     }
 
     #region 코루틴 무빙

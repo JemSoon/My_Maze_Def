@@ -78,7 +78,7 @@ public class SpawnData
     public int hp;
     public float speed;
 
-    public int giveKeyCount;
+    public int giveGoldCount;
 }
 
 [System.Serializable]

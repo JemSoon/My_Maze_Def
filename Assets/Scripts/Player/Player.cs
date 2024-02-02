@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
 
     public Animator anim;
 
+    public float checkCoolTime;
+
     public void IncrementKeyCount(int value)
     {
         keyCount += value;
@@ -69,7 +71,12 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        
+        checkCoolTime += Time.deltaTime;
+        if(checkCoolTime >= OutGameMoney.Inst.pencilCoolTime)
+        {
+            ++keyCount;
+            checkCoolTime = 0.0f;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
