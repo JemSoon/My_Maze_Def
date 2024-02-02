@@ -233,9 +233,9 @@ public class Monster : MonoBehaviour
 
     void Dead()
     {
+        waypointID = 0;
         isLive=false;
         gameObject.SetActive(false);
-        waypointID = 0;
         
         //키를 줄게 아니라 골드를 줘야함
         //GameManager.Inst.player.keyCount += giveKeyCount*10;

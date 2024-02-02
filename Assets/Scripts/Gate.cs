@@ -7,7 +7,10 @@ public class Gate : MonoBehaviour
 {
     public BoxCollider2D col;
     public TextMeshProUGUI text;
-    public WaitForSeconds time = new WaitForSeconds(0.15f);//값 바꾸면 밑에 DOMoveTween()도 바꿔야함
+    public WaitForSeconds time = new WaitForSeconds(waitTime);//값 바꾸면 밑에 DOMoveTween()도 바꿔야함
+
+    [Header("연필 반납 딜레이 시간")]
+    public static float waitTime = 0.15f;
 
     [Header("필요한 게이트 오픈 열쇠 수")]
     public int needKey;
@@ -134,7 +137,7 @@ public class Gate : MonoBehaviour
         //    .OnComplete(DOMoveTween); // Tween이 완료될 때마다 DOMoveTween 함수를 재귀적으로 호출하여 반복 실행
 
         // 포물선 반납 DOTween
-        pencilTween = pencil.transform.DOJump(transform.position, 2.0f, 1, 0.15f)
+        pencilTween = pencil.transform.DOJump(transform.position, 2.0f, 1, waitTime)
             .SetEase(Ease.InOutQuad)
             .OnComplete(DOMoveTween);
     }
