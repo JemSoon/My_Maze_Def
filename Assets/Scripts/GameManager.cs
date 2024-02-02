@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI tmp;
     //public bool isGameOver;
     public GameObject resultMenu;
+    public GameObject upgradeMenu;
+    public bool checkUpgrade; //업그레이드 메뉴 확인했습니까?
 
     private void Awake()
     {
@@ -37,34 +40,41 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         resultMenu.SetActive(true);
+        upgradeMenu.SetActive(true);
+        RectTransform canvasRectTransform = upgradeMenu.GetComponentInParent<Canvas>().GetComponent<RectTransform>();
+        upgradeMenu.transform.DOMove(canvasRectTransform.anchoredPosition, 2.0f).SetEase(Ease.OutBounce).SetUpdate(true);
     }
 
     public void ResetGame()
     {
-        resultMenu.SetActive(false);
-        //리스타트
-        Time.timeScale = 1f;
-        gameTime = 0f;
-        player.ResetPlayerPos();
-        UpdateKeyCountText(player.keyCount);//UI열쇠개수도 초기화
-        FieldManager.Inst.ResetFields();
-
-        //★★★몬스터는 풀 매니저쪽에서 삭제중★★★
-
-        //게이트 조건 초기화 + 액티브
-        Gate[] gates = FindObjectsOfType<Gate>();
-        foreach(Gate gate in gates)
+        if(checkUpgrade)
         {
-            gate.ResetNeedKey();
-        }
+            resultMenu.SetActive(false);
+            //리스타트
+            Time.timeScale = 1f;
+            gameTime = 0f;
+            player.ResetPlayerPos();
+            UpdateKeyCountText(player.keyCount);//UI열쇠개수도 초기화
+            FieldManager.Inst.ResetFields();
 
-        Spawner[] spawners = FindObjectsOfType<Spawner>();
-        foreach(Spawner spawner in spawners)
-        {
-            spawner.ResetSpawnner();
-        }
+            //★★★몬스터는 풀 매니저쪽에서 삭제중★★★
 
-        PoolManager pool = FindObjectOfType<PoolManager>();
-        pool.ResetPoolManager();//몬스터,총알,근접무기 전부 삭제 초기화
+            //게이트 조건 초기화 + 액티브
+            Gate[] gates = FindObjectsOfType<Gate>();
+            foreach (Gate gate in gates)
+            {
+                gate.ResetNeedKey();
+            }
+
+            Spawner[] spawners = FindObjectsOfType<Spawner>();
+            foreach (Spawner spawner in spawners)
+            {
+                spawner.ResetSpawnner();
+            }
+
+            PoolManager pool = FindObjectOfType<PoolManager>();
+            pool.ResetPoolManager();//몬스터,총알,근접무기 전부 삭제 초기화
+            checkUpgrade = false;
+        }
     }
 }
