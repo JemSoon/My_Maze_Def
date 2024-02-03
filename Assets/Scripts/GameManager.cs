@@ -35,12 +35,12 @@ public class GameManager : MonoBehaviour
     private void UpdateKeyCountText(int keyCount)
     {
         // keyCountText의 text 속성을 업데이트
-        penTmp.text = "연필 : " + keyCount;
+        penTmp.text = keyCount.ToString();
     }
     private void UpdateGoldCountText(int goldCount)
     {
         // goldCountText의 text 속성을 업데이트
-        goldTmp.text = goldCount.ToString();
+        goldTmp.text = "+ "+ goldCount.ToString();
     }
 
     public void GameEnd()
