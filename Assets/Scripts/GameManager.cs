@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
 
     public PoolManager poolManager;
     public Player player;
-    public TextMeshProUGUI tmp;
+    public TextMeshProUGUI penTmp;
+    public TextMeshProUGUI goldTmp;
     //public bool isGameOver;
     public GameObject resultMenu;
     public GameObject upgradeMenu;
@@ -34,12 +35,12 @@ public class GameManager : MonoBehaviour
     private void UpdateKeyCountText(int keyCount)
     {
         // keyCountText의 text 속성을 업데이트
-        tmp.text = "연필 : " + keyCount;
+        penTmp.text = "연필 : " + keyCount;
     }
     private void UpdateGoldCountText(int goldCount)
     {
         // goldCountText의 text 속성을 업데이트
-        //tmp.text = "골드 : " + keyCount;
+        goldTmp.text = goldCount.ToString();
     }
 
     public void GameEnd()

@@ -238,7 +238,7 @@ public class Monster : MonoBehaviour
         gameObject.SetActive(false);
         
         //키를 줄게 아니라 골드를 줘야함
-        //GameManager.Inst.player.keyCount += giveKeyCount*10;
+        GameManager.Inst.player.goldCount += giveGoldCount;
     }
 
     #region 코루틴 무빙
