@@ -30,6 +30,19 @@ public class Player : MonoBehaviour
     }
     public event System.Action<int> OnKeyCountChanged;
 
+    private int _goldCount = 0;
+    public int goldCount
+    {
+        get { return _goldCount; }
+        set
+        {
+            _goldCount = value;
+            OnGoldCountChanged?.Invoke(goldCount);
+        }
+    }
+
+    public event System.Action<int> OnGoldCountChanged;
+
     public Animator anim;
 
     public float checkCoolTime;

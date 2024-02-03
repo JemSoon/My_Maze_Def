@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     {
         Inst = this;
         player.OnKeyCountChanged += UpdateKeyCountText;
+        player.OnGoldCountChanged += UpdateGoldCountText;
     }
 
     private void Update()
@@ -34,6 +35,11 @@ public class GameManager : MonoBehaviour
     {
         // keyCountText의 text 속성을 업데이트
         tmp.text = "연필 : " + keyCount;
+    }
+    private void UpdateGoldCountText(int goldCount)
+    {
+        // goldCountText의 text 속성을 업데이트
+        //tmp.text = "골드 : " + keyCount;
     }
 
     public void GameEnd()
