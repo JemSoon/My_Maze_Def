@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,6 +37,7 @@ public class Monster : MonoBehaviour
     public bool isKnockBacking = false;
 
     [Header("몬스터가 주는 재화")]
+    public SpriteRenderer coinSprite;
     public int giveGoldCount;
 
     public WallChecker[] wallCheckers;
@@ -49,10 +51,12 @@ public class Monster : MonoBehaviour
         sprite= GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         wait = new WaitForFixedUpdate();
+        monsterCollider = GetComponent<CapsuleCollider2D>();
     }
 
     public void Activate_Func()
     {
+        SetActiveMonster(true);
         this.gameObject.SetActive(true);
 
         this.transform.position = portal.transform.position;
@@ -233,12 +237,31 @@ public class Monster : MonoBehaviour
 
     void Dead()
     {
+        SetActiveMonster(false);
+    }
+
+    void SetActiveMonster(bool active)
+    {
+        isMoving = active;
+        sprite.enabled = active;
+        coinSprite.gameObject.SetActive(!active);
         waypointID = 0;
-        isLive=false;
-        gameObject.SetActive(false);
-        
-        //키를 줄게 아니라 골드를 줘야함
-        GameManager.Inst.player.goldCount += giveGoldCount;
+        isLive = active;
+        monsterCollider.enabled = active;
+
+        if(active==false)
+        {
+            //키를 줄게 아니라 골드를 줘야함
+            GameManager.Inst.player.goldCount += giveGoldCount;
+
+            rigid.MovePosition(Vector3.zero);
+            coinSprite.gameObject.transform.DOMove(transform.position + new Vector3(0, 2, 0), 1.0f).SetEase(Ease.OutBack).OnComplete(() => gameObject.SetActive(false));
+        }
+        else
+        {
+            //코인 원위치로
+            coinSprite.gameObject.transform.position = transform.position;
+        }
     }
 
     #region 코루틴 무빙

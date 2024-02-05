@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   col: {fileID: 1303824118327085430}
   text: {fileID: 1303824119342471010}
-  needKey: 99
+  needKey: 10
   pencil: {fileID: 0}
   nextField: {fileID: 0}
   offCollision:
@@ -200,8 +200,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 2
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4fa63328dde197d479c40f70611788b6, type: 2}
-  m_sharedMaterial: {fileID: -2956500425069837124, guid: 4fa63328dde197d479c40f70611788b6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 51a45556fccca4d48a406f41735535b5, type: 2}
+  m_sharedMaterial: {fileID: 3724587010154515582, guid: 51a45556fccca4d48a406f41735535b5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

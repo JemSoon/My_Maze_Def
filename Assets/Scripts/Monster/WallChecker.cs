@@ -77,6 +77,8 @@ public class WallChecker : MonoBehaviour
 
     public void CheckMyColType(ColType colType, bool isTouching)
     {
+        if (monster.isMoving == false) { return; }
+
         switch (colType)
         {
             case ColType.Down:
