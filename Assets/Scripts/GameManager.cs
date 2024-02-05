@@ -19,11 +19,14 @@ public class GameManager : MonoBehaviour
     public GameObject upgradeMenu;
     public bool checkUpgrade; //업그레이드 메뉴 확인했습니까?
 
+    public TextMeshProUGUI goldAmountTmp;
+
     private void Awake()
     {
         Inst = this;
         player.OnKeyCountChanged += UpdateKeyCountText;
         player.OnGoldCountChanged += UpdateGoldCountText;
+        goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
     }
 
     private void Update()
@@ -52,6 +55,7 @@ public class GameManager : MonoBehaviour
         upgradeMenu.transform.DOMove(canvasRectTransform.anchoredPosition, 2.0f).SetEase(Ease.OutBounce).SetUpdate(true);
 
         OutGameMoney.Inst.money += player.goldCount;
+        goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
 
         OutGameMoney.Inst.SaveInfo();
     }
@@ -86,6 +90,15 @@ public class GameManager : MonoBehaviour
             PoolManager pool = FindObjectOfType<PoolManager>();
             pool.ResetPoolManager();//몬스터,총알,근접무기 전부 삭제 초기화
             checkUpgrade = false;
+        }
+    }
+
+    public void PlusMoney()
+    {
+        while(player.goldCount >0)
+        {
+            --player.goldCount;
+            ++OutGameMoney.Inst.money;
         }
     }
 }

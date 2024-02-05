@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class UpgradeUI : MonoBehaviour
     public void CloseUpgradeUI()
     {
         GameManager.Inst.checkUpgrade = true;
+        this.gameObject.transform.DOKill();
         this.gameObject.SetActive(false);
         this.GetComponent<RectTransform>().anchoredPosition = pos;
     }

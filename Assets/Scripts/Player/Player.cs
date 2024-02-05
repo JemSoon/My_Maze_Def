@@ -116,6 +116,7 @@ public class Player : MonoBehaviour
         Inst.checkCoolTime = 0.0f;
         Inst._keyCount = 0;
         Inst.keyCount = 0;
+        Inst.goldCount = 0;
         Inst.isGameOver = false;
     }
 }

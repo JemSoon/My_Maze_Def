@@ -1953,6 +1953,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   anim: {fileID: 0}
   checkCoolTime: 0
+  playerCol: {fileID: 0}
 --- !u!114 &624373049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3655,6 +3656,7 @@ MonoBehaviour:
   resultMenu: {fileID: 1994227013}
   upgradeMenu: {fileID: 1349117776}
   checkUpgrade: 0
+  goldAmountTmp: {fileID: 648267388}
 --- !u!4 &1384377880
 Transform:
   m_ObjectHideFlags: 0
