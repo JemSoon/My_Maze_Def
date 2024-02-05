@@ -93,12 +93,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PlusMoney()
+    public void DATAResetButton()
     {
-        while(player.goldCount >0)
-        {
-            --player.goldCount;
-            ++OutGameMoney.Inst.money;
-        }
+        //데이터 삭제 버튼 누른 후 껏다키면 데이터 삭제됨
+        OutGameMoney.Inst.DeleteInfo();
     }
 }

@@ -45,4 +45,9 @@ public class OutGameMoney : MonoBehaviour
 
         PlayerPrefs.Save();
     }
+
+    public void DeleteInfo()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }
