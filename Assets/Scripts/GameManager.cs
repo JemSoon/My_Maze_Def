@@ -50,6 +50,10 @@ public class GameManager : MonoBehaviour
         upgradeMenu.SetActive(true);
         RectTransform canvasRectTransform = upgradeMenu.GetComponentInParent<Canvas>().GetComponent<RectTransform>();
         upgradeMenu.transform.DOMove(canvasRectTransform.anchoredPosition, 2.0f).SetEase(Ease.OutBounce).SetUpdate(true);
+
+        OutGameMoney.Inst.money += player.goldCount;
+
+        OutGameMoney.Inst.SaveInfo();
     }
 
     public void ResetGame()
