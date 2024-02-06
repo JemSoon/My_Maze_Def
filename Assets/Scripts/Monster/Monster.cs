@@ -111,7 +111,7 @@ public class Monster : MonoBehaviour
             Vector2 nextVec = dirVec.normalized * moveSpeed * Time.fixedDeltaTime;
             rigid.velocity = Vector2.zero; //플레이어 밀리지 않게
 
-            float arrivalDistance = 0.01f; //도착 거리 오차 범위
+            float arrivalDistance = 0.02f; //도착 거리 오차 범위
 
             if (dirVec.magnitude <= arrivalDistance)
             {

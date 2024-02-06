@@ -12,8 +12,9 @@ public class UpgradeUI : MonoBehaviour
     }
     public void CloseUpgradeUI()
     {
-        GameManager.Inst.checkUpgrade = true;
-        this.gameObject.transform.DOKill();
+        //GameManager.Inst.checkUpgrade = true;
+        //this.gameObject.transform.DOKill();
+        //this.DOKill();
         this.gameObject.SetActive(false);
         this.GetComponent<RectTransform>().anchoredPosition = pos;
     }
