@@ -7448,6 +7448,18 @@ PrefabInstance:
       propertyPath: spawnData.Array.data[2].spawnTime
       value: 2.4
       objectReference: {fileID: 0}
+    - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
+      propertyPath: spawnData.Array.data[0].giveGoldCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
+      propertyPath: spawnData.Array.data[1].giveGoldCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
+      propertyPath: spawnData.Array.data[2].giveGoldCount
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
 --- !u!4 &1965507385 stripped
