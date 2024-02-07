@@ -66,7 +66,7 @@ public class Weapon : MonoBehaviour
                 break;
 
             default: //디폴트에선 연사속도
-                speed = 1.0f;
+                //speed = 1.0f;
                 break;
         }
     }

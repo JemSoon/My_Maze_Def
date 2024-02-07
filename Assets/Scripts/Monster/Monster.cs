@@ -255,7 +255,6 @@ public class Monster : MonoBehaviour
             //키를 줄게 아니라 골드를 줘야함
             GameManager.Inst.player.goldCount += giveGoldCount;
 
-            rigid.MovePosition(Vector3.zero);
             coinSprite.gameObject.transform.DOMove(transform.position + new Vector3(0, 2, 0), 1.0f).SetEase(Ease.OutBack).OnComplete(() => gameObject.SetActive(false));
         }
         else
