@@ -61,7 +61,8 @@ public class Monster : MonoBehaviour
 
         this.transform.position = portal.transform.position;
         this.waypointID = 0;
-        this.isMoving = true;
+        FindWayPoint(waypointID);
+        //this.isMoving = true;
         //StartCoroutine(Moving());
     }
 

@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public static Player Inst { get; private set; }
-
     public Rigidbody2D rigid = null;
     public PlayerCollider[] collidersArr = null;
 

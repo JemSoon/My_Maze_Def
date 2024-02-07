@@ -634,6 +634,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 647497622}
     m_Modifications:
+    - target: {fileID: -8951849681877507429, guid: 6846a5275d8101c4f96c8c8f68f9e8b4, type: 3}
+      propertyPath: pointNum
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2690540140214263102, guid: 6846a5275d8101c4f96c8c8f68f9e8b4, type: 3}
       propertyPath: m_Name
       value: WayPoint (1)
@@ -828,7 +832,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270570602}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 8.16, y: 8.37, z: 0}
+  m_LocalPosition: {x: 8.03, y: 8.37, z: 0}
   m_LocalScale: {x: 0.65, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1643,7 +1647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &435463574
 Transform:
   m_ObjectHideFlags: 0
@@ -1652,7 +1656,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435463573}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: 8.01, y: 1.96, z: 0}
+  m_LocalPosition: {x: 7.98, y: 1.96, z: 0}
   m_LocalScale: {x: 0.88764393, y: 1.263072, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2026,8 +2030,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444389086}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.51, y: 3.08, z: 0}
-  m_LocalScale: {x: 15.469999, y: 2.484375, z: 1}
+  m_LocalPosition: {x: 0.4379, y: 3.08, z: 0}
+  m_LocalScale: {x: 21.365618, y: 2.484375, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 647497622}
@@ -3276,7 +3280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1303824118327085430, guid: 501033bf15b62a9418672e1e29e566f4, type: 3}
       propertyPath: m_Offset.x
-      value: 2.79
+      value: 3.98
       objectReference: {fileID: 0}
     - target: {fileID: 1303824118327085430, guid: 501033bf15b62a9418672e1e29e566f4, type: 3}
       propertyPath: m_Offset.y
@@ -3308,7 +3312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1303824118327086729, guid: 501033bf15b62a9418672e1e29e566f4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.3
+      value: 3.9
       objectReference: {fileID: 0}
     - target: {fileID: 1303824118327086729, guid: 501033bf15b62a9418672e1e29e566f4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3482,7 +3486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &691458242
 Transform:
   m_ObjectHideFlags: 0
@@ -3491,7 +3495,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691458241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.16, y: 1.82, z: 0}
+  m_LocalPosition: {x: 7.16, y: 1.6, z: 0}
   m_LocalScale: {x: 1.4063965, y: 1.7331132, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4386,7 +4390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &910697596
 Transform:
   m_ObjectHideFlags: 0
@@ -4498,6 +4502,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 270570603}
     m_Modifications:
+    - target: {fileID: -8951849681877507429, guid: 6846a5275d8101c4f96c8c8f68f9e8b4, type: 3}
+      propertyPath: pointNum
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2690540140214263102, guid: 6846a5275d8101c4f96c8c8f68f9e8b4, type: 3}
       propertyPath: m_Name
       value: WayPoint (1)
@@ -4508,7 +4516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2690540140214263103, guid: 6846a5275d8101c4f96c8c8f68f9e8b4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.45
+      value: 7.26
       objectReference: {fileID: 0}
     - target: {fileID: 2690540140214263103, guid: 6846a5275d8101c4f96c8c8f68f9e8b4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5017,7 +5025,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1126985051
 Transform:
   m_ObjectHideFlags: 0
@@ -5488,7 +5496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1329207169
 Transform:
   m_ObjectHideFlags: 0
@@ -6784,7 +6792,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8951849681877507429, guid: 6846a5275d8101c4f96c8c8f68f9e8b4, type: 3}
       propertyPath: pointNum
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2690540140214263100, guid: 6846a5275d8101c4f96c8c8f68f9e8b4, type: 3}
       propertyPath: m_SortingOrder
@@ -7140,6 +7148,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 250319424}
     m_Modifications:
+    - target: {fileID: -8951849681877507429, guid: 6846a5275d8101c4f96c8c8f68f9e8b4, type: 3}
+      propertyPath: pointNum
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2690540140214263102, guid: 6846a5275d8101c4f96c8c8f68f9e8b4, type: 3}
       propertyPath: m_Name
       value: WayPoint (1)
