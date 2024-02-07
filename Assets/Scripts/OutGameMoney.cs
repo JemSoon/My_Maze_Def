@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -15,22 +16,24 @@ public class OutGameMoney : MonoBehaviour
     private const string MoneyKey = "Money";
     private const string LevelKey = "Level";
 
+    public PencilItem pencilItem;
 
     private void Awake()
     {
         Inst = this;
+        Inst.pencilItem = GetComponent<PencilItem>();
 
         if (!PlayerPrefs.HasKey(PencilCoolTimeKey) && !PlayerPrefs.HasKey(MoneyKey) && !PlayerPrefs.HasKey(LevelKey))
         {
             //맨 처음 세이브 없으면 기본값으로 초기화
-            Inst.pencilCoolTime = 2.0f;
+            Inst.pencilCoolTime = pencilItem.oneForSeconds[0];
             Inst.money = 0;
-            Inst.level = 1;
+            Inst.level = 0;
         }
 
         else
         {
-            Inst.pencilCoolTime = PlayerPrefs.GetFloat(PencilCoolTimeKey, pencilCoolTime);
+            Inst.pencilCoolTime = pencilItem.oneForSeconds[PlayerPrefs.GetInt(LevelKey, level)];
             Inst.money = PlayerPrefs.GetInt(MoneyKey, money);
             Inst.level = PlayerPrefs.GetInt(LevelKey, level);
         }

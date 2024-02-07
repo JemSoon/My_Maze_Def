@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public GameObject resultMenu;
     public GameObject upgradeMenu;
     public GameObject makingPencilUI;
+    public TextMeshProUGUI pencilCost;
+    public TextMeshProUGUI pencilSeconds;
 
     public TextMeshProUGUI goldAmountTmp;
 
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
         goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
 
         GameEnd();
+        
     }
 
     private void Update()
@@ -60,6 +63,7 @@ public class GameManager : MonoBehaviour
 
         resultMenu.SetActive(true);
         upgradeMenu.SetActive(true);
+        UpgradePencilButtonText();
 
         OutGameMoney.Inst.money += player.goldCount;
         goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
@@ -105,5 +109,43 @@ public class GameManager : MonoBehaviour
     {
         //데이터 삭제 버튼 누른 후 껏다키면 데이터 삭제됨
         OutGameMoney.Inst.DeleteInfo();
+    }
+
+    public void UpgradePencilButtonText()
+    {
+        if(OutGameMoney.Inst.level + 1< OutGameMoney.Inst.pencilItem.cost.Length)
+        {
+            pencilCost.text = "다음 단계 비용 : " + OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.level + 1].ToString();
+            pencilSeconds.text = "1개당 : " + OutGameMoney.Inst.pencilItem.oneForSeconds[OutGameMoney.Inst.level + 1].ToString() + "초";
+        }
+        else
+        {
+            pencilCost.text = "최대 레벨";
+            pencilSeconds.text = "최대 레벨";
+        }
+        
+    }
+
+    public void UpgradePencilButtonClick()
+    {
+        //현재 설정한 맥시멈 레벨보다 높은 정보를 가져오려 하면 리턴
+        if(OutGameMoney.Inst.level + 1 >= OutGameMoney.Inst.pencilItem.cost.Length) 
+        { return; }
+
+        //다음 레벨 비용보다 돈이 적으면 리턴
+        if (OutGameMoney.Inst.money < OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.level + 1]) 
+        { return; }
+
+        else
+        {
+            OutGameMoney.Inst.money -= OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.level + 1];
+            OutGameMoney.Inst.level++;
+            OutGameMoney.Inst.pencilCoolTime = OutGameMoney.Inst.pencilItem.oneForSeconds[OutGameMoney.Inst.level];
+            goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
+
+            OutGameMoney.Inst.SaveInfo();
+
+            UpgradePencilButtonText();
+        }
     }
 }

@@ -23,7 +23,7 @@ public class FieldManager : MonoBehaviour
         {
             //시작할때의 필드 액티브상태를 인덱스로 저장
             fieldsStartActive[i] = fields[i].gameObject.activeSelf;
-            Debug.Log(fields[i].gameObject.activeSelf);
+            //Debug.Log(fields[i].gameObject.activeSelf);
         }
     }
 
