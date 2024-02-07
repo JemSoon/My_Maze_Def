@@ -152,21 +152,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnData:
-  - spawnTime: 2
+  - spawnTime: 3
     spriteType: 0
     hp: 10
-    speed: 1.5
-    giveKeyCount: 1
+    speed: 0.7
+    giveGoldCount: 0
   - spawnTime: 2
     spriteType: 1
-    hp: 10
-    speed: 1.5
-    giveKeyCount: 2
-  - spawnTime: 2
+    hp: 13
+    speed: 0.9
+    giveGoldCount: 0
+  - spawnTime: 1.5
     spriteType: 2
-    hp: 10
-    speed: 1.5
-    giveKeyCount: 3
-  spawnCount: 3
-  seconds: 3
-  monsterTypes: 02000000010000000000000001000000
+    hp: 17
+    speed: 1.2
+    giveGoldCount: 0
+  monsterTypes: 000000000000000000000000000000000000000000000000000000000000000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000
