@@ -30,6 +30,20 @@ public class Bullet : MonoBehaviour
         if(!collision.CompareTag("Monster") || per == -100)
         { return; }
 
+        if(per > -1)
+        {
+            Monster mon = collision.GetComponent<Monster>();
+            mon.hp -= damage;
+            mon.StartCoroutine(mon.KnockBack());
+
+            if(mon.hp>0)
+            { mon.anim.SetTrigger("Hit"); }
+            else
+            {
+                mon.Dead();
+            }
+        }
+
         per--;
 
         if(per == -1) 

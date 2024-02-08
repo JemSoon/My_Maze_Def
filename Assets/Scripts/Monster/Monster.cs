@@ -182,26 +182,26 @@ public class Monster : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!collision.CompareTag("Bullet"))
-        { return; }
+        //if(!collision.CompareTag("Bullet"))
+        //{ return; }
 
-        hp -= collision.GetComponent<Bullet>().damage;
-        StartCoroutine(KnockBack());
+        //hp -= collision.GetComponent<Bullet>().damage;
+        //StartCoroutine(KnockBack());
 
-        if(hp > 0)
-        {
-            //히트액션
-            anim.SetTrigger("Hit");
-        }
-        else
-        {
-            //쥬금
-            Dead();
-        }
+        //if(hp > 0)
+        //{
+        //    //히트액션
+        //    anim.SetTrigger("Hit");
+        //}
+        //else
+        //{
+        //    //쥬금
+        //    Dead();
+        //}
 
     }
 
-    IEnumerator KnockBack()
+    public IEnumerator KnockBack()
     {
         yield return wait; //다음 하나의 물리 프레임 딜레이
 
@@ -236,7 +236,7 @@ public class Monster : MonoBehaviour
         rigid.AddForce(dirVec.normalized * 2, ForceMode2D.Impulse);
     }
 
-    void Dead()
+    public void Dead()
     {
         SetActiveMonster(false);
     }
