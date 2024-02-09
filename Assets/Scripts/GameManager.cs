@@ -63,12 +63,13 @@ public class GameManager : MonoBehaviour
         resultMenu.SetActive(true);
         upgradeMenu.SetActive(true);
         UpgradePencilButtonText();
-        SetButtonSprite();
 
         OutGameMoney.Inst.money += player.goldCount;
         goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
 
         OutGameMoney.Inst.SaveInfo();
+
+        SetButtonSprite();//돈 정산 후 버튼 정보 활성화
     }
 
     public void ResetGame()
