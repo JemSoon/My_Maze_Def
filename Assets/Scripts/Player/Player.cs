@@ -66,6 +66,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isGameOver) { return; }
+
         float x = joystick.Horizontal;
         float y = joystick.Vertical;
 
@@ -100,7 +102,8 @@ public class Player : MonoBehaviour
             if (collision.gameObject.CompareTag("Monster") && !collision.gameObject.layer.Equals(LayerMask.NameToLayer("Monster_Wall")))
             {
                 Debug.Log("몬스터와 충돌");
-                GameManager.Inst.GameEnd();
+                anim.SetTrigger("Dead");
+                //GameManager.Inst.GameEnd();
                 isGameOver = true;
             }
         }
@@ -115,5 +118,11 @@ public class Player : MonoBehaviour
         Inst.keyCount = 0;
         Inst.goldCount = 0;
         Inst.isGameOver = false;
+    }
+
+    public void CallGameEnd()
+    {
+        GameManager.Inst.GameEnd();
+        //isGameOver = true;
     }
 }
