@@ -113,13 +113,13 @@ public class GameManager : MonoBehaviour
     {
         if(OutGameMoney.Inst.level + 1< OutGameMoney.Inst.pencilItem.cost.Length)
         {
-            pencilCost.text = "다음 단계 비용 : " + OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.level + 1].ToString();
-            pencilSeconds.text = "1개당 : " + OutGameMoney.Inst.pencilItem.oneForSeconds[OutGameMoney.Inst.level + 1].ToString() + "초";
+            pencilCost.text = OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.level + 1].ToString();
+            pencilSeconds.text = OutGameMoney.Inst.pencilItem.oneForSeconds[OutGameMoney.Inst.level + 1].ToString() + "Sec";
         }
         else
         {
-            pencilCost.text = "최대 레벨";
-            pencilSeconds.text = "최대 레벨";
+            pencilCost.text = "Max";
+            pencilSeconds.text = "Max";
         }
         
     }
