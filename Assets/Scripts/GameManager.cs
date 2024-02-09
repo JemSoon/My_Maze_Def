@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
         resultMenu.SetActive(true);
         upgradeMenu.SetActive(true);
         UpgradePencilButtonText();
+        SetButtonSprite();
 
         OutGameMoney.Inst.money += player.goldCount;
         goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
@@ -133,10 +134,7 @@ public class GameManager : MonoBehaviour
 
         //다음 레벨 비용보다 돈이 적으면 리턴
         if (OutGameMoney.Inst.money < OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.level + 1]) 
-        {
-            SetButtonSprite();
-            return; 
-        }
+        { return; }
 
         else
         {
