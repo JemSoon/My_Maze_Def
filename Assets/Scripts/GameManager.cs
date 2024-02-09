@@ -1,4 +1,4 @@
-using Cinemachine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 
@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject makingPencilUI;
     public TextMeshProUGUI pencilCost;
     public TextMeshProUGUI pencilSeconds;
+    public Button pencilUpgradeButton;
 
     public TextMeshProUGUI goldAmountTmp;
 
@@ -132,7 +133,10 @@ public class GameManager : MonoBehaviour
 
         //다음 레벨 비용보다 돈이 적으면 리턴
         if (OutGameMoney.Inst.money < OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.level + 1]) 
-        { return; }
+        {
+            SetButtonSprite();
+            return; 
+        }
 
         else
         {
@@ -144,6 +148,19 @@ public class GameManager : MonoBehaviour
             OutGameMoney.Inst.SaveInfo();
 
             UpgradePencilButtonText();
+            SetButtonSprite();
+        }
+    }
+
+    public void SetButtonSprite()
+    {
+        if (OutGameMoney.Inst.money < OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.level + 1])
+        {
+            pencilUpgradeButton.GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            pencilUpgradeButton.GetComponent<Button>().interactable = true;
         }
     }
 }

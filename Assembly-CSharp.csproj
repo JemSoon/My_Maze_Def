@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Monster\MonsterManager.cs" />
     <Compile Include="Assets\Scripts\Player\Weapon.cs" />
     <Compile Include="Assets\Scripts\Monster\Monster.cs" />
+    <Compile Include="Assets\Scripts\UIs\ButtonTextPos.cs" />
     <Compile Include="Assets\Scripts\Gate.cs" />
     <Compile Include="Assets\Samples\Recorder\3.0.3\Screenshot Capture Sample\CaptureScreenShotExample.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -82,7 +83,6 @@
     <Compile Include="Assets\Samples\Recorder\3.0.3\Movie Recorder Sample\MovieRecorderExample.cs" />
     <Compile Include="Assets\Scripts\Monster\WallChecker.cs" />
     <Compile Include="Assets\Scripts\PoolManager.cs" />
-    <Compile Include="Assets\Scripts\UIs\ButtonTextPos.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -5811,6 +5811,7 @@ MonoBehaviour:
   makingPencilUI: {fileID: 525268464}
   pencilCost: {fileID: 1641202006}
   pencilSeconds: {fileID: 1370661599}
+  pencilUpgradeButton: {fileID: 1969843965}
   goldAmountTmp: {fileID: 648267388}
 --- !u!4 &1384377880
 Transform:
@@ -7699,7 +7700,7 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: b9a277a431606a448b387230965540d6, type: 3}
     m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 30aea8693c091d140b610520fbb674c7, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted

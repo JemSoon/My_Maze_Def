@@ -25,6 +25,7 @@ public class ButtonTextPos : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     }
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (this.GetComponent<Button>().interactable == false) { return; }
         isPressed = true;
         AdjustTextPosition();
     }
