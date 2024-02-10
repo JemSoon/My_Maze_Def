@@ -27,12 +27,17 @@ public class Weapon : MonoBehaviour
                 break;
 
             default:
-                timer += Time.deltaTime;
-                
-                if(timer > speed)
+                if(!GameManager.Inst.isGameOver)
                 {
-                    timer = 0f;
-                    Fire();
+                    //게임 오버 상태가 아닐때만 발사
+                    //(죽는 애니메이션동안 발사해서 추가함)
+                    timer += Time.deltaTime;
+
+                    if (timer > speed)
+                    {
+                        timer = 0f;
+                        Fire();
+                    }
                 }
                 break;
         }

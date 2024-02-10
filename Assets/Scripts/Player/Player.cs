@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
 
     public float checkCoolTime;
     public CapsuleCollider2D playerCol;
-    bool isGameOver;
+    //bool isGameOver;
 
     public void IncrementKeyCount(int value)
     {
@@ -61,12 +61,11 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         sprite= GetComponentInChildren<SpriteRenderer>();
         playerCol = GetComponent<CapsuleCollider2D>();
-        isGameOver = false;
     }
 
     private void FixedUpdate()
     {
-        if (isGameOver) { return; }
+        if (GameManager.Inst.isGameOver) { return; }
 
         float x = joystick.Horizontal;
         float y = joystick.Vertical;
@@ -97,14 +96,14 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(isGameOver==false)
+        if(GameManager.Inst.isGameOver==false)
         {
             if (collision.gameObject.CompareTag("Monster") && !collision.gameObject.layer.Equals(LayerMask.NameToLayer("Monster_Wall")))
             {
                 Debug.Log("몬스터와 충돌");
+                GameManager.Inst.isGameOver = true;
                 anim.SetTrigger("Dead");
                 //GameManager.Inst.GameEnd();
-                isGameOver = true;
             }
         }
     }
@@ -117,7 +116,7 @@ public class Player : MonoBehaviour
         Inst._keyCount = 0;
         Inst.keyCount = 0;
         Inst.goldCount = 0;
-        Inst.isGameOver = false;
+        //Inst.isGameOver = false;
     }
 
     public void CallGameEnd()

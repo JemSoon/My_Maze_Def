@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Inst;
 
     public float gameTime;
+    public bool isGameOver;
 
     public PoolManager poolManager;
     public Player player;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     public Button pencilUpgradeButton;
 
     public TextMeshProUGUI goldAmountTmp;
+    public GameObject floatingJoystick;
 
     private void Awake()
     {
@@ -29,8 +31,8 @@ public class GameManager : MonoBehaviour
         player.OnGoldCountChanged += UpdateGoldCountText;
         goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
 
+        Inst.isGameOver = true;
         GameEnd();
-        
     }
 
     private void Update()
@@ -52,6 +54,8 @@ public class GameManager : MonoBehaviour
 
     public void GameEnd()
     {
+        SetJoystickColor(floatingJoystick.transform, Color.clear);
+
         Time.timeScale = 0f;
         player.gameObject.SetActive(false);
 
@@ -74,6 +78,9 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
+        Inst.isGameOver = false;
+        SetJoystickColor(floatingJoystick.transform, Color.white);
+
         //대기 메뉴 UI닫기
         resultMenu.SetActive(false);
         upgradeMenu.SetActive(false);
@@ -164,4 +171,25 @@ public class GameManager : MonoBehaviour
             pencilUpgradeButton.GetComponent<Button>().interactable = true;
         }
     }
+
+    public void SetJoystickColor(Transform parent, Color color)
+    {
+        // 부모의 자식 수만큼 반복
+        foreach (Transform child in parent)
+        {
+            // 자식 오브젝트의 Image 컴포넌트 가져오기
+            Image image = child.GetComponent<Image>();
+
+            // Image 컴포넌트가 있으면
+            if (image != null)
+            {
+                // 컬러를 Color.Clear로 설정
+                image.color = color;
+            }
+
+            // 재귀 호출하여 자식의 자식에 대해서도 동일한 작업 수행
+            SetJoystickColor(child, color);
+        }
+    }
+    
 }
