@@ -14780,6 +14780,7 @@ MonoBehaviour:
   - {fileID: 2992099783784925565}
   - {fileID: 2114871200876269905}
   - {fileID: 6233951243222598095}
+  nextVec: {x: 0, y: 0}
 --- !u!212 &5073797119252156117
 SpriteRenderer:
   m_ObjectHideFlags: 0

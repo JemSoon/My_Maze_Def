@@ -44,6 +44,8 @@ public class Monster : MonoBehaviour
 
     public Vector2 GetCurrentPos => this.transform.position;
     public bool isAlive => 0 < this.hp && this.gameObject.activeSelf;
+    Vector2 dirVec;
+    public Vector2 nextVec;
 
     private void Awake()
     {
@@ -108,8 +110,8 @@ public class Monster : MonoBehaviour
 
         if (isMoving)
         {
-            Vector2 dirVec = (Vector2)targetObject.transform.position - rigid.position;
-            Vector2 nextVec = dirVec.normalized * moveSpeed * Time.fixedDeltaTime;
+            dirVec = (Vector2)targetObject.transform.position - rigid.position;
+            nextVec = dirVec.normalized * moveSpeed * Time.fixedDeltaTime;
             rigid.velocity = Vector2.zero; //플레이어 밀리지 않게
 
             float arrivalDistance = 0.02f; //도착 거리 오차 범위

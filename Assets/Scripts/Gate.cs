@@ -14,7 +14,7 @@ public class Gate : MonoBehaviour
 
     [Header("필요한 게이트 오픈 열쇠 수")]
     public int needKey;
-    int beginNeedKey;
+    public int beginNeedKey;
     bool isGiveKey;
     public SpriteRenderer pencil;
 
@@ -27,6 +27,12 @@ public class Gate : MonoBehaviour
     private void Awake()
     {
         beginNeedKey = needKey;
+        text.SetText(needKey.ToString());
+    }
+
+    private void OnEnable()
+    {
+        needKey = beginNeedKey;
         text.SetText(needKey.ToString());
     }
 

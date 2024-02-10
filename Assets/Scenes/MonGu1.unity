@@ -318,6 +318,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &109212836 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1303824118327086728, guid: 501033bf15b62a9418672e1e29e566f4, type: 3}
+  m_PrefabInstance: {fileID: 627056800}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &142161513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,6 +1038,9 @@ MonoBehaviour:
   - {fileID: 331048981}
   gates:
   - {fileID: 1224121342}
+  - {fileID: 1808306100}
+  - {fileID: 109212836}
+  - {fileID: 461435785}
 --- !u!1 &344436135
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,6 +2042,11 @@ Transform:
   m_Father: {fileID: 647497622}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &461435785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1303824118327086728, guid: 501033bf15b62a9418672e1e29e566f4, type: 3}
+  m_PrefabInstance: {fileID: 1248596673}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &463179089
 GameObject:
   m_ObjectHideFlags: 0
@@ -6789,6 +6802,11 @@ MonoBehaviour:
   damage: 11
   count: 1
   speed: 0
+--- !u!1 &1808306100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1303824118327086728, guid: 501033bf15b62a9418672e1e29e566f4, type: 3}
+  m_PrefabInstance: {fileID: 661683905}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1825213815
 GameObject:
   m_ObjectHideFlags: 0

@@ -86,7 +86,19 @@ public class WallChecker : MonoBehaviour
                 monster.isDownWall = isTouching;
                 
                 if(isTouching)
-                { particle.Play(); }
+                { 
+                    if(monster.nextVec.x < 0)
+                    {
+                        ParticleSystem.ShapeModule shapeModule = particle.shape;
+                        shapeModule.scale = new Vector3(1, -1, 1);
+                    }
+                    else if(monster.nextVec.x > 0)
+                    {
+                        ParticleSystem.ShapeModule shapeModule = particle.shape;
+                        shapeModule.scale = new Vector3(-1, -1, 1);
+                    }
+                    particle.Play(); 
+                }
                 else
                 { particle.Stop(); }
 
@@ -96,7 +108,19 @@ public class WallChecker : MonoBehaviour
                 monster.isTopWall = isTouching;
 
                 if (isTouching)
-                { particle.Play(); }
+                {
+                    //if (monster.nextVec.x < 0)
+                    //{
+                    //    ParticleSystem.ShapeModule shapeModule = particle.shape;
+                    //    shapeModule.scale = new Vector3(1, -1, 1);
+                    //}
+                    //else if (monster.nextVec.x > 0)
+                    //{
+                    //    ParticleSystem.ShapeModule shapeModule = particle.shape;
+                    //    shapeModule.scale = new Vector3(-1, -1, 1);
+                    //}
+                    particle.Play(); 
+                }
                 else
                 { particle.Stop(); }
 
