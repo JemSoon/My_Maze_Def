@@ -155,10 +155,12 @@ public class GameManager : MonoBehaviour
     {
         if (OutGameMoney.Inst.money < OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.level + 1])
         {
+            pencilCost.color = Color.red;
             pencilUpgradeButton.GetComponent<Button>().interactable = false;
         }
         else
         {
+            pencilCost.color = Color.black;
             pencilUpgradeButton.GetComponent<Button>().interactable = true;
         }
     }
