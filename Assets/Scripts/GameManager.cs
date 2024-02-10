@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         if(OutGameMoney.Inst.level + 1< OutGameMoney.Inst.pencilItem.cost.Length)
         {
             pencilCost.text = OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.level + 1].ToString();
-            pencilSeconds.text = OutGameMoney.Inst.pencilItem.oneForSeconds[OutGameMoney.Inst.level + 1].ToString() + "Sec";
+            pencilSeconds.text = OutGameMoney.Inst.pencilItem.oneForSeconds[OutGameMoney.Inst.level + 1].ToString() + "sec";
         }
         else
         {
