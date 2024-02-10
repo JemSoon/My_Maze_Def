@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -121,7 +122,12 @@ public class Player : MonoBehaviour
 
     public void CallGameEnd()
     {
+        //FieldManager.Inst.ResetFields();
         GameManager.Inst.GameEnd();
+
+        //³ªÁß¿¡ ÀçÈ­ È¹µæ UIÃ¢ÀÌ ¶ß°í ´Ý±â¹öÆ°´©¸£¸é ¾À ·Îµå·Î º¯°æ
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.buildIndex);
         //isGameOver = true;
     }
 }
