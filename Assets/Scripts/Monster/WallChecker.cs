@@ -109,16 +109,16 @@ public class WallChecker : MonoBehaviour
 
                 if (isTouching)
                 {
-                    //if (monster.nextVec.x < 0)
-                    //{
-                    //    ParticleSystem.ShapeModule shapeModule = particle.shape;
-                    //    shapeModule.scale = new Vector3(1, -1, 1);
-                    //}
-                    //else if (monster.nextVec.x > 0)
-                    //{
-                    //    ParticleSystem.ShapeModule shapeModule = particle.shape;
-                    //    shapeModule.scale = new Vector3(-1, -1, 1);
-                    //}
+                    if (monster.nextVec.x < 0)
+                    {
+                        ParticleSystem.ShapeModule shapeModule = particle.shape;
+                        shapeModule.scale = new Vector3(1, 1, 1);
+                    }
+                    else if (monster.nextVec.x > 0)
+                    {
+                        ParticleSystem.ShapeModule shapeModule = particle.shape;
+                        shapeModule.scale = new Vector3(-1, 1, 1);
+                    }
                     particle.Play(); 
                 }
                 else

@@ -123,11 +123,13 @@ public class Player : MonoBehaviour
     public void CallGameEnd()
     {
         //FieldManager.Inst.ResetFields();
+        GameManager.Inst.resultMenu.SetActive(true);
+        GameManager.Inst.resultCount.text = Inst.goldCount.ToString();
         GameManager.Inst.GameEnd();
 
-        //나중에 재화 획득 UI창이 뜨고 닫기버튼누르면 씬 로드로 변경
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.buildIndex);
+        ////나중에 재화 획득 UI창이 뜨고 닫기버튼누르면 씬 로드로 변경
+        //Scene currentScene = SceneManager.GetActiveScene();
+        //SceneManager.LoadScene(currentScene.buildIndex);
         //isGameOver = true;
     }
 }

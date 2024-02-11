@@ -1,6 +1,8 @@
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,7 +16,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI penTmp;
     public TextMeshProUGUI goldTmp;
     //public bool isGameOver;
-    public GameObject resultMenu;
+    public GameObject startMenu;
     public GameObject upgradeMenu;
     public GameObject makingPencilUI;
     public TextMeshProUGUI pencilCost;
@@ -23,6 +25,9 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI goldAmountTmp;
     public GameObject floatingJoystick;
+
+    public GameObject resultMenu;
+    public TextMeshProUGUI resultCount;
 
     private void Awake()
     {
@@ -64,14 +69,14 @@ public class GameManager : MonoBehaviour
 
         makingPencilUI.SetActive(false);//연필만드는 슬라이드바 대기중엔 비활성화
 
-        resultMenu.SetActive(true);
-        upgradeMenu.SetActive(true);
+        //startMenu.SetActive(true);
+        //upgradeMenu.SetActive(true);
         UpgradePencilButtonText();
 
-        OutGameMoney.Inst.money += player.goldCount;
-        goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
+        //OutGameMoney.Inst.money += player.goldCount;
+        //goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
 
-        OutGameMoney.Inst.SaveInfo();
+        //OutGameMoney.Inst.SaveInfo();
 
         SetButtonSprite();//돈 정산 후 버튼 정보 활성화
     }
@@ -82,7 +87,7 @@ public class GameManager : MonoBehaviour
         SetJoystickColor(floatingJoystick.transform, Color.white);
 
         //대기 메뉴 UI닫기
-        resultMenu.SetActive(false);
+        startMenu.SetActive(false);
         upgradeMenu.SetActive(false);
 
         //리스타트
@@ -192,4 +197,36 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    public void CloseResultMenu()
+    {
+        resultMenu.SetActive(false);
+
+        StartCoroutine(goldCount(player.goldCount));
+    }
+
+    IEnumerator goldCount(int currentGet)
+    {
+        float duration = 0.01f;
+        float timer = 0.0f;
+
+        while (currentGet>0)
+        {
+            timer += Time.unscaledDeltaTime;
+            if (timer >= duration)
+            {
+                --currentGet;
+                ++OutGameMoney.Inst.money;
+                goldAmountTmp.text = (OutGameMoney.Inst.money).ToString();
+                timer = 0.0f;
+                
+            }
+            yield return null;
+        }
+
+        OutGameMoney.Inst.SaveInfo();
+
+        //나중에 재화 획득 UI창이 뜨고 닫기버튼누르면 씬 로드로 변경
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.buildIndex);
+    }
 }
