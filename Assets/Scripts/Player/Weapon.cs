@@ -8,7 +8,7 @@ public class Weapon : MonoBehaviour
     public int prefabId;
     public float damage;
     public int count; //원거리에선 관통할 개수
-    public float speed;
+    public float speed;//원거리에선 N 초당 발사
 
     float timer;
 

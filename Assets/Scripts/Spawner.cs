@@ -77,6 +77,7 @@ public class SpawnData
     public int spriteType;
     public int hp;
     public float speed;
+    public int knockBackForce;
 
     public int giveGoldCount;
 }

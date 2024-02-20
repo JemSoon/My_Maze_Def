@@ -47,6 +47,7 @@ public class Monster : MonoBehaviour
     Vector2 dirVec;
     public Vector2 nextVec;
 
+    int knockBackForce;
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -179,6 +180,8 @@ public class Monster : MonoBehaviour
         moveSpeed = data.speed;
         maxHp = data.hp;
         hp = data.hp;
+        knockBackForce = data.knockBackForce;
+
         giveGoldCount = data.giveGoldCount;
     }
 
@@ -234,8 +237,8 @@ public class Monster : MonoBehaviour
             dirVec.x = 0;
         }
 
-        //노멀라이즈화 된(크기빼고 방향만 가진) dirVec에 밀리는 힘(3), 포스모드
-        rigid.AddForce(dirVec.normalized * 2, ForceMode2D.Impulse);
+        //노멀라이즈화 된(크기빼고 방향만 가진) dirVec에 밀리는 힘(knockBackForce), 포스모드
+        rigid.AddForce(dirVec.normalized * knockBackForce, ForceMode2D.Impulse);
     }
 
     public void Dead()

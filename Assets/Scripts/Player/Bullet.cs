@@ -81,4 +81,11 @@ public class Bullet : MonoBehaviour
             CancelInvoke(nameof(Dead));
         }
     }
+
+    private void FixedUpdate()
+    {
+        float rotationSpeed = 1000f; //총알 임시 회전 속도
+        float rotationAmount = rotationSpeed * Time.deltaTime;
+        gameObject.transform.Rotate(0,0,rotationAmount);
+    }
 }
