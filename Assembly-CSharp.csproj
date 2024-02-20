@@ -83,6 +83,7 @@
     <Compile Include="Assets\Samples\Recorder\3.0.3\Movie Recorder Sample\MovieRecorderExample.cs" />
     <Compile Include="Assets\Scripts\Monster\WallChecker.cs" />
     <Compile Include="Assets\Scripts\PoolManager.cs" />
+    <Compile Include="Assets\Scripts\Player\RaiderView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
