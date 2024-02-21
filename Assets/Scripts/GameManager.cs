@@ -15,13 +15,18 @@ public class GameManager : MonoBehaviour
     public Player player;
     public TextMeshProUGUI penTmp;
     public TextMeshProUGUI goldTmp;
-    //public bool isGameOver;
+
     public GameObject startMenu;
-    public GameObject upgradeMenu;
+    public GameObject upgradePencilMenu;
     public GameObject makingPencilUI;
     public TextMeshProUGUI pencilCost;
     public TextMeshProUGUI pencilSeconds;
     public Button pencilUpgradeButton;
+
+    public GameObject upgradeFireMenu;
+    public TextMeshProUGUI fireCost;
+    public TextMeshProUGUI fireSeconds;
+    public Button fireUpgradeButton;
 
     public TextMeshProUGUI goldAmountTmp;
     public GameObject floatingJoystick;
@@ -72,6 +77,7 @@ public class GameManager : MonoBehaviour
         //startMenu.SetActive(true);
         //upgradeMenu.SetActive(true);
         UpgradePencilButtonText();
+        UpgradeFireButtonText();
 
         //OutGameMoney.Inst.money += player.goldCount;
         //goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
@@ -88,7 +94,8 @@ public class GameManager : MonoBehaviour
 
         //대기 메뉴 UI닫기
         startMenu.SetActive(false);
-        upgradeMenu.SetActive(false);
+        upgradePencilMenu.SetActive(false);
+        upgradeFireMenu.SetActive(false);
 
         //리스타트
         player.gameObject.SetActive(true);
@@ -126,34 +133,47 @@ public class GameManager : MonoBehaviour
 
     public void UpgradePencilButtonText()
     {
-        if(OutGameMoney.Inst.level + 1< OutGameMoney.Inst.pencilItem.cost.Length)
+        if(OutGameMoney.Inst.pencilLevel + 1< OutGameMoney.Inst.pencilItem.cost.Length)
         {
-            pencilCost.text = OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.level + 1].ToString();
-            pencilSeconds.text = OutGameMoney.Inst.pencilItem.oneForSeconds[OutGameMoney.Inst.level + 1].ToString() + "sec";
+            pencilCost.text = OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.pencilLevel + 1].ToString();
+            pencilSeconds.text = OutGameMoney.Inst.pencilItem.oneForSeconds[OutGameMoney.Inst.pencilLevel + 1].ToString() + "sec";
         }
         else
         {
             pencilCost.text = "Max";
             pencilSeconds.text = "Max";
         }
-        
+    }
+
+    public void UpgradeFireButtonText()
+    {
+        if (OutGameMoney.Inst.fireLevel + 1 < OutGameMoney.Inst.fireRateItem.cost.Length)
+        {
+           fireCost.text = OutGameMoney.Inst.fireRateItem.cost[OutGameMoney.Inst.fireLevel + 1].ToString();
+           fireSeconds.text = OutGameMoney.Inst.fireRateItem.oneForSeconds[OutGameMoney.Inst.fireLevel + 1].ToString() + "sec";
+        }
+        else
+        {
+            fireCost.text = "Max";
+            fireSeconds.text = "Max";
+        }
     }
 
     public void UpgradePencilButtonClick()
     {
         //현재 설정한 맥시멈 레벨보다 높은 정보를 가져오려 하면 리턴
-        if(OutGameMoney.Inst.level + 1 >= OutGameMoney.Inst.pencilItem.cost.Length) 
+        if(OutGameMoney.Inst.pencilLevel + 1 >= OutGameMoney.Inst.pencilItem.cost.Length) 
         { return; }
 
         //다음 레벨 비용보다 돈이 적으면 리턴
-        if (OutGameMoney.Inst.money < OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.level + 1]) 
+        if (OutGameMoney.Inst.money < OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.pencilLevel + 1]) 
         { return; }
 
         else
         {
-            OutGameMoney.Inst.money -= OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.level + 1];
-            OutGameMoney.Inst.level++;
-            OutGameMoney.Inst.pencilCoolTime = OutGameMoney.Inst.pencilItem.oneForSeconds[OutGameMoney.Inst.level];
+            OutGameMoney.Inst.money -= OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.pencilLevel + 1];
+            OutGameMoney.Inst.pencilLevel++;
+            OutGameMoney.Inst.pencilCoolTime = OutGameMoney.Inst.pencilItem.oneForSeconds[OutGameMoney.Inst.pencilLevel];
             goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
 
             OutGameMoney.Inst.SaveInfo();
@@ -163,9 +183,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UpgradeFireRateButtonClick()
+    {
+        //현재 설정한 맥시멈 레벨보다 높은 정보를 가져오려 하면 리턴
+        if (OutGameMoney.Inst.fireLevel + 1 >= OutGameMoney.Inst.fireRateItem.cost.Length)
+        { return; }
+
+        //다음 레벨 비용보다 돈이 적으면 리턴
+        if (OutGameMoney.Inst.money < OutGameMoney.Inst.fireRateItem.cost[OutGameMoney.Inst.fireLevel + 1])
+        { return; }
+
+        else
+        {
+            OutGameMoney.Inst.money -= OutGameMoney.Inst.fireRateItem.cost[OutGameMoney.Inst.fireLevel + 1];
+            OutGameMoney.Inst.fireLevel++;
+            //총 쿨타임은 인게임 들어가 적용되서 이게 필요없다
+            //OutGameMoney.Inst.pencilCoolTime = OutGameMoney.Inst.pencilItem.oneForSeconds[OutGameMoney.Inst.pencilLevel];
+            goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
+
+            OutGameMoney.Inst.SaveInfo();
+
+            UpgradeFireButtonText();
+            SetButtonSprite();
+        }
+    }
+
     public void SetButtonSprite()
     {
-        if (OutGameMoney.Inst.money < OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.level + 1])
+        if (OutGameMoney.Inst.money < OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.pencilLevel + 1])
         {
             pencilCost.color = Color.red;
             pencilUpgradeButton.GetComponent<Button>().interactable = false;
@@ -174,6 +219,17 @@ public class GameManager : MonoBehaviour
         {
             pencilCost.color = Color.black;
             pencilUpgradeButton.GetComponent<Button>().interactable = true;
+        }
+
+        if (OutGameMoney.Inst.money < OutGameMoney.Inst.fireRateItem.cost[OutGameMoney.Inst.fireLevel + 1])
+        {
+            fireCost.color = Color.red;
+            fireUpgradeButton.GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            fireCost.color = Color.black;
+            fireUpgradeButton.GetComponent<Button>().interactable = true;
         }
     }
 
