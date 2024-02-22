@@ -135,8 +135,8 @@ public class GameManager : MonoBehaviour
     {
         if(OutGameMoney.Inst.pencilLevel + 1< OutGameMoney.Inst.pencilItem.cost.Length)
         {
-            pencilCost.text = OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.pencilLevel + 1].ToString();
-            pencilSeconds.text = OutGameMoney.Inst.pencilItem.oneForSeconds[OutGameMoney.Inst.pencilLevel + 1].ToString() + "sec";
+            pencilCost.text = OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.pencilLevel + 1].ToString();              //소수점2자리
+            pencilSeconds.text = (1 / OutGameMoney.Inst.pencilItem.oneForSeconds[OutGameMoney.Inst.pencilLevel + 1]).ToString("F2") + "one";
         }
         else
         {

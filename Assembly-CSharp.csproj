@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Items\FireRateItem.cs" />
     <Compile Include="Assets\Scripts\UpgradeUI.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
@@ -84,7 +85,6 @@
     <Compile Include="Assets\Samples\Recorder\3.0.3\Movie Recorder Sample\MovieRecorderExample.cs" />
     <Compile Include="Assets\Scripts\Monster\WallChecker.cs" />
     <Compile Include="Assets\Scripts\PoolManager.cs" />
-    <Compile Include="Assets\Scripts\Items\FireRateItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
