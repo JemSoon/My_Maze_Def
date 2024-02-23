@@ -19,6 +19,6 @@ public class RaiderView : MonoBehaviour
 
     private void FixedUpdate()
     {
-        raider2.transform.Rotate(0, 0, Time.deltaTime * 100);
+        raider2.transform.Rotate(0, 0, -Time.deltaTime * 100);
     }
 }
