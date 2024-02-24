@@ -49,6 +49,9 @@ public class Gate : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        //조건에 반드시 1개 이상일때가 있어야 애니메이션이 정상 작동됨
+        //once는 Stay상태에서 한번씩만 호출되기용
+        //이 조건문을 건들이지 마시오
         if (collision.gameObject.CompareTag("Player") && !once && GameManager.Inst.player.keyCount > 0)
         {
             once = true;
