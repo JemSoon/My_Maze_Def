@@ -51,12 +51,7 @@ public class Gate : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        //if (GameManager.Inst.player.keyCount == 0) { return; }
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            initialKeyCount = GameManager.Inst.player.keyCount;
-        }
+        initialKeyCount = GameManager.Inst.player.keyCount;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -100,8 +95,7 @@ public class Gate : MonoBehaviour
         {
             if (initialKeyCount > 0)
             {
-                //pencil.gameObject.SetActive(true);
-                //pencil.transform.DOMove(transform.position, 0.1f).SetEase(Ease.InOutQuad).SetLoops(-1);
+                Debug.Log(initialKeyCount);
                 DOMoveTween();
             }
             else
@@ -124,21 +118,6 @@ public class Gate : MonoBehaviour
             }
         }
     }
-    void DecreaseKey_Test()
-    {
-        while (isGiveKey)
-        {
-            if (GameManager.Inst.player.keyCount > 0)
-            {
-                DOMoveTween();
-            }
-            else
-            {
-                pencil.transform.DOKill();
-                pencil.gameObject.SetActive(false);
-            }
-        }
-    }
 
     private void DOMoveTween()
     {
@@ -154,7 +133,6 @@ public class Gate : MonoBehaviour
 
         // Æ÷¹°¼± ¹Ý³³ DOTween
         pencilTween = pencil.transform.DOJump(transform.position, 2.0f, 1, waitTime)
-            .SetEase(Ease.InOutQuad)
-            .OnComplete(DOMoveTween);
+            .SetEase(Ease.InOutQuad);
     }
 }

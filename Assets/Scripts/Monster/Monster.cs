@@ -148,7 +148,7 @@ public class Monster : MonoBehaviour
         {
             if(point.pointNum == num)
             {
-                Debug.Log("다음 포인트 확인 고고고");
+                //Debug.Log("다음 포인트 확인 고고고");
                 isMoving = true;
                 isArrived = false;
                 targetObject = point.gameObject;
@@ -161,7 +161,7 @@ public class Monster : MonoBehaviour
         if(isFound==false)
         {
             isMoving = false;
-            Debug.Log("길을 잃었다..목적지가 없다..");
+            //Debug.Log("길을 잃었다..목적지가 없다..");
         }
     }
 
