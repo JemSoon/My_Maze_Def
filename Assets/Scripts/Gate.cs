@@ -23,8 +23,7 @@ public class Gate : MonoBehaviour
     public GameObject[] offCollision;
 
     private Tween pencilTween;
-    private int initialKeyCount = 0;
-
+    private bool once;  //업데이트에서 한번만 호출되기용 bool변수 
     private void Awake()
     {
         beginNeedKey = needKey;
@@ -44,14 +43,17 @@ public class Gate : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isGiveKey = true;
-            initialKeyCount = GameManager.Inst.player.keyCount;
-            StartCoroutine(DecreaseKey());
+            //StartCoroutine(DecreaseKey());
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        initialKeyCount = GameManager.Inst.player.keyCount;
+        if (collision.gameObject.CompareTag("Player") && !once && GameManager.Inst.player.keyCount > 0)
+        {
+            once = true;
+            StartCoroutine(DecreaseKey());
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -93,9 +95,8 @@ public class Gate : MonoBehaviour
     {
         while(isGiveKey)
         {
-            if (initialKeyCount > 0)
+            if (GameManager.Inst.player.keyCount > 0)
             {
-                Debug.Log(initialKeyCount);
                 DOMoveTween();
             }
             else
@@ -116,6 +117,8 @@ public class Gate : MonoBehaviour
                     OpenField(nextField);
                 }
             }
+
+            once = false;
         }
     }
 
