@@ -23,6 +23,7 @@ public class Gate : MonoBehaviour
     public GameObject[] offCollision;
 
     private Tween pencilTween;
+    private int initialKeyCount = 0;
 
     private void Awake()
     {
@@ -38,29 +39,23 @@ public class Gate : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (GameManager.Inst.player.keyCount == 0) { return; }
+        //if (GameManager.Inst.player.keyCount == 0) { return; }
 
         if (collision.gameObject.CompareTag("Player"))
         {
             isGiveKey = true;
+            initialKeyCount = GameManager.Inst.player.keyCount;
             StartCoroutine(DecreaseKey());
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (GameManager.Inst.player.keyCount == 0) { return; }
+        //if (GameManager.Inst.player.keyCount == 0) { return; }
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            //GameManager.Inst.player.keyCount--;
-            //needKey--;
-            //text.SetText(needKey.ToString());
-            //if(needKey == 0)
-            //{
-            //    OpenField(nextField);
-            //}
-            //StartCoroutine(DecreaseKey());
+            initialKeyCount = GameManager.Inst.player.keyCount;
         }
     }
 
@@ -103,7 +98,7 @@ public class Gate : MonoBehaviour
     {
         while(isGiveKey)
         {
-            if(GameManager.Inst.player.keyCount > 0)
+            if (initialKeyCount > 0)
             {
                 //pencil.gameObject.SetActive(true);
                 //pencil.transform.DOMove(transform.position, 0.1f).SetEase(Ease.InOutQuad).SetLoops(-1);
@@ -126,6 +121,21 @@ public class Gate : MonoBehaviour
                 {
                     OpenField(nextField);
                 }
+            }
+        }
+    }
+    void DecreaseKey_Test()
+    {
+        while (isGiveKey)
+        {
+            if (GameManager.Inst.player.keyCount > 0)
+            {
+                DOMoveTween();
+            }
+            else
+            {
+                pencil.transform.DOKill();
+                pencil.gameObject.SetActive(false);
             }
         }
     }
