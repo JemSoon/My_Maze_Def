@@ -3090,7 +3090,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC2A4\uD14C\uC774\uC9C0"
+  m_text: Stage 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 51a45556fccca4d48a406f41735535b5, type: 2}
   m_sharedMaterial: {fileID: 3724587010154515582, guid: 51a45556fccca4d48a406f41735535b5, type: 2}
