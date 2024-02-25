@@ -7,10 +7,10 @@ public class Gate : MonoBehaviour
 {
     public BoxCollider2D col;
     public TextMeshProUGUI text;
-    public WaitForSeconds time = new WaitForSeconds(waitTime);//°ª ¹Ù²Ù¸é ¹Ø¿¡ DOMoveTween()µµ ¹Ù²ã¾ßÇÔ
 
     [Header("¿¬ÇÊ ¹Ý³³ µô·¹ÀÌ ½Ã°£")]
     public static float waitTime = 0.15f;
+    public WaitForSeconds time = new WaitForSeconds(waitTime);//°ª ¹Ù²Ù¸é ¹Ø¿¡ DOMoveTween()µµ ¹Ù²ã¾ßÇÔ
 
     [Header("ÇÊ¿äÇÑ °ÔÀÌÆ® ¿ÀÇÂ ¿­¼è ¼ö")]
     public int needKey;
@@ -98,7 +98,7 @@ public class Gate : MonoBehaviour
     {
         while(isGiveKey)
         {
-            if (GameManager.Inst.player.keyCount > 0)
+            if (GameManager.Inst.player.keyCount > 0 && once)
             {
                 DOMoveTween();
             }
@@ -110,7 +110,7 @@ public class Gate : MonoBehaviour
 
             yield return time;
 
-            if (GameManager.Inst.player.keyCount > 0)
+            if (GameManager.Inst.player.keyCount > 0 && once)
             {
                 GameManager.Inst.player.keyCount--;
                 needKey--;
