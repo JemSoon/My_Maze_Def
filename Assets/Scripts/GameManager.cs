@@ -74,15 +74,8 @@ public class GameManager : MonoBehaviour
 
         makingPencilUI.SetActive(false);//연필만드는 슬라이드바 대기중엔 비활성화
 
-        //startMenu.SetActive(true);
-        //upgradeMenu.SetActive(true);
         UpgradePencilButtonText();
         UpgradeFireButtonText();
-
-        //OutGameMoney.Inst.money += player.goldCount;
-        //goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
-
-        //OutGameMoney.Inst.SaveInfo();
 
         SetButtonSprite();//돈 정산 후 버튼 정보 활성화
     }

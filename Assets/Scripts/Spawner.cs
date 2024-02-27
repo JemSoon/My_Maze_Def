@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour
     //[Header("몇초마다 단계를 올립니까?")]
     //public float seconds;
 
-    [Header("당신이 원하는 소환 순서")]
+    [Header("Spawn Order What you want")]
     public MonsterType[] monsterTypes;
     private void Awake()
     {
@@ -51,7 +51,8 @@ public class Spawner : MonoBehaviour
         //monster.transform.position = spawnPoint[]
 
         monster.GetComponent<Monster>().Init(spawnData[(int)monsterTypes[index]]);
-        
+        monster.transform.position = this.transform.position;//몬스터 위치 스폰 포탈 위치로 초기화
+
         if(index < monsterTypes.Length-1)
         {
             //monsterTypes가 4종류라면 인덱스는 3번까지 생성이 되고
