@@ -34,12 +34,15 @@ public class GameManager : MonoBehaviour
     public GameObject resultMenu;
     public TextMeshProUGUI resultCount;
 
+    public bool isStageClear;
+
     private void Awake()
     {
         Inst = this;
         player.OnKeyCountChanged += UpdateKeyCountText;
         player.OnGoldCountChanged += UpdateGoldCountText;
         goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
+        isStageClear = false;
 
         Inst.isGameOver = true;
         GameEnd();
@@ -203,7 +206,7 @@ public class GameManager : MonoBehaviour
 
     public void SetButtonSprite()
     {
-        if (OutGameMoney.Inst.money < OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.pencilLevel + 1])
+        if (OutGameMoney.Inst.pencilLevel + 1 < OutGameMoney.Inst.pencilItem.cost.Length && OutGameMoney.Inst.money < OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.pencilLevel + 1])
         {
             pencilCost.color = Color.red;
             pencilUpgradeButton.GetComponent<Button>().interactable = false;
@@ -214,7 +217,7 @@ public class GameManager : MonoBehaviour
             pencilUpgradeButton.GetComponent<Button>().interactable = true;
         }
 
-        if (OutGameMoney.Inst.money < OutGameMoney.Inst.fireRateItem.cost[OutGameMoney.Inst.fireLevel + 1])
+        if (OutGameMoney.Inst.fireLevel + 1 < OutGameMoney.Inst.fireRateItem.cost.Length && OutGameMoney.Inst.money < OutGameMoney.Inst.fireRateItem.cost[OutGameMoney.Inst.fireLevel + 1])
         {
             fireCost.color = Color.red;
             fireUpgradeButton.GetComponent<Button>().interactable = false;
@@ -274,8 +277,23 @@ public class GameManager : MonoBehaviour
 
         OutGameMoney.Inst.SaveInfo();
 
+        yield return null;
+
         //나중에 재화 획득 UI창이 뜨고 닫기버튼누르면 씬 로드로 변경
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.buildIndex);
+        if (isStageClear)
+        {
+            string sceneName = SceneManager.GetActiveScene().name;
+            int stageNumber = int.Parse(sceneName.Split(' ')[1]);//"Stage 1"을 띄어쓰기 기준 "Stage"와 "1"로 나눔
+            SceneManager.LoadScene("Stage " + (stageNumber + 1));
+
+            //추가적으로 스테이지 단계 저장해야함
+
+            isStageClear = false;
+        }
+        else
+        {
+            Scene currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.buildIndex);
+        }
     }
 }
