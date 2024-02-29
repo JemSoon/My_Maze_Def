@@ -39,13 +39,35 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Inst = this;
+        //if(Inst==null)
+        //{
+        //    Inst = this;
+        //    DontDestroyOnLoad(gameObject);
+        //}
+        //else
+        //{
+        //    if(Inst!=this)
+        //    {
+        //        Destroy(gameObject);
+        //    }
+        //}
         player.OnKeyCountChanged += UpdateKeyCountText;
         player.OnGoldCountChanged += UpdateGoldCountText;
         goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
         isStageClear = false;
 
-        Inst.isGameOver = true;
-        GameEnd();
+        
+        //Inst.isGameOver = true;
+        //GameEnd();
+    }
+
+    private void Start()
+    {
+
+            SceneManager.LoadSceneAsync(1); 
+    
+        //Inst.isGameOver = true;
+        //GameEnd();
     }
 
     private void Update()
@@ -283,17 +305,26 @@ public class GameManager : MonoBehaviour
         if (isStageClear)
         {
             string sceneName = SceneManager.GetActiveScene().name;
-            int stageNumber = int.Parse(sceneName.Split(' ')[1]);//"Stage 1"을 띄어쓰기 기준 "Stage"와 "1"로 나눔
+            int stageNumber = int.Parse(sceneName.Split(' ')[1]);//"Stage 1"을 띄어쓰기 기준 "Stage"와 "1"로 나눔 그중 두번째 인덱스인[1]("1")을 가져오
             SceneManager.LoadScene("Stage " + (stageNumber + 1));
 
             //추가적으로 스테이지 단계 저장해야함
-
             isStageClear = false;
+            OutGameMoney.Inst.SaveStage(stageNumber);
         }
         else
         {
             Scene currentScene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(currentScene.buildIndex);
         }
+    }
+
+    IEnumerator LoadStage()
+    {
+        yield return null;
+        SceneManager.LoadSceneAsync(1);
+        yield return null;
+        //asyncOperation.allowSceneActivation = true;
+
     }
 }

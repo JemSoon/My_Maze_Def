@@ -7,19 +7,22 @@ public class OutGameMoney : MonoBehaviour
 {
     public static OutGameMoney Inst { get; private set; }
 
-    [Header("아웃게임 재화")]
+    [Header("Out Game Goods")]
     public float pencilCoolTime;
     public int money;
     public int pencilLevel;
     public int fireLevel;
+    [Header("Stage Scene Index")]
+    public int stageLevel;
 
     private const string MoneyKey = "Money";
 
     private const string PencilCoolTimeKey = "PencilCoolTime";
     private const string PencilLevelKey = "PencilLevel";
 
-    private const string FireRateTimeKey = "FireRateTime";
     private const string FireRateLevelKey = "FireRateLevel";
+
+    private const string StageLevelKey = "StageLevel";
 
     public PencilItem pencilItem;
     public FireRateItem fireRateItem;
@@ -30,13 +33,14 @@ public class OutGameMoney : MonoBehaviour
         Inst.pencilItem = GetComponent<PencilItem>();
         Inst.fireRateItem = GetComponent<FireRateItem>();
 
-        if (!PlayerPrefs.HasKey(PencilCoolTimeKey) && !PlayerPrefs.HasKey(MoneyKey) && !PlayerPrefs.HasKey(PencilLevelKey) && !PlayerPrefs.HasKey(FireRateTimeKey) && !PlayerPrefs.HasKey(FireRateLevelKey))
+        if (!PlayerPrefs.HasKey(PencilCoolTimeKey) && !PlayerPrefs.HasKey(MoneyKey) && !PlayerPrefs.HasKey(PencilLevelKey) && !PlayerPrefs.HasKey(FireRateLevelKey) && !PlayerPrefs.HasKey(StageLevelKey))
         {
             //맨 처음 세이브 없으면 기본값으로 초기화
             Inst.money = 0;
             Inst.pencilCoolTime = pencilItem.oneForSeconds[0];
             Inst.pencilLevel = 0;
             Inst.fireLevel = 0;
+            Inst.stageLevel = 0;
         }
 
         else
@@ -45,6 +49,7 @@ public class OutGameMoney : MonoBehaviour
             Inst.money = PlayerPrefs.GetInt(MoneyKey, money);
             Inst.pencilLevel = PlayerPrefs.GetInt(PencilLevelKey, pencilLevel);
             Inst.fireLevel = PlayerPrefs.GetInt(FireRateLevelKey);
+            Inst.stageLevel = PlayerPrefs.GetInt(StageLevelKey);
         }
     }
 
@@ -61,5 +66,12 @@ public class OutGameMoney : MonoBehaviour
     public void DeleteInfo()
     {
         PlayerPrefs.DeleteAll();
+    }
+
+    public void SaveStage(int SceneIndex)
+    {
+        Debug.Log("저장될 씬 인덱스 : " + SceneIndex);
+        stageLevel = SceneIndex;
+        PlayerPrefs.SetInt(StageLevelKey, stageLevel);
     }
 }

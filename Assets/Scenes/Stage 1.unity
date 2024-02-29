@@ -5931,6 +5931,7 @@ MonoBehaviour:
   money: 0
   pencilLevel: 0
   fireLevel: 0
+  stageLevel: 0
   pencilItem: {fileID: 0}
   fireRateItem: {fileID: 0}
 --- !u!4 &1124773533
@@ -7111,6 +7112,7 @@ MonoBehaviour:
   floatingJoystick: {fileID: 711069432}
   resultMenu: {fileID: 831696797}
   resultCount: {fileID: 1403792981}
+  isStageClear: 0
 --- !u!4 &1384377880
 Transform:
   m_ObjectHideFlags: 0
