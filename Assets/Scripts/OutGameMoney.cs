@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -27,17 +26,33 @@ public class OutGameMoney : MonoBehaviour
     public PencilItem pencilItem;
     public FireRateItem fireRateItem;
 
+    public bool isSceneLoaded;
+    public AsyncOperation asyncLoad;
+
     private void Awake()
     {
-        Inst = this;
-        Inst.pencilItem = GetComponent<PencilItem>();
-        Inst.fireRateItem = GetComponent<FireRateItem>();
+        //Debug.Log("어웨이크 호출");
+        if (Inst == null)
+        {
+            Inst = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            if (Inst != this)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        Inst.pencilItem = Inst.GetComponent<PencilItem>();
+        Inst.fireRateItem = Inst.GetComponent<FireRateItem>();
 
         if (!PlayerPrefs.HasKey(PencilCoolTimeKey) && !PlayerPrefs.HasKey(MoneyKey) && !PlayerPrefs.HasKey(PencilLevelKey) && !PlayerPrefs.HasKey(FireRateLevelKey) && !PlayerPrefs.HasKey(StageLevelKey))
         {
             //맨 처음 세이브 없으면 기본값으로 초기화
             Inst.money = 0;
-            Inst.pencilCoolTime = pencilItem.oneForSeconds[0];
+            Inst.pencilCoolTime = Inst.pencilItem.oneForSeconds[0];
             Inst.pencilLevel = 0;
             Inst.fireLevel = 0;
             Inst.stageLevel = 0;
@@ -45,7 +60,7 @@ public class OutGameMoney : MonoBehaviour
 
         else
         {
-            Inst.pencilCoolTime = pencilItem.oneForSeconds[PlayerPrefs.GetInt(PencilLevelKey, pencilLevel)];
+            Inst.pencilCoolTime = Inst.pencilItem.oneForSeconds[PlayerPrefs.GetInt(PencilLevelKey, pencilLevel)];
             Inst.money = PlayerPrefs.GetInt(MoneyKey, money);
             Inst.pencilLevel = PlayerPrefs.GetInt(PencilLevelKey, pencilLevel);
             Inst.fireLevel = PlayerPrefs.GetInt(FireRateLevelKey);
@@ -73,5 +88,10 @@ public class OutGameMoney : MonoBehaviour
         Debug.Log("저장될 씬 인덱스 : " + SceneIndex);
         stageLevel = SceneIndex;
         PlayerPrefs.SetInt(StageLevelKey, stageLevel);
+    }
+
+    public void SetAsyncLoad(AsyncOperation async)
+    {
+        asyncLoad = async;
     }
 }

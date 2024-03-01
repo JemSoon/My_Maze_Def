@@ -5931,8 +5931,10 @@ MonoBehaviour:
   money: 0
   pencilLevel: 0
   fireLevel: 0
+  stageLevel: 0
   pencilItem: {fileID: 0}
   fireRateItem: {fileID: 0}
+  isSceneLoaded: 0
 --- !u!4 &1124773533
 Transform:
   m_ObjectHideFlags: 0
@@ -7097,6 +7099,7 @@ MonoBehaviour:
   player: {fileID: 624373048}
   penTmp: {fileID: 1739154420}
   goldTmp: {fileID: 1949635112}
+  stageTmp: {fileID: 0}
   startMenu: {fileID: 1994227013}
   upgradePencilMenu: {fileID: 1349117776}
   makingPencilUI: {fileID: 525268464}
@@ -7111,6 +7114,7 @@ MonoBehaviour:
   floatingJoystick: {fileID: 711069432}
   resultMenu: {fileID: 831696797}
   resultCount: {fileID: 1403792981}
+  isStageClear: 0
 --- !u!4 &1384377880
 Transform:
   m_ObjectHideFlags: 0

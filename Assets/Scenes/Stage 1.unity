@@ -5934,6 +5934,7 @@ MonoBehaviour:
   stageLevel: 0
   pencilItem: {fileID: 0}
   fireRateItem: {fileID: 0}
+  isSceneLoaded: 0
 --- !u!4 &1124773533
 Transform:
   m_ObjectHideFlags: 0
@@ -7098,6 +7099,7 @@ MonoBehaviour:
   player: {fileID: 624373048}
   penTmp: {fileID: 1739154420}
   goldTmp: {fileID: 1949635112}
+  stageTmp: {fileID: 542848194}
   startMenu: {fileID: 1994227013}
   upgradePencilMenu: {fileID: 1349117776}
   makingPencilUI: {fileID: 525268464}

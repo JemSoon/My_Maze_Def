@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Player player;
     public TextMeshProUGUI penTmp;
     public TextMeshProUGUI goldTmp;
+    public TextMeshProUGUI stageTmp;
 
     public GameObject startMenu;
     public GameObject upgradePencilMenu;
@@ -38,36 +39,27 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("게임 매니저 어웨이크 호출");
         Inst = this;
-        //if(Inst==null)
-        //{
-        //    Inst = this;
-        //    DontDestroyOnLoad(gameObject);
-        //}
-        //else
-        //{
-        //    if(Inst!=this)
-        //    {
-        //        Destroy(gameObject);
-        //    }
-        //}
+
         player.OnKeyCountChanged += UpdateKeyCountText;
         player.OnGoldCountChanged += UpdateGoldCountText;
         goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
+        stageTmp.text = SceneManager.GetActiveScene().name;
         isStageClear = false;
 
-        
-        //Inst.isGameOver = true;
-        //GameEnd();
-    }
-
-    private void Start()
-    {
-
-            SceneManager.LoadSceneAsync(1); 
-    
-        //Inst.isGameOver = true;
-        //GameEnd();
+        //저장된 스테이지가 맨처음게 아니면 로드
+        if (OutGameMoney.Inst.stageLevel != 0 && OutGameMoney.Inst.isSceneLoaded == false)
+        {
+            OutGameMoney.Inst.SetAsyncLoad(SceneManager.LoadSceneAsync(OutGameMoney.Inst.stageLevel));
+            OutGameMoney.Inst.isSceneLoaded = true;
+            StartCoroutine(NewStageStart());
+        }
+        else
+        {
+            Inst.isGameOver = true;
+            GameEnd();
+        }
     }
 
     private void Update()
@@ -319,12 +311,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    IEnumerator LoadStage()
+    IEnumerator NewStageStart()
     {
-        yield return null;
-        SceneManager.LoadSceneAsync(1);
-        yield return null;
-        //asyncOperation.allowSceneActivation = true;
+        // 씬 로딩이 완료될 때까지 대기
+        while (!OutGameMoney.Inst.asyncLoad.isDone)
+        {
+            yield return null;
+        }
 
+        // 씬 로딩이 완료된 후에 수행할 작업
+        Inst.isGameOver = true;
+        GameEnd();
+        OutGameMoney.Inst.asyncLoad = null;
     }
+    
 }
