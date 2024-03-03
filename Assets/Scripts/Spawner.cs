@@ -37,12 +37,12 @@ public class Spawner : MonoBehaviour
             Spawn();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ++spawnCount;
-            ++nowCount;
-            Spawn();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    ++spawnCount;
+        //    ++nowCount;
+        //    Spawn();
+        //}
     }
 
     void Spawn()

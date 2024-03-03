@@ -94,10 +94,10 @@ public class Player : MonoBehaviour
             checkCoolTime = 0.0f;
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            Inst.keyCount = 100;
-        }
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    Inst.keyCount = 100;
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
