@@ -20,7 +20,7 @@ public class Flag : MonoBehaviour
 
             string sceneName = SceneManager.GetActiveScene().name;
             int stageNumber = int.Parse(sceneName.Split(' ')[1]);//"Stage 1"을 "Stage"와 "1"로 나눔
-            Debug.Log("현재 스테이지 "+stageNumber);
+            Debug.Log("클리어한 스테이지 넘버(인덱스 말고) : "+stageNumber);
 
             GameManager.Inst.isStageClear = true;
             //SceneManager.LoadScene("Stage " + (stageNumber + 1));

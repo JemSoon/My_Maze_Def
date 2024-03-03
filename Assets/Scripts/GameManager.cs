@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI resultCount;
 
     public bool isStageClear;
+    const int maxStage = 2; //마지막 스테이지일시 다음 스테이지 불러오기 막기용(씬 인덱스가 아니라 실제 스테이지 네임 기반)
 
     private void Awake()
     {
@@ -298,11 +299,23 @@ public class GameManager : MonoBehaviour
         {
             string sceneName = SceneManager.GetActiveScene().name;
             int stageNumber = int.Parse(sceneName.Split(' ')[1]);//"Stage 1"을 띄어쓰기 기준 "Stage"와 "1"로 나눔 그중 두번째 인덱스인[1]("1")을 가져오
-            SceneManager.LoadScene("Stage " + (stageNumber + 1));
-
+            
+            if(stageNumber + 1 <= maxStage)
+            {
+                //마지막 스테이지가 아니라면 다음 스테이지 불러오기
+                SceneManager.LoadScene("Stage " + (stageNumber + 1));
+                //그리고 저장
+                OutGameMoney.Inst.SaveStage(stageNumber);
+            }
+            else
+            {
+                //최종 스테이지라면 그냥 현 스테이지 다시 불러오기
+                Scene currentScene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(currentScene.buildIndex);
+            }
             //추가적으로 스테이지 단계 저장해야함
             isStageClear = false;
-            OutGameMoney.Inst.SaveStage(stageNumber);
+
         }
         else
         {
