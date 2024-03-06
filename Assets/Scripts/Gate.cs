@@ -15,7 +15,6 @@ public class Gate : MonoBehaviour
     [Header("필요한 게이트 오픈 열쇠 수")]
     public int needKey;
     public int beginNeedKey;
-    bool isGiveKey;
     public SpriteRenderer pencil;
 
     [Header("다음 필드")]
@@ -42,7 +41,6 @@ public class Gate : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            isGiveKey = true;
             //StartCoroutine(DecreaseKey());
         }
     }
@@ -63,7 +61,6 @@ public class Gate : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            isGiveKey = false;
             pencil.gameObject.SetActive(false);
             pencil.transform.DOKill();
         }
@@ -96,33 +93,30 @@ public class Gate : MonoBehaviour
 
     IEnumerator DecreaseKey()
     {
-        while(isGiveKey)
+
+        if (GameManager.Inst.player.keyCount > 0 && once)
         {
-            if (GameManager.Inst.player.keyCount > 0 && once)
-            {
-                DOMoveTween();
-            }
-            else
-            {
-                pencil.transform.DOKill();
-                pencil.gameObject.SetActive(false);
-            }
-
+            DOMoveTween();
             yield return time;
-
-            if (GameManager.Inst.player.keyCount > 0 && once)
-            {
-                GameManager.Inst.player.keyCount--;
-                needKey--;
-                text.SetText(needKey.ToString());
-                if (needKey == 0)
-                {
-                    OpenField(nextField);
-                }
-            }
-
-            once = false;
         }
+        else
+        {
+            pencil.transform.DOKill();
+            pencil.gameObject.SetActive(false);
+        }
+
+        if (GameManager.Inst.player.keyCount > 0 && once)
+        {
+            GameManager.Inst.player.keyCount--;
+            needKey--;
+            text.SetText(needKey.ToString());
+            if (needKey == 0)
+            {
+                OpenField(nextField);
+            }
+        }
+        once = false;
+        
     }
 
     private void DOMoveTween()
@@ -139,6 +133,9 @@ public class Gate : MonoBehaviour
 
         // 포물선 반납 DOTween
         pencilTween = pencil.transform.DOJump(transform.position, 2.0f, 1, waitTime)
-            .SetEase(Ease.InOutQuad);
+            .SetEase(Ease.InOutQuad).OnComplete(() =>
+            {
+                pencil.gameObject.SetActive(false); // Tween이 완료되면 오브젝트를 비활성화
+            });
     }
 }
