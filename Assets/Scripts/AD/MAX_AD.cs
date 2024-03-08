@@ -274,7 +274,7 @@ public class MAX_AD : MonoBehaviour
         MaxSdk.LoadRewardedInterstitialAd(RewardedInterstitialAdUnitId);
     }
 
-    private void ShowRewardedInterstitialAd()
+    public void ShowRewardedInterstitialAd()
     {
         if (MaxSdk.IsRewardedInterstitialAdReady(RewardedInterstitialAdUnitId))
         {

@@ -95,4 +95,19 @@ public class OutGameMoney : MonoBehaviour
     {
         asyncLoad = async;
     }
+
+    void HandleRewardedAdResult(bool isSuccess)
+    {
+        //다 봤을때 true가 되야하는데
+        //그렇다면 얘를 어떻게 해야하지?
+        //일단 true로 해서 광고 띄우기는 성공
+        isSuccess = true;
+    }
+
+    public void ADButtonClick()
+    {
+        MAX_AD.ShowRewardedAd(HandleRewardedAdResult);
+
+        StartCoroutine(GameManager.Inst.gold2Count(Player.Inst.goldCount));
+    }
 }

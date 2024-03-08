@@ -324,6 +324,59 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public IEnumerator gold2Count(int currentGet)
+    {
+        float duration = 0.01f;
+        float timer = 0.0f;
+
+        while (currentGet > 0)
+        {
+            timer += Time.unscaledDeltaTime;
+            if (timer >= duration)
+            {
+                --currentGet;
+                ++OutGameMoney.Inst.money;
+                goldAmountTmp.text = (OutGameMoney.Inst.money).ToString();
+                timer = 0.0f;
+
+            }
+            yield return null;
+        }
+
+        OutGameMoney.Inst.SaveInfo();
+
+        yield return null;
+
+        //나중에 재화 획득 UI창이 뜨고 닫기버튼누르면 씬 로드로 변경
+        if (isStageClear)
+        {
+            string sceneName = SceneManager.GetActiveScene().name;
+            int stageNumber = int.Parse(sceneName.Split(' ')[1]);//"Stage 1"을 띄어쓰기 기준 "Stage"와 "1"로 나눔 그중 두번째 인덱스인[1]("1")을 가져오
+
+            if (stageNumber + 1 <= maxStage)
+            {
+                //마지막 스테이지가 아니라면 다음 스테이지 불러오기
+                SceneManager.LoadScene("Stage " + (stageNumber + 1));
+                //그리고 저장
+                OutGameMoney.Inst.SaveStage(stageNumber);
+            }
+            else
+            {
+                //최종 스테이지라면 그냥 현 스테이지 다시 불러오기
+                Scene currentScene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(currentScene.buildIndex);
+            }
+            //추가적으로 스테이지 단계 저장해야함
+            isStageClear = false;
+
+        }
+        else
+        {
+            Scene currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.buildIndex);
+        }
+    }
+
     IEnumerator NewStageStart()
     {
         // 씬 로딩이 완료될 때까지 대기
