@@ -28,6 +28,7 @@ public class OutGameMoney : MonoBehaviour
 
     public bool isSceneLoaded;
     public AsyncOperation asyncLoad;
+    public MAX_AD MAX_AD;
 
     private void Awake()
     {
