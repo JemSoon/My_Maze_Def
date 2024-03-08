@@ -101,13 +101,23 @@ public class OutGameMoney : MonoBehaviour
         //다 봤을때 true가 되야하는데
         //그렇다면 얘를 어떻게 해야하지?
         //일단 true로 해서 광고 띄우기는 성공
-        isSuccess = true;
+        //isSuccess = true;
     }
 
     public void ADButtonClick()
     {
-        MAX_AD.ShowRewardedAd(HandleRewardedAdResult);
+        MAX_AD.ShowRewardedAd(success =>
+        {
+            if (success)
+            {
+                StartCoroutine(GameManager.Inst.gold2Count(Player.Inst.goldCount));//코인 두배 보상!
+            }
+            else
+            {
+                Debug.Log("Rewarded ad was not successfully watched.");
+            }
+        });
 
-        StartCoroutine(GameManager.Inst.gold2Count(Player.Inst.goldCount));
+        
     }
 }
