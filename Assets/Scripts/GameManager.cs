@@ -335,7 +335,7 @@ public class GameManager : MonoBehaviour
             if (timer >= duration)
             {
                 --currentGet;
-                ++OutGameMoney.Inst.money;
+                OutGameMoney.Inst.money+=(1*2);//2¹è º¸»ó!
                 goldAmountTmp.text = (OutGameMoney.Inst.money).ToString();
                 timer = 0.0f;
 

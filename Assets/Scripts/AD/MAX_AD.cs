@@ -162,7 +162,7 @@ public class MAX_AD : MonoBehaviour
         LoadRewardedAd();
     }
 
-    private void LoadRewardedAd()
+    public void LoadRewardedAd()
     {
         MaxSdk.LoadRewardedAd(RewardedAdUnitId);
     }
