@@ -35,6 +35,7 @@ public class Monster : MonoBehaviour
     public bool isLeftWall = false;
 
     public bool isKnockBacking = false;
+    public bool KnockBackStart = false;
 
     [Header("몬스터가 주는 재화")]
     public SpriteRenderer coinSprite;
@@ -74,6 +75,8 @@ public class Monster : MonoBehaviour
         if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Monster_Hit")) //그래프에 그려진 이름..
         {
             isKnockBacking = true;
+            //KnockBackStart = true;
+            StartCoroutine(KnockBack());
             //죽었거나 맞는 상태라면 행동 스탑
             return; 
         }
@@ -98,8 +101,8 @@ public class Monster : MonoBehaviour
                 item.CheckMyColType(item.myColType, item.isTouching);
             }
             isKnockBacking = false;
+            return;
         }
-        
 
         if (isMoving)
         {
@@ -179,10 +182,9 @@ public class Monster : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if(!collision.CompareTag("Bullet"))
-        //{ return; }
+        if (!collision.CompareTag("Bullet"))
+        { return; }
 
-        //hp -= collision.GetComponent<Bullet>().damage;
         //StartCoroutine(KnockBack());
 
         //if(hp > 0)
@@ -200,37 +202,42 @@ public class Monster : MonoBehaviour
 
     public IEnumerator KnockBack()
     {
-        foreach(var item in wallCheckers)
+        if(KnockBackStart)
         {
-            item.particle.Stop();
-        }
-        
-        yield return wait; //다음 하나의 물리 프레임 딜레이
+            foreach (var item in wallCheckers)
+            {
+                item.particle.Stop();
+            }
 
-        //플레이어의 위치
-        Vector3 playerPos = GameManager.Inst.player.transform.position;
-        //플레이어의 반대방향으로 가기(플레이어의 위치를 빼서)
-        Vector3 dirVec = transform.position - playerPos;
+            yield return wait; //다음 하나의 물리 프레임 딜레이
 
-        if (isDownWall && dirVec.y < 0f)
-        {
-            dirVec.y = 0;
-        }
-        if(isTopWall && dirVec.y > 0f)
-        { 
-            dirVec.y = 0;
-        }
-        if(isLeftWall && dirVec.x < 0f)
-        {
-            dirVec.x = 0;
-        }
-        if(isRightWall && dirVec.x > 0f)
-        {
-            dirVec.x = 0;
+            //플레이어의 위치
+            Vector3 playerPos = GameManager.Inst.player.transform.position;
+            //플레이어의 반대방향으로 가기(플레이어의 위치를 빼서)
+            Vector3 dirVec = transform.position - playerPos;
+
+            if (isDownWall && dirVec.y < 0f)
+            {
+                dirVec.y = 0;
+            }
+            if (isTopWall && dirVec.y > 0f)
+            {
+                dirVec.y = 0;
+            }
+            if (isLeftWall && dirVec.x < 0f)
+            {
+                dirVec.x = 0;
+            }
+            if (isRightWall && dirVec.x > 0f)
+            {
+                dirVec.x = 0;
+            }
+
+            //노멀라이즈화 된(크기빼고 방향만 가진) dirVec에 밀리는 힘(knockBackForce), 포스모드
+            rigid.AddForce(dirVec.normalized * knockBackForce * Time.deltaTime, ForceMode2D.Impulse);
+            KnockBackStart = false;
         }
 
-        //노멀라이즈화 된(크기빼고 방향만 가진) dirVec에 밀리는 힘(knockBackForce), 포스모드
-        rigid.AddForce(dirVec.normalized * knockBackForce, ForceMode2D.Impulse);
     }
 
     public void Dead()

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,9 +35,9 @@ public class Bullet : MonoBehaviour
         {
             Monster mon = collision.GetComponent<Monster>();
             mon.hp -= damage;
-            mon.StartCoroutine(mon.KnockBack());
-
-            if(mon.hp>0)
+            //mon.StartCoroutine(mon.KnockBack());
+            mon.KnockBackStart = true;
+            if (mon.hp>0)
             { mon.anim.SetTrigger("Hit"); }
             else
             {

@@ -69,7 +69,7 @@ public class OutGameMoney : MonoBehaviour
         }
 
         Application.targetFrameRate = 60;
-        Time.fixedDeltaTime = 0.01f;
+        //Time.fixedDeltaTime = 0.01f;
         //Application.targetFrameRate = 0;
     }
 
