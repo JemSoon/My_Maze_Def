@@ -67,6 +67,10 @@ public class OutGameMoney : MonoBehaviour
             Inst.fireLevel = PlayerPrefs.GetInt(FireRateLevelKey);
             Inst.stageLevel = PlayerPrefs.GetInt(StageLevelKey);
         }
+
+        Application.targetFrameRate = 60;
+        Time.fixedDeltaTime = 0.01f;
+        //Application.targetFrameRate = 0;
     }
 
     public void SaveInfo()

@@ -71,14 +71,6 @@ public class Monster : MonoBehaviour
 
     void FixedUpdate()
     {
-        #region 코루틴 무빙
-        //나중에 길이 오픈되었을때 한번 호출하게끔 바꾸자
-        //if(isArrived && !isMoving) 
-        //{ 
-        //    FindWayPoint(waypointID); 
-        //}
-        #endregion
-
         if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Monster_Hit")) //그래프에 그려진 이름..
         {
             isKnockBacking = true;
@@ -208,12 +200,12 @@ public class Monster : MonoBehaviour
 
     public IEnumerator KnockBack()
     {
-        yield return wait; //다음 하나의 물리 프레임 딜레이
-
         foreach(var item in wallCheckers)
         {
             item.particle.Stop();
         }
+        
+        yield return wait; //다음 하나의 물리 프레임 딜레이
 
         //플레이어의 위치
         Vector3 playerPos = GameManager.Inst.player.transform.position;
@@ -268,32 +260,4 @@ public class Monster : MonoBehaviour
             coinSprite.gameObject.transform.position = transform.position;
         }
     }
-
-    #region 코루틴 무빙
-    //IEnumerator Moving()
-    //{
-    //    if (!isLive) { yield break; }
-
-    //    while (isMoving)
-    //    {
-    //        Vector2 dir = (((Vector2)targetObject.transform.position) - (Vector2)transform.position).normalized;
-    //        transform.Translate(dir * Time.deltaTime * moveSpeed);
-
-    //        Vector2 targetPosition = targetObject.transform.position;
-    //        Vector2 currentPosition = transform.position;
-
-    //        arrivalDistanceSquared = Mathf.Pow(Vector2.Distance(targetPosition, currentPosition) + 0.9f, 2);
-
-    //        //if (dir == Vector2.zero)
-    //        if (dir.sqrMagnitude >= arrivalDistanceSquared) //오차 범위내에 도착했다면
-    //        {
-    //            isArrived = true;
-    //            ++waypointID;
-    //            FindWayPoint(waypointID);
-    //        }
-
-    //        yield return null;
-    //    }
-    //}
-    #endregion
 }
