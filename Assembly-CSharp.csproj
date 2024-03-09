@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\UpgradeUI.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
     <Compile Include="Assets\Scripts\Player\Scanner.cs" />
+    <Compile Include="Assets\Scripts\UIs\ADButtonInit.cs" />
     <Compile Include="Assets\Scripts\Monster\MonsterManager.cs" />
     <Compile Include="Assets\Scripts\UIs\ButtonTextPos.cs" />
     <Compile Include="Assets\Samples\Recorder\3.0.3\Screenshot Capture Sample\CaptureScreenShotExample.cs" />
@@ -88,7 +89,6 @@
     <Compile Include="Assets\Scripts\Player\PlayerCollider.cs" />
     <Compile Include="Assets\Scripts\OutGameMoney.cs" />
     <Compile Include="Assets\Scripts\Items\PencilItem.cs" />
-    <Compile Include="Assets\Scripts\UIs\ADButtonInit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

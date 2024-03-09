@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
         if (OutGameMoney.Inst.fireLevel + 1 < OutGameMoney.Inst.fireRateItem.cost.Length)
         {
            fireCost.text = OutGameMoney.Inst.fireRateItem.cost[OutGameMoney.Inst.fireLevel + 1].ToString();
-           fireSeconds.text = OutGameMoney.Inst.fireRateItem.oneForSeconds[OutGameMoney.Inst.fireLevel + 1].ToString() + "/sec";
+           fireSeconds.text = (1 / OutGameMoney.Inst.fireRateItem.oneForSeconds[OutGameMoney.Inst.fireLevel + 1]).ToString("F2") + "/sec";
         }
         else
         {
