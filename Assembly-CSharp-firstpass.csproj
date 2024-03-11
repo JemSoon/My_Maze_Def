@@ -390,6 +390,10 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.27f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Facebook.Unity.Windows">
+      <HintPath>Assets\FacebookSDK\Plugins\Windows\Facebook.Unity.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
       <Private>False</Private>
@@ -398,16 +402,40 @@
       <HintPath>Assets\AppsFlyer\Tests\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="LibFBGManaged">
+      <HintPath>Assets\FacebookSDK\Plugins\Windows\LibFBGManaged.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="XInputDotNetPure">
+      <HintPath>Assets\FacebookSDK\Plugins\Windows\XInputDotNetPure.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Facebook.Unity.Android">
+      <HintPath>Assets\FacebookSDK\Plugins\Android\Facebook.Unity.Android.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="NSubstitute">
       <HintPath>Assets\AppsFlyer\Tests\NSubstitute.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Facebook.Unity.Canvas">
+      <HintPath>Assets\FacebookSDK\Plugins\Canvas\Facebook.Unity.Canvas.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Castle.Core">
       <HintPath>Assets\AppsFlyer\Tests\Castle.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Facebook.Unity.Settings">
+      <HintPath>Assets\FacebookSDK\Plugins\Settings\Facebook.Unity.Settings.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Facebook.Unity">
+      <HintPath>Assets\FacebookSDK\Plugins\Facebook.Unity.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">

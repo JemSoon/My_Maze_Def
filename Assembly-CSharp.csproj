@@ -58,46 +58,108 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FacebookSDK\Examples\CloudAndroid\Prefabs\PurchaseRowPrefab.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Windows\FBWindowsA2UNotificationsManager.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
     <Compile Include="Assets\Scripts\WayPoint.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Windows\FBWindowsVirtualGamepadManager.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Windows\FBWindowsGraphAPIManager.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Windows\FBWindowsPurchaseManager.cs" />
     <Compile Include="Assets\Scripts\Player\Bullet.cs" />
     <Compile Include="Assets\Scripts\Player\RaiderView.cs" />
     <Compile Include="Assets\Scripts\Player\Weapon.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Windows\FBWindowsLoginManager.cs" />
     <Compile Include="Assets\Scripts\Monster\Monster.cs" />
     <Compile Include="Assets\Scripts\Gate.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Windows\FBWindowsInitManager.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Windows\FBWindowsFriendsManager.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Windows\FBWindowsPhysicalGamepadManager.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Windows\FBWindowsADSManager.cs" />
     <Compile Include="Assets\Scripts\FieldManager.cs" />
     <Compile Include="Assets\Scripts\SliderBar.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\CloudAndroid\Scripts\Menu.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\CloudAndroid\Scripts\LogScroller.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Samples\Recorder\3.0.3\Movie Recorder Sample\MovieRecorderExample.cs" />
     <Compile Include="Assets\Scripts\Monster\WallChecker.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\CloudAndroid\Scripts\SavePage.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\CloudAndroid\Prefabs\ProductRowPrefab.cs" />
     <Compile Include="Assets\Scripts\PoolManager.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Mobile\Scripts\SubMenus\AppEvents.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Mobile\Scripts\LogView.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\InputSystemWarning.cs" />
     <Compile Include="Assets\Scripts\AD\MAX_AD.cs" />
     <Compile Include="Assets\Scripts\Items\FireRateItem.cs" />
     <Compile Include="Assets\Scripts\UpgradeUI.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Windows\FBWindowsLogsManager.cs" />
     <Compile Include="Assets\Scripts\Player\Scanner.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Mobile\Scripts\UIInputHelper.cs" />
     <Compile Include="Assets\Scripts\UIs\ADButtonInit.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Mobile\Scripts\SubMenus\AppRequests.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Mobile\Scripts\MenuBase.cs" />
     <Compile Include="Assets\Scripts\Monster\MonsterManager.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Mobile\Scripts\SubMenus\UploadToMediaLibrary.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\CloudAndroid\Scripts\SettingsMenu.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Mobile\Scripts\SubMenus\Subscription.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Mobile\Scripts\ConsoleBase.cs" />
     <Compile Include="Assets\Scripts\UIs\ButtonTextPos.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\CloudAndroid\Scripts\PurchasePage.cs" />
     <Compile Include="Assets\Samples\Recorder\3.0.3\Screenshot Capture Sample\CaptureScreenShotExample.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Mobile\Scripts\SubMenus\TournamentsMenu.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Mobile\Scripts\SubMenus\DialogShare.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Windows\FBWindowsSoftKeyboardManager.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\CloudAndroid\Scripts\UIState.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Windows\FBWindowsReferralsManager.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\CloudAndroid\Scripts\MainPage.cs" />
     <Compile Include="Assets\Scripts\Flag.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Windows\FBWindowsExampleTabsManager.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\CloudAndroid\Scripts\Utility.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCollider.cs" />
     <Compile Include="Assets\Scripts\OutGameMoney.cs" />
     <Compile Include="Assets\Scripts\Items\PencilItem.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Mobile\Scripts\SubMenus\GraphRequest.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Mobile\Scripts\SubMenus\AccessTokenMenu.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Mobile\Scripts\SubMenus\AppLinks.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Mobile\Scripts\SubMenus\MainMenu.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\CloudAndroid\Scripts\AdsPage.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Mobile\Scripts\SubMenus\Pay.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Windows\FBWindowsShareManager.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Windows\FBWindowsTournamentsManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x86\cpprest_2_10.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\Facebook.Unity.Windows.dll" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x86\XInputInterface.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x86\libcrypto-3.dll" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x86\libssl-3.dll" />
+    <None Include="Assets\FacebookSDK\link.xml" />
+    <None Include="Assets\FacebookSDK\Plugins\iOS\Facebook.Unity.IOS.dll" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x64\libcurl.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x86\LibFBGPlatform.dll" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x64\libcrypto-3-x64.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x64\LibFBGPlatform.dll" />
+    <None Include="Assets\FacebookSDK\Plugins\Settings\Facebook.Unity.Settings.dll" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x64\LibFBGUI.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\FacebookSDK\Plugins\Canvas\Facebook.Unity.Canvas.dll" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x86\zlib1.dll" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\LibFBGManaged.dll" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x64\cpprest_2_10.dll" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x86\libcurl.dll" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x64\WebView2Loader.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\FacebookSDK\Plugins\Facebook.Unity.dll" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
@@ -105,13 +167,22 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x86\tinyxml2.dll" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x64\XInputInterface.dll" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x64\libssl-3-x64.dll" />
     <None Include="Assets\MaxSdk\Mediation\MediationAdapters.txt" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x64\zlib1.dll" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\XInputDotNetPure.dll" />
+    <None Include="Assets\FacebookSDK\Plugins\Android\Facebook.Unity.Android.dll" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x86\LibFBGUI.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x64\tinyxml2.dll" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\FacebookSDK\Plugins\Windows\x86\WebView2Loader.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
@@ -431,6 +502,10 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.27f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Facebook.Unity.Windows">
+      <HintPath>Assets\FacebookSDK\Plugins\Windows\Facebook.Unity.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
       <Private>False</Private>
@@ -439,16 +514,40 @@
       <HintPath>Assets\AppsFlyer\Tests\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="LibFBGManaged">
+      <HintPath>Assets\FacebookSDK\Plugins\Windows\LibFBGManaged.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="XInputDotNetPure">
+      <HintPath>Assets\FacebookSDK\Plugins\Windows\XInputDotNetPure.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Facebook.Unity.Android">
+      <HintPath>Assets\FacebookSDK\Plugins\Android\Facebook.Unity.Android.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="NSubstitute">
       <HintPath>Assets\AppsFlyer\Tests\NSubstitute.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Facebook.Unity.Canvas">
+      <HintPath>Assets\FacebookSDK\Plugins\Canvas\Facebook.Unity.Canvas.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Castle.Core">
       <HintPath>Assets\AppsFlyer\Tests\Castle.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Facebook.Unity.Settings">
+      <HintPath>Assets\FacebookSDK\Plugins\Settings\Facebook.Unity.Settings.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Facebook.Unity">
+      <HintPath>Assets\FacebookSDK\Plugins\Facebook.Unity.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
