@@ -131,6 +131,7 @@
     <Compile Include="Assets\FacebookSDK\Examples\Mobile\Scripts\SubMenus\Pay.cs" />
     <Compile Include="Assets\FacebookSDK\Examples\Windows\FBWindowsShareManager.cs" />
     <Compile Include="Assets\FacebookSDK\Examples\Windows\FBWindowsTournamentsManager.cs" />
+    <Compile Include="Assets\Scripts\AD\FB_AD.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\FacebookSDK\Plugins\Windows\x86\cpprest_2_10.dll" />
