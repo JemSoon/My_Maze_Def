@@ -35,6 +35,7 @@ public class Bullet : MonoBehaviour
         {
             Monster mon = collision.GetComponent<Monster>();
             mon.hp -= damage;
+            mon.InitHPbar();
             //mon.StartCoroutine(mon.KnockBack());
             mon.KnockBackStart = true;
             if (mon.hp>0)
