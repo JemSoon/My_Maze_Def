@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using AppLovinMax.ThirdParty.MiniJson;
+using AppLovinMax.Internal;
 using UnityEngine;
 
 #if UNITY_IOS && !UNITY_EDITOR
@@ -501,6 +502,42 @@ public abstract class MaxSdkBase
     }
 
     /// <summary>
+    /// Inset values for the safe area on the screen used to render banner ads.
+    /// </summary>
+    public class SafeAreaInsets
+    {
+        public int Left { get; private set; }
+        public int Top { get; private set; }
+        public int Right { get; private set; }
+        public int Bottom { get; private set; }
+
+        /// <summary>
+        /// Creates a new instance of <see cref="SafeAreaInsets"/>.
+        /// </summary>
+        /// <param name="insets">An integer array with insets values in the order of left, top, right, and bottom</param>
+        internal SafeAreaInsets(int[] insets)
+        {
+            Left = insets[0];
+            Top = insets[1];
+            Right = insets[2];
+            Bottom = insets[3];
+        }
+
+        public override string ToString()
+        {
+            return "[SafeAreaInsets: Left: " + Left +
+                   ", Top: " + Top +
+                   ", Right: " + Right +
+                   ", Bottom: " + Bottom + "]";
+        }
+    }
+
+    /// <summary>
+    /// Determines whether ad events raised by the AppLovin's Unity plugin should be invoked on the Unity main thread.
+    /// </summary>
+    public static bool? InvokeEventsOnUnityMainThread { get; set; }
+
+    /// <summary>
     /// The CMP service, which provides direct APIs for interfacing with the Google-certified CMP installed, if any.
     /// </summary>
     public static MaxCmpService CmpService
@@ -516,16 +553,10 @@ public abstract class MaxSdkBase
         }
     }
 
-    // Allocate the MaxSdkCallbacks singleton, which receives all callback events from the native SDKs.
-    protected static void InitCallbacks()
+    // Allocate the MaxEventExecutor singleton which handles pushing callbacks from the background to the main thread.
+    protected static void InitializeEventExecutor()
     {
-        var type = typeof(MaxSdkCallbacks);
-        var mgr = new GameObject("MaxSdkCallbacks", type)
-            .GetComponent<MaxSdkCallbacks>(); // Its Awake() method sets Instance.
-        if (MaxSdkCallbacks.Instance != mgr)
-        {
-            MaxSdkLogger.UserWarning("It looks like you have the " + type.Name + " on a GameObject in your scene. Please remove the script from your scene.");
-        }
+        MaxEventExecutor.InitializeIfNeeded();
     }
 
     /// <summary>
@@ -567,7 +598,7 @@ public abstract class MaxSdkBase
     {
         try
         {
-            MaxSdkCallbacks.Instance.ForwardEvent(propsStr);
+            MaxSdkCallbacks.ForwardEvent(propsStr);
         }
         catch (Exception exception)
         {

@@ -15,13 +15,13 @@
 @property (assign, readonly, getter=al_isValidString) BOOL al_validString;
 @end
 
-UIView* UnityGetGLView();
-
 // When native code plugin is implemented in .mm / .cpp file, then functions
 // should be surrounded with extern "C" block to conform C function naming rules
 extern "C"
 {
     static NSString *const TAG = @"MAUnityPlugin";
+
+    UIView* UnityGetGLView();
     
     static ALSdk *_sdk;
     static MAUnityAdManager *_adManager;
@@ -357,7 +357,7 @@ extern "C"
     
     void _MaxShowConsentDialog()
     {
-        NSLog(@"[%@] Failed to show consent dialog - Unavailable on iOS, please use the consent flow: https://dash.applovin.com/documentation/mediation/unity/getting-started/consent-flow", TAG);
+        NSLog(@"[%@] Failed to show consent dialog - Unavailable on iOS, please use the consent flow: https://developers.applovin.com/en/unity/overview/terms-and-privacy-policy-flow", TAG);
     }
     
     int _MaxConsentDialogState()
@@ -1193,6 +1193,13 @@ extern "C"
                 _extraParametersToSet[stringKey] = NSSTRING(value);
             }
         }
+    }
+
+    int * _MaxGetSafeAreaInsets()
+    {
+        UIEdgeInsets safeAreaInsets = UnityGetGLView().safeAreaInsets;
+        static int insets[4] = {(int) safeAreaInsets.left, (int) safeAreaInsets.top, (int) safeAreaInsets.right, (int) safeAreaInsets.bottom};
+        return insets;
     }
     
     void _MaxShowCmpForExistingUser()

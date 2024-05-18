@@ -1176,10 +1176,6 @@
       <Project>{9D51E845-6851-ADEC-14AC-0E0296AEBB89}</Project>
       <Name>AppsFlyer</Name>
     </ProjectReference>
-    <ProjectReference Include="MaxSdk.Scripts.Editor.csproj">
-      <Project>{EE11CCC8-4CBF-EE48-DFF5-3CB21B2B3691}</Project>
-      <Name>MaxSdk.Scripts.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="MaxSdk.Scripts.csproj">
       <Project>{A5E61B52-CBE7-6A2B-7249-13BC47FE2BE7}</Project>
       <Name>MaxSdk.Scripts</Name>

@@ -65,15 +65,15 @@
     <Compile Include="Assets\Joystick Pack\Scripts\Editor\FloatingJoystickEditor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\ExternalDependencyManager\Editor\1.2.177\Google.PackageManagerResolver.dll" />
+    <None Include="Assets\ExternalDependencyManager\Editor\1.2.179\Google.PackageManagerResolver.dll" />
     <None Include="Assets\FacebookSDK\Plugins\Editor\Facebook.Unity.Editor.dll" />
+    <None Include="Assets\ExternalDependencyManager\Editor\external-dependency-manager_version-1.2.179_manifest.txt" />
     <None Include="Assets\MaxSdk\AppLovin\Editor\Dependencies.xml" />
+    <None Include="Assets\ExternalDependencyManager\Editor\1.2.179\Google.IOSResolver.dll" />
     <None Include="Assets\FacebookSDK\Plugins\Editor\Dependencies.xml" />
-    <None Include="Assets\ExternalDependencyManager\Editor\1.2.177\Google.IOSResolver.dll" />
-    <None Include="Assets\ExternalDependencyManager\Editor\external-dependency-manager_version-1.2.177_manifest.txt" />
-    <None Include="Assets\ExternalDependencyManager\Editor\1.2.177\Google.VersionHandlerImpl.dll" />
+    <None Include="Assets\ExternalDependencyManager\Editor\1.2.179\Google.VersionHandlerImpl.dll" />
+    <None Include="Assets\ExternalDependencyManager\Editor\1.2.179\Google.JarResolver.dll" />
     <None Include="Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll" />
-    <None Include="Assets\ExternalDependencyManager\Editor\1.2.177\Google.JarResolver.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -448,10 +448,6 @@
       <HintPath>Assets\FacebookSDK\Plugins\Windows\XInputDotNetPure.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Google.JarResolver">
-      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.177\Google.JarResolver.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.4\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
@@ -488,20 +484,12 @@
       <HintPath>Assets\FacebookSDK\Plugins\Canvas\Facebook.Unity.Canvas.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Google.PackageManagerResolver">
-      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.177\Google.PackageManagerResolver.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Castle.Core">
       <HintPath>Assets\AppsFlyer\Tests\Castle.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Facebook.Unity.Settings">
       <HintPath>Assets\FacebookSDK\Plugins\Settings\Facebook.Unity.Settings.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Google.VersionHandlerImpl">
-      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.177\Google.VersionHandlerImpl.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
@@ -518,6 +506,18 @@
     </Reference>
     <Reference Include="Facebook.Unity">
       <HintPath>Assets\FacebookSDK\Plugins\Facebook.Unity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.JarResolver">
+      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.179\Google.JarResolver.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.VersionHandlerImpl">
+      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.179\Google.VersionHandlerImpl.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.PackageManagerResolver">
+      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.179\Google.PackageManagerResolver.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="nunit.framework">
@@ -1289,10 +1289,6 @@
     <ProjectReference Include="AppsFlyer.csproj">
       <Project>{9D51E845-6851-ADEC-14AC-0E0296AEBB89}</Project>
       <Name>AppsFlyer</Name>
-    </ProjectReference>
-    <ProjectReference Include="MaxSdk.Scripts.Editor.csproj">
-      <Project>{EE11CCC8-4CBF-EE48-DFF5-3CB21B2B3691}</Project>
-      <Name>MaxSdk.Scripts.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="MaxSdk.Scripts.csproj">
       <Project>{A5E61B52-CBE7-6A2B-7249-13BC47FE2BE7}</Project>
