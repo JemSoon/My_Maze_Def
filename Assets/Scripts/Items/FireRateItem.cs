@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireRateItem : MonoBehaviour
 {
-    [Header("단계별 업글 가격 / 한번 발사 텀")]
+    [Header("Step-by-step upgrade price / one-time launch term")]
     public int[] cost;
     public float[] oneForSeconds;
 }

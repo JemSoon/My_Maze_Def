@@ -11,6 +11,7 @@ public class OutGameMoney : MonoBehaviour
     public int money;
     public int pencilLevel;
     public int fireLevel;
+    public int bulletLevel;
     [Header("Stage Scene Index")]
     public int stageLevel;
 
@@ -21,10 +22,13 @@ public class OutGameMoney : MonoBehaviour
 
     private const string FireRateLevelKey = "FireRateLevel";
 
+    private const string BulletLevelKey = "BulletLevel";
+
     private const string StageLevelKey = "StageLevel";
 
     public PencilItem pencilItem;
     public FireRateItem fireRateItem;
+    public BulletItem bulletItem;
 
     public bool isSceneLoaded;
     public AsyncOperation asyncLoad;
@@ -48,14 +52,16 @@ public class OutGameMoney : MonoBehaviour
 
         Inst.pencilItem = Inst.GetComponent<PencilItem>();
         Inst.fireRateItem = Inst.GetComponent<FireRateItem>();
+        Inst.bulletItem = Inst.GetComponent<BulletItem>();
 
-        if (!PlayerPrefs.HasKey(PencilCoolTimeKey) && !PlayerPrefs.HasKey(MoneyKey) && !PlayerPrefs.HasKey(PencilLevelKey) && !PlayerPrefs.HasKey(FireRateLevelKey) && !PlayerPrefs.HasKey(StageLevelKey))
+        if (!PlayerPrefs.HasKey(PencilCoolTimeKey) && !PlayerPrefs.HasKey(MoneyKey) && !PlayerPrefs.HasKey(PencilLevelKey) && !PlayerPrefs.HasKey(FireRateLevelKey) && !PlayerPrefs.HasKey(StageLevelKey) && !PlayerPrefs.HasKey(BulletLevelKey))
         {
             //맨 처음 세이브 없으면 기본값으로 초기화
             Inst.money = 0;
             Inst.pencilCoolTime = Inst.pencilItem.oneForSeconds[0];
             Inst.pencilLevel = 0;
             Inst.fireLevel = 0;
+            Inst.bulletLevel = 0;
             Inst.stageLevel = 0;
         }
 
@@ -65,6 +71,7 @@ public class OutGameMoney : MonoBehaviour
             Inst.money = PlayerPrefs.GetInt(MoneyKey, money);
             Inst.pencilLevel = PlayerPrefs.GetInt(PencilLevelKey, pencilLevel);
             Inst.fireLevel = PlayerPrefs.GetInt(FireRateLevelKey);
+            Inst.bulletLevel = PlayerPrefs.GetInt(BulletLevelKey);
             Inst.stageLevel = PlayerPrefs.GetInt(StageLevelKey);
         }
 
@@ -79,6 +86,7 @@ public class OutGameMoney : MonoBehaviour
         PlayerPrefs.SetInt(MoneyKey, money);
         PlayerPrefs.SetInt(PencilLevelKey, pencilLevel);
         PlayerPrefs.SetInt(FireRateLevelKey, fireLevel);
+        PlayerPrefs.SetInt (BulletLevelKey, bulletLevel);
 
         PlayerPrefs.Save();
     }

@@ -72,6 +72,7 @@ public class Weapon : MonoBehaviour
 
             default: //디폴트에선 연사속도
                 speed = OutGameMoney.Inst.fireRateItem.oneForSeconds[OutGameMoney.Inst.fireLevel]; //현재 업그레이드한 단계의 발사단계 가져오기
+                damage = OutGameMoney.Inst.bulletItem.damage[OutGameMoney.Inst.bulletLevel];
                 break;
         }
     }

@@ -29,6 +29,11 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI fireSeconds;
     public Button fireUpgradeButton;
 
+    public GameObject upgradeBulletLevelMenu;
+    public TextMeshProUGUI bulletCost;
+    public TextMeshProUGUI bulletDamage;
+    public Button bulletUpgradeButton;
+
     public TextMeshProUGUI goldAmountTmp;
     public GameObject floatingJoystick;
 
@@ -94,6 +99,7 @@ public class GameManager : MonoBehaviour
 
         UpgradePencilButtonText();
         UpgradeFireButtonText();
+        UpgrageBulletLevelText();
 
         SetButtonSprite();//돈 정산 후 버튼 정보 활성화
     }
@@ -107,6 +113,7 @@ public class GameManager : MonoBehaviour
         startMenu.SetActive(false);
         upgradePencilMenu.SetActive(false);
         upgradeFireMenu.SetActive(false);
+        upgradeBulletLevelMenu.SetActive(false);
 
         //리스타트
         player.gameObject.SetActive(true);
@@ -170,6 +177,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UpgrageBulletLevelText()
+    {
+        if(OutGameMoney.Inst.bulletLevel + 1 <OutGameMoney.Inst.bulletItem.cost.Length)
+        {
+            bulletCost.text = OutGameMoney.Inst.bulletItem.cost[OutGameMoney.Inst.bulletLevel+1].ToString();
+            bulletDamage.text = OutGameMoney.Inst.bulletItem.damage[OutGameMoney.Inst.bulletLevel + 1].ToString("F1");
+        }
+        else
+        {
+            bulletCost.text = "Max";
+            bulletDamage.text = "Max";
+        }
+    }
+
     public void UpgradePencilButtonClick()
     {
         //현재 설정한 맥시멈 레벨보다 높은 정보를 가져오려 하면 리턴
@@ -219,6 +240,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UpgrageBulletDamageButtonClick()
+    {
+        //현재 설정한 맥시멈 레벨보다 높은 정보를 가져오려 하면 리턴
+        if (OutGameMoney.Inst.bulletLevel + 1 >= OutGameMoney.Inst.bulletItem.cost.Length)
+        { return; }
+
+        //다음 레벨 비용보다 돈이 적으면 리턴
+        if (OutGameMoney.Inst.money < OutGameMoney.Inst.bulletItem.cost[OutGameMoney.Inst.bulletLevel + 1])
+        { return; }
+
+        else
+        {
+            OutGameMoney.Inst.money -= OutGameMoney.Inst.bulletItem.cost[OutGameMoney.Inst.bulletLevel + 1];
+            OutGameMoney.Inst.bulletLevel++;
+            
+            goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
+
+            OutGameMoney.Inst.SaveInfo();
+
+            UpgrageBulletLevelText();
+            SetButtonSprite();
+        }
+    }
+
     public void SetButtonSprite()
     {
         if (OutGameMoney.Inst.pencilLevel + 1 < OutGameMoney.Inst.pencilItem.cost.Length && OutGameMoney.Inst.money < OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.pencilLevel + 1])
@@ -232,6 +277,7 @@ public class GameManager : MonoBehaviour
             pencilUpgradeButton.GetComponent<Button>().interactable = true;
         }
 
+
         if (OutGameMoney.Inst.fireLevel + 1 < OutGameMoney.Inst.fireRateItem.cost.Length && OutGameMoney.Inst.money < OutGameMoney.Inst.fireRateItem.cost[OutGameMoney.Inst.fireLevel + 1])
         {
             fireCost.color = Color.red;
@@ -241,6 +287,18 @@ public class GameManager : MonoBehaviour
         {
             fireCost.color = Color.black;
             fireUpgradeButton.GetComponent<Button>().interactable = true;
+        }
+
+
+        if (OutGameMoney.Inst.bulletLevel + 1 < OutGameMoney.Inst.bulletItem.cost.Length && OutGameMoney.Inst.money < OutGameMoney.Inst.bulletItem.cost[OutGameMoney.Inst.bulletLevel + 1])
+        {
+            bulletCost.color = Color.red;
+            bulletUpgradeButton.GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            bulletCost.color = Color.black;
+            bulletUpgradeButton.GetComponent<Button>().interactable = true;
         }
     }
 
