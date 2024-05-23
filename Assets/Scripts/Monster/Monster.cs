@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -48,9 +49,8 @@ public class Monster : MonoBehaviour
     public Vector2 nextVec;
     int knockBackForce;
 
-    [Header("MonsterHPbar")]
-    public Transform HPtransform;
-    public GameObject HPbar;
+    [Header("MonsterHP")]
+    public TextMeshProUGUI tmp;
 
     private void Awake()
     {
@@ -65,7 +65,7 @@ public class Monster : MonoBehaviour
     {
         SetActiveMonster(true);
         this.gameObject.SetActive(true);
-        HPbar.SetActive(true);
+
         this.transform.position = portal.transform.position;
         this.waypointID = 0;
         FindWayPoint(waypointID);
@@ -171,7 +171,7 @@ public class Monster : MonoBehaviour
         hp = maxHp;
 
         //InitHPbar();
-        HPtransform.localScale = new Vector2(1, 1);
+
         Activate_Func();
     }
 
@@ -184,6 +184,9 @@ public class Monster : MonoBehaviour
         knockBackForce = data.knockBackForce;
 
         giveGoldCount = data.giveGoldCount;
+
+        tmp.text = hp.ToString("F1");
+        tmp.gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -248,8 +251,9 @@ public class Monster : MonoBehaviour
 
     public void Dead()
     {
-        HPbar.SetActive(false);
+        //HPbar.SetActive(false);
         SetActiveMonster(false);
+        tmp.gameObject.SetActive(false);
     }
 
     void SetActiveMonster(bool active)
@@ -273,11 +277,5 @@ public class Monster : MonoBehaviour
             //코인 원위치로
             coinSprite.gameObject.transform.position = transform.position;
         }
-    }
-
-    public void InitHPbar()
-    {
-        float value = Mathf.Clamp01(hp / maxHp);
-        HPtransform.localScale = new Vector3(value, 1);
     }
 }
