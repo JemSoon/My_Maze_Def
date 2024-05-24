@@ -24,7 +24,7 @@ public class Monster : MonoBehaviour
     public float maxHp;
     Rigidbody2D rigid;
     public Animator anim;
-    SpriteRenderer sprite;
+    public SpriteRenderer sprite;
     bool isLive = true;
     WaitForFixedUpdate wait;
 
@@ -55,8 +55,8 @@ public class Monster : MonoBehaviour
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-        sprite= GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
+        //sprite= GetComponent<SpriteRenderer>(); //스프라이트는 유니티 인스펙터에서 설정
+        //anim = GetComponent<Animator>();
         wait = new WaitForFixedUpdate();
         monsterCollider = GetComponent<CapsuleCollider2D>();
     }

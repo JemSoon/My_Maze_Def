@@ -11,6 +11,8 @@ public class Spawner : MonoBehaviour
     int nowCount = 0; //현재 소환한 마리수
     int index; //레벨에 따른 몬스터 종류
     float timer;
+
+    int Zpos; //몬스터 나올때마다 Z값 올려주기용
     //[Header("몇초마다 단계를 올립니까?")]
     //public float seconds;
 
@@ -51,9 +53,14 @@ public class Spawner : MonoBehaviour
         //monster.transform.position = spawnPoint[]
 
         monster.GetComponent<Monster>().Init(spawnData[(int)monsterTypes[index]]);
-        monster.transform.position = this.transform.position;//몬스터 위치 스폰 포탈 위치로 초기화
 
-        if(index < monsterTypes.Length-1)
+        UnityEngine.Vector3 spawnPos = new UnityEngine.Vector3(this.transform.position.x, this.transform.position.y, Zpos);
+        monster.transform.position = spawnPos;//몬스터 위치 스폰 포탈 위치로 초기화 + Z값으로 몬스터 오브젝트 소팅
+                                              //이렇게 하지 않으면 몬스터가 뒤에 있어도 글자가 앞에 튀어나와 앞 몬스터와 겹침
+        ++Zpos;
+        if (Zpos >= 1000) { Zpos = 0; } //숫자 넘 커지면 혹시 모를 안전용 초기화
+
+        if (index < monsterTypes.Length-1)
         {
             //monsterTypes가 4종류라면 인덱스는 3번까지 생성이 되고
             //2번일때 ++해서 3번이 되고나서 ++하면 안되니 Length-1
