@@ -96,4 +96,5 @@ public enum MonsterType
     red,
     purple,
     blue,
+    green,
 }
