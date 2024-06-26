@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -18,9 +16,12 @@ public class Spawner : MonoBehaviour
 
     [Header("Spawn Order What you want")]
     public MonsterType[] monsterTypes;
+
+    public MonsterData[] monsterDatas;
+
     private void Awake()
     {
-        spawnCount = monsterTypes.Length;
+        spawnCount = monsterDatas.Length;
         //기본 소환 마리수 저장해두기
         beginSpawnCount = spawnCount;
     }
@@ -30,29 +31,19 @@ public class Spawner : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        //SpawnData의 배열을 넘지않게 제한
-        //index = Mathf.Min(Mathf.FloorToInt(GameManager.Inst.gameTime / seconds),spawnData.Length-1);//원래 호칭은 level이였으나 용도에 맞게 index로 변경
-
-        if (timer > spawnData[(int)monsterTypes[index]].spawnTime && nowCount<spawnCount)
+        if (GameManager.Inst.gameTime >= monsterDatas[index].spawnTime && nowCount < spawnCount && !monsterDatas[index].isSpawn)
         {
-            timer = 0;
+            monsterDatas[index].isSpawn = true;
             Spawn();
         }
-
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    ++spawnCount;
-        //    ++nowCount;
-        //    Spawn();
-        //}
     }
 
     void Spawn()
     {
         GameObject monster = GameManager.Inst.poolManager.Get(0);
-        //monster.transform.position = spawnPoint[]
 
-        monster.GetComponent<Monster>().Init(spawnData[(int)monsterTypes[index]]);
+        //monster.GetComponent<Monster>().Init(spawnData[(int)monsterTypes[index]]);
+        monster.GetComponent<Monster>().Init(spawnData[(int)monsterDatas[index].monsterType]);
 
         UnityEngine.Vector3 spawnPos = new UnityEngine.Vector3(this.transform.position.x, this.transform.position.y, Zpos);
         monster.transform.position = spawnPos;//몬스터 위치 스폰 포탈 위치로 초기화 + Z값으로 몬스터 오브젝트 소팅
@@ -60,7 +51,7 @@ public class Spawner : MonoBehaviour
         ++Zpos;
         if (Zpos >= 1000) { Zpos = 0; } //숫자 넘 커지면 혹시 모를 안전용 초기화
 
-        if (index < monsterTypes.Length-1)
+        if (index < monsterDatas.Length - 1)
         {
             //monsterTypes가 4종류라면 인덱스는 3번까지 생성이 되고
             //2번일때 ++해서 3번이 되고나서 ++하면 안되니 Length-1
@@ -97,4 +88,12 @@ public enum MonsterType
     purple,
     blue,
     green,
+}
+
+[System.Serializable]
+public class MonsterData
+{
+    public MonsterType monsterType;
+    public bool isSpawn;
+    public float spawnTime;
 }
