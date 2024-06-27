@@ -30,7 +30,7 @@ public class MAX_AD : MonoBehaviour
     //public Text rewardedStatusText;
     //public Text rewardedInterstitialStatusText;
 
-    //private bool isBannerShowing;
+    private bool isBannerShowing;
     //private bool isMRecShowing;
 
     private int interstitialRetryAttempt;
@@ -45,10 +45,10 @@ public class MAX_AD : MonoBehaviour
             // AppLovin SDK is initialized, configure and start loading ads.
             Debug.Log("MAX SDK Initialized");
 
-            //InitializeInterstitialAds();
+            InitializeInterstitialAds();
             InitializeRewardedAds();
             //InitializeRewardedInterstitialAds();
-            //InitializeBannerAds();
+            InitializeBannerAds();
             //InitializeMRecAds();
 
             // Initialize Adjust SDK
@@ -80,7 +80,7 @@ public class MAX_AD : MonoBehaviour
         MaxSdk.LoadInterstitial(InterstitialAdUnitId);
     }
 
-    void ShowInterstitial()
+    public void ShowInterstitial()
     {
         if (MaxSdk.IsInterstitialReady(InterstitialAdUnitId))
         {
@@ -88,6 +88,7 @@ public class MAX_AD : MonoBehaviour
         }
         else
         {
+            Debug.Log("전면광고가 준비가 안됬슴다");
         }
     }
 
@@ -372,20 +373,20 @@ public class MAX_AD : MonoBehaviour
         MaxSdk.SetBannerBackgroundColor(BannerAdUnitId, Color.black);
     }
 
-    private void ToggleBannerVisibility()
+    public void ToggleBannerVisibility()
     {
-        //if (!isBannerShowing)
-        //{
-        //    MaxSdk.ShowBanner(BannerAdUnitId);
-        //    showBannerButton.GetComponentInChildren<Text>().text = "Hide Banner";
-        //}
-        //else
-        //{
-        //    MaxSdk.HideBanner(BannerAdUnitId);
-        //    showBannerButton.GetComponentInChildren<Text>().text = "Show Banner";
-        //}
+        if (!isBannerShowing)
+        {
+            MaxSdk.ShowBanner(BannerAdUnitId);
+            //showBannerButton.GetComponentInChildren<Text>().text = "Hide Banner";
+        }
+        else
+        {
+            MaxSdk.HideBanner(BannerAdUnitId);
+            //showBannerButton.GetComponentInChildren<Text>().text = "Show Banner";
+        }
 
-        //isBannerShowing = !isBannerShowing;
+        isBannerShowing = !isBannerShowing;
     }
 
     private void OnBannerAdLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
@@ -393,6 +394,7 @@ public class MAX_AD : MonoBehaviour
         // Banner ad is ready to be shown.
         // If you have already called MaxSdk.ShowBanner(BannerAdUnitId) it will automatically be shown on the next ad refresh.
         Debug.Log("Banner ad loaded");
+        MaxSdk.ShowBanner(adUnitId);
     }
 
     private void OnBannerAdFailedEvent(string adUnitId, MaxSdkBase.ErrorInfo errorInfo)

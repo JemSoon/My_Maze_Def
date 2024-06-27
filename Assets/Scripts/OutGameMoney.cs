@@ -123,7 +123,5 @@ public class OutGameMoney : MonoBehaviour
                 Debug.Log("Rewarded ad was not successfully watched.");
             }
         });   
-
-        
     }
 }
