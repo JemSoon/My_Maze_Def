@@ -15,8 +15,6 @@ public class Spawner : MonoBehaviour
     //public float seconds;
 
     [Header("Spawn Order What you want")]
-    public MonsterType[] monsterTypes;
-
     public MonsterData[] monsterDatas;
 
     private void Awake()
@@ -72,7 +70,7 @@ public class Spawner : MonoBehaviour
 [System.Serializable]
 public class SpawnData
 {
-    public float spawnTime;
+    //public float spawnTime;
     public int spriteType;
     public int hp;
     public float speed;
