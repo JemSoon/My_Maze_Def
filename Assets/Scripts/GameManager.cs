@@ -459,4 +459,18 @@ public class GameManager : MonoBehaviour
     {
         OutGameMoney.Inst.ADButtonClick();
     }
+
+    //몬스터 HP 디버깅용
+    public void DebugMonsterHPshow()
+    {
+        OutGameMoney.Inst.monHPshow = !OutGameMoney.Inst.monHPshow;
+
+        //현재 소환되있는 애들도 ui상태 변경
+        Monster[] monsters = FindObjectsOfType<Monster>();
+        // 모든 Monster 컴포넌트를 순회하며 monHP를 0으로 설정한다.
+        foreach (Monster monster in monsters)
+        {
+            monster.tmp.gameObject.SetActive(OutGameMoney.Inst.monHPshow);
+        }
+    }
 }

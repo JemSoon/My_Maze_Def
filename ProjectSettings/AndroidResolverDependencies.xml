@@ -13,6 +13,7 @@
     <package>com.facebook.android:facebook-gamingservices:[16.0.1,17)</package>
     <package>com.facebook.android:facebook-login:[16.0.1,17)</package>
     <package>com.facebook.android:facebook-share:[16.0.1,17)</package>
+    <package>com.google.android.ump:user-messaging-platform:2.+</package>
     <package>com.parse.bolts:bolts-android:1.4.0</package>
   </packages>
   <files />

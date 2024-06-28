@@ -34,6 +34,9 @@ public class OutGameMoney : MonoBehaviour
     public AsyncOperation asyncLoad;
     public MAX_AD MAX_AD;
 
+    [Header("Debugs")]
+    public bool monHPshow = true;
+
     private void Awake()
     {
         //Debug.Log("어웨이크 호출");

@@ -30,6 +30,7 @@ dependencies {
     implementation 'com.facebook.android:facebook-gamingservices:[16.0.1,17)' // Assets/FacebookSDK/Plugins/Editor/Dependencies.xml:9
     implementation 'com.facebook.android:facebook-login:[16.0.1,17)' // Assets/FacebookSDK/Plugins/Editor/Dependencies.xml:7
     implementation 'com.facebook.android:facebook-share:[16.0.1,17)' // Assets/FacebookSDK/Plugins/Editor/Dependencies.xml:8
+    implementation 'com.google.android.ump:user-messaging-platform:2.+' // Assets/MaxSdk/AppLovin/Editor/Dependencies.xml:5
     implementation 'com.parse.bolts:bolts-android:1.4.0' // Assets/FacebookSDK/Plugins/Editor/Dependencies.xml:4
 // Android Resolver Dependencies End
 **DEPS**}

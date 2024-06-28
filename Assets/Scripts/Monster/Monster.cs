@@ -186,7 +186,8 @@ public class Monster : MonoBehaviour
         giveGoldCount = data.giveGoldCount;
 
         tmp.text = hp.ToString("F1");
-        tmp.gameObject.SetActive(true);
+        //tmp.gameObject.SetActive(true);
+        tmp.gameObject.SetActive(OutGameMoney.Inst.monHPshow);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
