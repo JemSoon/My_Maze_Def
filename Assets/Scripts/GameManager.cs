@@ -330,7 +330,7 @@ public class GameManager : MonoBehaviour
     {
         resultMenu.SetActive(false);
 
-        MAX_AD.ShowInterstitial();
+        //MAX_AD.ShowInterstitial();
 
         StartCoroutine(goldCount(player.goldCount));
     }

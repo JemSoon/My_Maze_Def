@@ -648,6 +648,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
+    Android: LEVELPLAY_DEPENDENCIES_INSTALLED
     Server: 
   additionalCompilerArguments: {}
   platformArchitecture: {}
