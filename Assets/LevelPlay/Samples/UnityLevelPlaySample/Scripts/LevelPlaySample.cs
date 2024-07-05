@@ -1,13 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
+using System.Collections;
 
 // Example for IronSource Unity.
 public class LevelPlaySample : MonoBehaviour
 {
-    public void Start()
+    public void Awake()
     {
+        //IronSource.Agent.shouldTrackNetworkState(true);
+
 #if UNITY_ANDROID
-        string appKey = "85460dcd";
+        string appKey = "85460dcd";//"85460dcd";1efb47425
 #elif UNITY_IPHONE
         string appKey = "8545d445";
 #else
@@ -27,8 +31,11 @@ public class LevelPlaySample : MonoBehaviour
 
     void OnEnable()
     {
+        Debug.Log("unity-script: Registering SDK initialization event handler");
         //Add Init Event
+        Debug.Log("Registering SDK initialization event handler - 스따또");
         IronSourceEvents.onSdkInitializationCompletedEvent += SdkInitializationCompletedEvent;
+        Debug.Log("Registering SDK initialization event handler - 엔도");
 
         //Add ImpressionSuccess Event
         IronSourceEvents.onImpressionDataReadyEvent += ImpressionDataReadyEvent;
@@ -62,7 +69,7 @@ public class LevelPlaySample : MonoBehaviour
 
     void OnApplicationPause(bool isPaused)
     {
-        Debug.Log("unity-script: OnApplicationPause = " + isPaused);
+        //Debug.Log("unity-script: OnApplicationPause = " + isPaused);
         IronSource.Agent.onApplicationPause(isPaused);
     }
 
