@@ -21,7 +21,7 @@ public class TEST_LP : MonoBehaviour
         inst = this;
         DontDestroyOnLoad(gameObject);
 
-        InitializeAd();
+        //InitializeAd();
 
     }
 
@@ -37,10 +37,10 @@ public class TEST_LP : MonoBehaviour
         };
     }
 
-    private void InitializeAd()
-    {
-        IronSource.Agent.validateIntegration();
-        IronSource.Agent.init(APP_KEY);
-        IronSource.Agent.shouldTrackNetworkState(true);
-    }
+    //private void InitializeAd()
+    //{
+    //    IronSource.Agent.validateIntegration();
+    //    IronSource.Agent.init(APP_KEY);
+    //    IronSource.Agent.shouldTrackNetworkState(true);
+    //}
 }
