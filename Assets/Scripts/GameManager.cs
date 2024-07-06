@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     const int maxStage = 2; //마지막 스테이지일시 다음 스테이지 불러오기 막기용(씬 인덱스가 아니라 실제 스테이지 네임 기반)
 
     public MAX_AD MAX_AD;//test
+    public AD_Mob ad_mob;
    
     private void Awake()
     {
@@ -56,7 +57,7 @@ public class GameManager : MonoBehaviour
         stageTmp.text = SceneManager.GetActiveScene().name;
         isStageClear = false;
 
-        MAX_AD = OutGameMoney.Inst.MAX_AD;
+        ad_mob = OutGameMoney.Inst.ad_mob;
 
         //저장된 스테이지가 맨처음게 아니면 로드
         if (OutGameMoney.Inst.stageLevel != 0 && OutGameMoney.Inst.isSceneLoaded == false)
@@ -331,8 +332,9 @@ public class GameManager : MonoBehaviour
         resultMenu.SetActive(false);
 
         //MAX_AD.ShowInterstitial();
+        ad_mob.ShowInterstitialAd();
 
-        StartCoroutine(goldCount(player.goldCount));
+        //StartCoroutine(goldCount(player.goldCount));
     }
 
     IEnumerator goldCount(int currentGet)

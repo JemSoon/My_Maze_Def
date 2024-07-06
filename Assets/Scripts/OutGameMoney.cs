@@ -33,6 +33,7 @@ public class OutGameMoney : MonoBehaviour
     public bool isSceneLoaded;
     public AsyncOperation asyncLoad;
     public MAX_AD MAX_AD;
+    public AD_Mob ad_mob;
 
     [Header("Debugs")]
     public bool monHPshow = true;
@@ -126,5 +127,17 @@ public class OutGameMoney : MonoBehaviour
         //        Debug.Log("Rewarded ad was not successfully watched.");
         //    }
         //});   
+
+        if(ad_mob.rewardedAd.CanShowAd())
+        {
+            ad_mob.rewardedAd.Show(ad_mob.GetReward);
+            Debug.Log("±¤°í ½ÇÇà");
+        }
+
+        else
+        {
+            Debug.Log("º¸»ó ±¤°í ½ÇÆÐ");
+        }
     }
+
 }
