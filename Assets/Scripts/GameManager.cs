@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     public bool isStageClear;
     const int maxStage = 2; //마지막 스테이지일시 다음 스테이지 불러오기 막기용(씬 인덱스가 아니라 실제 스테이지 네임 기반)
 
-    public MAX_AD MAX_AD;//test
+    public AD_MOB admob;
    
     private void Awake()
     {
@@ -55,8 +55,6 @@ public class GameManager : MonoBehaviour
         goldAmountTmp.text = OutGameMoney.Inst.money.ToString();
         stageTmp.text = SceneManager.GetActiveScene().name;
         isStageClear = false;
-
-        MAX_AD = OutGameMoney.Inst.MAX_AD;
 
         //저장된 스테이지가 맨처음게 아니면 로드
         if (OutGameMoney.Inst.stageLevel != 0 && OutGameMoney.Inst.isSceneLoaded == false)
@@ -70,6 +68,8 @@ public class GameManager : MonoBehaviour
             Inst.isGameOver = true;
             GameEnd();
         }
+
+        admob = OutGameMoney.Inst.admob;
     }
 
     private void Update()
@@ -330,12 +330,12 @@ public class GameManager : MonoBehaviour
     {
         resultMenu.SetActive(false);
 
-        //MAX_AD.ShowInterstitial();
+        admob.ShowInterstitialAd();
 
-        StartCoroutine(goldCount(player.goldCount));
+        //StartCoroutine(goldCount(player.goldCount)); //이거땜에 전면광고 꼬임
     }
 
-    IEnumerator goldCount(int currentGet)
+    public IEnumerator goldCount(int currentGet)
     {
         float duration = 0.01f;
         float timer = 0.0f;

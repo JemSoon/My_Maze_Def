@@ -32,7 +32,7 @@ public class OutGameMoney : MonoBehaviour
 
     public bool isSceneLoaded;
     public AsyncOperation asyncLoad;
-    public MAX_AD MAX_AD;
+    public AD_MOB admob;
 
     [Header("Debugs")]
     public bool monHPshow = true;
@@ -113,18 +113,6 @@ public class OutGameMoney : MonoBehaviour
 
     public void ADButtonClick()
     {
-        //MAX_AD.ShowRewardedAd(success =>
-        //{
-        //    if (success)
-        //    {
-        //        //여기에 버튼 비활성화가 필요할지도 창 닫히는데 살짝 텀이..
-        //        //광고버튼.GetComponent<Button>().interactable = false;
-        //        StartCoroutine(GameManager.Inst.gold2Count(Player.Inst.goldCount));//코인 두배 보상!
-        //    }
-        //    else
-        //    {
-        //        Debug.Log("Rewarded ad was not successfully watched.");
-        //    }
-        //});   
+        admob.ShowRewardedAd();
     }
 }

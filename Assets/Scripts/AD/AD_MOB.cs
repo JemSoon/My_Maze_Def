@@ -113,8 +113,9 @@ public class AD_MOB : MonoBehaviour
         // 전면 광고가 닫혔을 때 호출
         interstitialAd.OnAdFullScreenContentClosed += () =>
         {
-            Debug.Log("Interstitial Ad full screen content closed.");
+            Debug.Log("전면광고 새로 로드");
 
+            GameManager.Inst.StartCoroutine(GameManager.Inst.goldCount(GameManager.Inst.player.goldCount));
             // 다음 새 광고 준비
             LoadInterstitialAd();
         };
@@ -180,6 +181,8 @@ public class AD_MOB : MonoBehaviour
         _bannerView.OnBannerAdLoaded += () =>
         {
             Debug.Log("배너 로드 완료 이벤트");
+            GameObject banner = GameObject.Find("BANNER(Clone)");
+            DontDestroyOnLoad(banner);
         };
         // Raised when an ad fails to load into the banner view.
         _bannerView.OnBannerAdLoadFailed += (LoadAdError error) =>
@@ -297,7 +300,7 @@ public class AD_MOB : MonoBehaviour
         // Raised when the ad closed full screen content.
         ad.OnAdFullScreenContentClosed += () =>
         {
-            Debug.Log("Rewarded Ad full screen content closed.");
+            Debug.Log("보상 광고 닫았고 새 보상광고 로드");
 
             // Reload the ad so that we can show another as soon as possible.
             LoadRewardedAd();

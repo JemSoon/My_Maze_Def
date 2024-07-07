@@ -6640,7 +6640,7 @@ MonoBehaviour:
   fireRateItem: {fileID: 0}
   bulletItem: {fileID: 0}
   isSceneLoaded: 0
-  MAX_AD: {fileID: 407405954}
+  admob: {fileID: 1877041608}
   monHPshow: 1
 --- !u!4 &1124773533
 Transform:
@@ -7869,7 +7869,7 @@ MonoBehaviour:
   resultMenu: {fileID: 831696797}
   resultCount: {fileID: 1403792981}
   isStageClear: 0
-  MAX_AD: {fileID: 0}
+  admob: {fileID: 0}
 --- !u!4 &1384377880
 Transform:
   m_ObjectHideFlags: 0
