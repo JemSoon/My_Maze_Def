@@ -36,6 +36,7 @@ public class OutGameMoney : MonoBehaviour
 
     [Header("Debugs")]
     public bool monHPshow = true;
+    public int showInterstitialAdCount = 0;
 
     private void Awake()
     {

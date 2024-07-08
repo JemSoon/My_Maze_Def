@@ -330,7 +330,18 @@ public class GameManager : MonoBehaviour
     {
         resultMenu.SetActive(false);
 
-        admob.ShowInterstitialAd();
+        ++OutGameMoney.Inst.showInterstitialAdCount;
+
+        if(OutGameMoney.Inst.showInterstitialAdCount>=3)
+        {
+            admob.ShowInterstitialAd();
+            OutGameMoney.Inst.showInterstitialAdCount = 0;
+        }
+        else
+        {
+            //¼¼¹øÂ° ¾Æ´Ï¸é °Á ´ÝÀ½
+            StartCoroutine(goldCount(player.goldCount));
+        }
 
         //StartCoroutine(goldCount(player.goldCount)); //ÀÌ°Å¶«¿¡ Àü¸é±¤°í ²¿ÀÓ
     }
