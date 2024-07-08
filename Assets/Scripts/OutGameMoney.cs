@@ -115,5 +115,6 @@ public class OutGameMoney : MonoBehaviour
     public void ADButtonClick()
     {
         admob.ShowRewardedAd();
+        showInterstitialAdCount = 0;
     }
 }
