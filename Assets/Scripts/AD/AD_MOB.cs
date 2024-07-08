@@ -159,8 +159,10 @@ public class AD_MOB : MonoBehaviour
             DestroyBannerView();
         }
 
+        AdSize adSize = AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth);
+
         // Create a 320x50 banner at top of the screen
-        _bannerView = new BannerView(_BannerUnitId, AdSize.Banner, AdPosition.Top);
+        _bannerView = new BannerView(_BannerUnitId, adSize, AdPosition.Top);
 
         ListenToBannerEvents();
     }
@@ -181,7 +183,7 @@ public class AD_MOB : MonoBehaviour
         _bannerView.OnBannerAdLoaded += () =>
         {
             Debug.Log("배너 로드 완료 이벤트");
-            GameObject banner = GameObject.Find("BANNER(Clone)");
+            GameObject banner = GameObject.Find("ADAPTIVE(Clone)"); //사이즈 조절 안할거면 "BANNER(Clone)"
             DontDestroyOnLoad(banner);
         };
         // Raised when an ad fails to load into the banner view.
@@ -301,9 +303,11 @@ public class AD_MOB : MonoBehaviour
         ad.OnAdFullScreenContentClosed += () =>
         {
             Debug.Log("보상 광고 닫았고 새 보상광고 로드");
-
-            // Reload the ad so that we can show another as soon as possible.
             LoadRewardedAd();
+
+            GameManager.Inst.resultMenu.SetActive(false);
+            GameManager.Inst.StartCoroutine(GameManager.Inst.gold2Count(GameManager.Inst.player.goldCount));
+
         };
         // Raised when the ad failed to open full screen content.
         ad.OnAdFullScreenContentFailed += (AdError error) =>
