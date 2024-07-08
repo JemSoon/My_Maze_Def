@@ -8,9 +8,9 @@ using System;
 public class AD_MOB : MonoBehaviour
 {
 #if UNITY_ANDROID
-    private string _InterstitialUnitId = "ca-app-pub-3940256099942544/1033173712";
-    private string _BannerUnitId = "ca-app-pub-3940256099942544/6300978111";
-    private string _RewardedUnitId = "ca-app-pub-3940256099942544/5224354917";
+    private string _InterstitialUnitId = "ca-app-pub-7670428849239369/4078121744";
+    private string _BannerUnitId = "ca-app-pub-7670428849239369/8772045229";
+    private string _RewardedUnitId = "ca-app-pub-7670428849239369/2765040077";
 #elif UNITY_IPHONE
   private string _InterstitialUnitId = "ca-app-pub-3940256099942544/4411468910";
 #else
