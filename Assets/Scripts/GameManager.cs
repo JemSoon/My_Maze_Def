@@ -339,11 +339,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //¼¼¹øÂ° ¾Æ´Ï¸é °Á ´ÝÀ½
+            //¼¼¹øÂ° ¾Æ´Ï¸é °Á ´Ý°í µ·Á¤»ê
             StartCoroutine(goldCount(player.goldCount));
         }
-
-        //StartCoroutine(goldCount(player.goldCount)); //ÀÌ°Å¶«¿¡ Àü¸é±¤°í ²¿ÀÓ
     }
 
     public IEnumerator goldCount(int currentGet)
