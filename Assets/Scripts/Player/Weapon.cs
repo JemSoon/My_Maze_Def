@@ -111,11 +111,15 @@ public class Weapon : MonoBehaviour
         Vector3 dir = targetPos - transform.position;//방향(크기포함)
         dir = dir.normalized;//정규화(크기는 1로 동일시화)
 
+        // 디버그 출력 추가
+        Debug.Log("Target Position: " + targetPos);
+        Debug.Log("Current Position: " + transform.position);
+        Debug.Log("Direction: " + dir);
+
         Transform bullet = GameManager.Inst.poolManager.Get(prefabId).transform.transform;
         bullet.position = transform.position;
 
         //목표를 향해 회전하는 함수
-        bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<Bullet>().Init(damage, count, dir);
     }
 }

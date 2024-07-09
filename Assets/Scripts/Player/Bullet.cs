@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     public int per; //몇 마리 관통?
     public float lifeTime;
     Rigidbody2D rigid;
+    float bulletSpeed = 15f;
 
     private void Awake()
     {
@@ -20,9 +21,16 @@ public class Bullet : MonoBehaviour
         this.damage = damage;
         this.per = per;
 
+        // 중력 영향을 받지 않도록 설정
+        rigid.gravityScale = 0;
+
+        // 저항값을 0으로 설정하여 속도가 감소하지 않도록 함
+        rigid.drag = 0;
+        rigid.angularDrag = 0;
+
         if (per >= 0)
         {
-            rigid.velocity = dir * 15f;//원하는 속력 커스텀
+            rigid.velocity = dir * bulletSpeed;//원하는 속력 커스텀
         }    
     }
 
@@ -50,7 +58,7 @@ public class Bullet : MonoBehaviour
         if(per == -1) 
         {
             //근접무기라면
-            rigid.velocity =Vector2.zero;
+            //rigid.velocity =Vector2.zero;
             gameObject.SetActive(false);
         }
     }
@@ -83,10 +91,19 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         float rotationSpeed = 1000f; //총알 임시 회전 속도
         float rotationAmount = rotationSpeed * Time.deltaTime;
-        gameObject.transform.Rotate(0,0,rotationAmount);
+
+        // 현재의 z축 회전값을 가져와서 누적된 회전값을 계산
+        float currentRotation = gameObject.transform.rotation.eulerAngles.z;
+        currentRotation += rotationAmount;
+
+        // 360도 범위 내로 회전값을 유지
+        currentRotation = currentRotation % 360f;
+
+        // 새로운 회전값을 적용
+        gameObject.transform.rotation = Quaternion.Euler(0, 0, currentRotation);
     }
 }

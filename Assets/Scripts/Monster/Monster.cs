@@ -51,6 +51,7 @@ public class Monster : MonoBehaviour
 
     [Header("MonsterHP")]
     public TextMeshProUGUI tmp;
+    public Canvas canvas;
 
     private void Awake()
     {

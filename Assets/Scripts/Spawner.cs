@@ -43,11 +43,17 @@ public class Spawner : MonoBehaviour
         //monster.GetComponent<Monster>().Init(spawnData[(int)monsterTypes[index]]);
         monster.GetComponent<Monster>().Init(spawnData[(int)monsterDatas[index].monsterType]);
 
-        UnityEngine.Vector3 spawnPos = new UnityEngine.Vector3(this.transform.position.x, this.transform.position.y, Zpos);
+        //UnityEngine.Vector3 spawnPos = new UnityEngine.Vector3(this.transform.position.x, this.transform.position.y, Zpos);
+        Vector3 spawnPos = this.transform.position;
+        monster.GetComponent<Monster>().sprite.sortingOrder = 2 + Zpos;
+        monster.GetComponent<Monster>().canvas.sortingOrder = 2 + Zpos;
         monster.transform.position = spawnPos;//몬스터 위치 스폰 포탈 위치로 초기화 + Z값으로 몬스터 오브젝트 소팅
                                               //이렇게 하지 않으면 몬스터가 뒤에 있어도 글자가 앞에 튀어나와 앞 몬스터와 겹침
         ++Zpos;
-        if (Zpos >= 1000) { Zpos = 0; } //숫자 넘 커지면 혹시 모를 안전용 초기화
+        if (Zpos >= 100) 
+        {
+            Zpos = 0; 
+        } //숫자 넘 커지면 혹시 모를 안전용 초기화
 
         if (index < monsterDatas.Length - 1)
         {
