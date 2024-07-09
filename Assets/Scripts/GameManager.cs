@@ -158,12 +158,12 @@ public class GameManager : MonoBehaviour
         if(OutGameMoney.Inst.pencilLevel + 1< OutGameMoney.Inst.pencilItem.cost.Length)
         {
             pencilCost.text = OutGameMoney.Inst.pencilItem.cost[OutGameMoney.Inst.pencilLevel + 1].ToString();              //소수점2자리
-            pencilSeconds.text = (1 / OutGameMoney.Inst.pencilItem.oneForSeconds[OutGameMoney.Inst.pencilLevel + 1]).ToString("F2") + "/sec";
+            pencilSeconds.text = (1 / OutGameMoney.Inst.pencilItem.oneForSeconds[OutGameMoney.Inst.pencilLevel]).ToString("F2") + "/sec";
         }
         else
         {
             pencilCost.text = "Max";
-            pencilSeconds.text = "Max";
+            pencilSeconds.text = (1 / OutGameMoney.Inst.pencilItem.oneForSeconds[OutGameMoney.Inst.pencilLevel]).ToString("F2") + "/sec";
         }
     }
 
@@ -172,12 +172,12 @@ public class GameManager : MonoBehaviour
         if (OutGameMoney.Inst.fireLevel + 1 < OutGameMoney.Inst.fireRateItem.cost.Length)
         {
            fireCost.text = OutGameMoney.Inst.fireRateItem.cost[OutGameMoney.Inst.fireLevel + 1].ToString();
-           fireSeconds.text = (1 / OutGameMoney.Inst.fireRateItem.oneForSeconds[OutGameMoney.Inst.fireLevel + 1]).ToString("F2") + "/sec";
+           fireSeconds.text = (1 / OutGameMoney.Inst.fireRateItem.oneForSeconds[OutGameMoney.Inst.fireLevel]).ToString("F2") + "/sec";
         }
         else
         {
             fireCost.text = "Max";
-            fireSeconds.text = "Max";
+            fireSeconds.text = (1 / OutGameMoney.Inst.fireRateItem.oneForSeconds[OutGameMoney.Inst.fireLevel]).ToString("F2") + "/sec";
         }
     }
 
@@ -186,12 +186,12 @@ public class GameManager : MonoBehaviour
         if(OutGameMoney.Inst.bulletLevel + 1 <OutGameMoney.Inst.bulletItem.cost.Length)
         {
             bulletCost.text = OutGameMoney.Inst.bulletItem.cost[OutGameMoney.Inst.bulletLevel+1].ToString();
-            bulletDamage.text = OutGameMoney.Inst.bulletItem.damage[OutGameMoney.Inst.bulletLevel + 1].ToString("F1");
+            bulletDamage.text = OutGameMoney.Inst.bulletItem.damage[OutGameMoney.Inst.bulletLevel].ToString("F1");
         }
         else
         {
             bulletCost.text = "Max";
-            bulletDamage.text = "Max";
+            bulletDamage.text = OutGameMoney.Inst.bulletItem.damage[OutGameMoney.Inst.bulletLevel].ToString("F1");
         }
     }
 
