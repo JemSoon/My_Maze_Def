@@ -103,8 +103,6 @@ public class GameManager : MonoBehaviour
 
         makingPencilUI.SetActive(false);//연필만드는 슬라이드바 대기중엔 비활성화
 
-        noADsButton.SetActive(true);
-
         UpgradePencilButtonText();
         UpgradeFireButtonText();
         UpgrageBulletLevelText();
