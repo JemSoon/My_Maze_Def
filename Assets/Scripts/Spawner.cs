@@ -78,7 +78,7 @@ public class SpawnData
 {
     //public float spawnTime;
     public int spriteType;
-    public int hp;
+    public float hp;
     public float speed;
     public int knockBackForce;
 
