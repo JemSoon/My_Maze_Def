@@ -12166,6 +12166,8 @@ MonoBehaviour:
   resultCount: {fileID: 1403792981}
   isStageClear: 0
   admob: {fileID: 0}
+  purchaseUI: {fileID: 0}
+  noADsButton: {fileID: 0}
 --- !u!4 &1384377880
 Transform:
   m_ObjectHideFlags: 0
@@ -16259,15 +16261,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
       propertyPath: spawnData.Array.data[1].hp
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
       propertyPath: spawnData.Array.data[2].hp
-      value: 15
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
       propertyPath: spawnData.Array.data[3].hp
-      value: 26
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
       propertyPath: monsterSpawnTime.Array.size
@@ -16311,7 +16313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
       propertyPath: spawnData.Array.data[0].speed
-      value: 1.1
+      value: 1.24
       objectReference: {fileID: 0}
     - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
       propertyPath: spawnData.Array.data[1].heavy

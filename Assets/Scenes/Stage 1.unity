@@ -6954,14 +6954,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fade06765c6002d42a4aa578561a38db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0000000005000000080000000b0000000e00000012000000160000001a0000001f00000024000000290000002e000000340000003a00000040000000460000004d000000540000005b000000620000006900000071000000790000008100000089000000
+  cost: 0000000004000000070000000a0000000e00000012000000160000001a0000001f00000024000000290000002e000000340000003a00000040000000460000004d000000540000005b000000620000006900000071000000790000008100000089000000
   oneForSeconds:
-  - 4.4
-  - 4.25
+  - 4.7
+  - 4.5
+  - 4.3
   - 4.1
-  - 3.95
-  - 3.8
-  - 3.65
+  - 3.9
+  - 3.7
   - 3.5
   - 3.35
   - 3.2
@@ -6993,7 +6993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba1efa8787988f4899c266c4edda2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 000000001e0000004600000078000000b4000000fa0000004a010000a40100000802000076020000
+  cost: 0000000017000000310000005800000090000000bd000000ff0000004301000095010000f3010000
   oneForSeconds:
   - 1.55
   - 1.4
@@ -7017,7 +7017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9ad649f65d39d47bcc2dd4e118210c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 000000000a000000140000001e000000320000005000000082000000d20000005401000026020000
+  cost: 00000000040000000f0000001e000000320000005000000082000000d20000005401000026020000
   damage:
   - 1
   - 1.1
@@ -12299,15 +12299,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
       propertyPath: spawnData.Array.data[0].hp
-      value: 5
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
       propertyPath: spawnData.Array.data[1].hp
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
       propertyPath: spawnData.Array.data[2].hp
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
       propertyPath: spawnData.Array.data[3].hp
@@ -12319,7 +12319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
       propertyPath: spawnData.Array.data[0].speed
-      value: 1.1
+      value: 1.23
       objectReference: {fileID: 0}
     - target: {fileID: 8719701004784322267, guid: e2673d8099fa1ce4eb36faa6c4ffd612, type: 3}
       propertyPath: spawnData.Array.data[1].heavy
