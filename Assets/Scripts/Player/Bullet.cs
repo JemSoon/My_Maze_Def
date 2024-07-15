@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour
             mon.hp -= damage;
             mon.tmp.text = mon.hp.ToString("F1");
             mon.KnockBackStart = true;
-            if (mon.hp>0)
+            if (mon.hp>0.099)
             { mon.anim.SetTrigger("Hit"); }
             else
             {
