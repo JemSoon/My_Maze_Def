@@ -28,11 +28,12 @@ public class AD_MOB : MonoBehaviour
             // This callback is called once the MobileAds SDK is initialized.
             Debug.Log("SDK초기화 완료");
 
-            LoadInterstitialAd();
-            LoadBanner();
+            if(!OutGameMoney.Inst.isPurchased)
+            {
+                LoadInterstitialAd();
+                LoadBanner();
+            }
             LoadRewardedAd();
-
-            
         });
     }
 
@@ -135,6 +136,8 @@ public class AD_MOB : MonoBehaviour
 
     public void LoadBanner()
     {
+        if (OutGameMoney.Inst.isPurchased) { return; }
+
         // create an instance of a banner view first.
         if (_bannerView == null)
         {

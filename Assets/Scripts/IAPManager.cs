@@ -7,18 +7,50 @@ using UnityEngine.UI;
 
 public class IAPManager : MonoBehaviour, IStoreListener
 {
-    [SerializeField] TextMeshProUGUI stateText;
-    [SerializeField] GameObject noAdsButton;
-    private IStoreController storeController;
+    public static IAPManager Inst;
+    [SerializeField] GameObject purchasedAlready;
+    private static IStoreController storeController;
+    private static IExtensionProvider storeExtensionProvider;
+
+    public GameObject purchaseUI;
 
     private string noADs = "noads_package_001";
-
-    void Start()
+    bool once=true;
+    void Awake()
     {
-        InitIAP();
+        if (Inst == null)
+        {
+            Inst = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            if (Inst != this)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
-    private void InitIAP()
+    private void Start()
+    {
+        if(storeController == null)
+        {
+            InitIAP();
+            once = false;
+        }
+        else
+        {
+            CheckPurchaseStatus();
+        }
+    }
+
+    private bool IsInitialized()
+    {
+        return storeController != null && storeExtensionProvider != null;
+    }
+
+    public void InitIAP()
     {
         var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
 
@@ -56,8 +88,12 @@ public class IAPManager : MonoBehaviour, IStoreListener
 
         if(product.definition.id == noADs)
         {
-            stateText.text = "광고 제거 구매 성공";
-            noAdsButton.SetActive(true);
+            //stateText.text = "광고 제거 구매 성공";
+            purchasedAlready.SetActive(true);
+            //구매한 상태 저장
+            OutGameMoney.Inst.isPurchased = true;
+            //생성된 배너 파괴
+            OutGameMoney.Inst.admob.DestroyBannerView();
         }
 
         return PurchaseProcessingResult.Complete;
@@ -72,14 +108,52 @@ public class IAPManager : MonoBehaviour, IStoreListener
     private void CheckNonConsumalbe(string id)
     {
         //구매 영수증 확인
-        var product = storeController.products.WithID(id);
+        Product product = storeController.products.WithID(id);
 
         if(product != null)
         {
             //영수증이 있나요?
-            bool isCheck = product.hasReceipt;
+            bool isPurchased = product.hasReceipt;
             //구매 여부에 따라 광고 제거 아이콘 활성/비활성
-            noAdsButton.SetActive(isCheck);
+            purchasedAlready.SetActive(isPurchased);
+            //해당 bool값을 통해 광고 게제 설정
+            OutGameMoney.Inst.isPurchased = isPurchased;
+        }
+    }
+
+    public void ClosePurchaseUI()
+    {
+        //if(Inst.isGameOver)
+        {
+            GameManager.Inst.startMenu.SetActive(true);
+            GameManager.Inst.upgradePencilMenu.SetActive(true);
+            GameManager.Inst.upgradeFireMenu.SetActive(true);
+            GameManager.Inst.upgradeBulletLevelMenu.SetActive(true);
+        }
+        //else
+        //{
+        //    startMenu.SetActive(false);
+        //    upgradePencilMenu.SetActive(false);
+        //    upgradeFireMenu.SetActive(false);
+        //    upgradeBulletLevelMenu.SetActive(false);
+        //}
+
+        IAPManager.Inst.purchaseUI.SetActive(false);
+    }
+
+    private void CheckPurchaseStatus()
+    {
+        if (storeController != null)
+        {
+            Product product = storeController.products.WithID(noADs);
+            if (product != null && product.hasReceipt)
+            {
+                PlayerPrefs.SetInt("NoAds", 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("NoAds", 0);
+            }
         }
     }
 }

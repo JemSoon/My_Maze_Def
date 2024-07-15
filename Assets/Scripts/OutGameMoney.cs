@@ -34,6 +34,9 @@ public class OutGameMoney : MonoBehaviour
     public AsyncOperation asyncLoad;
     public AD_MOB admob;
 
+    [Header("Purchased")]
+    public bool isPurchased;
+
     [Header("Debugs")]
     public bool monHPshow = true;
     public int showInterstitialAdCount = 0;

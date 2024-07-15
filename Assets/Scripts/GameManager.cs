@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     const int maxStage = 2; //마지막 스테이지일시 다음 스테이지 불러오기 막기용(씬 인덱스가 아니라 실제 스테이지 네임 기반)
 
     public AD_MOB admob;
-    public GameObject purchaseUI;
+    //public GameObject purchaseUI;
     public GameObject noADsButton;
    
     private void Awake()
@@ -337,7 +337,11 @@ public class GameManager : MonoBehaviour
     {
         resultMenu.SetActive(false);
 
-        ++OutGameMoney.Inst.showInterstitialAdCount;
+        if (!OutGameMoney.Inst.isPurchased)
+        {
+            //광고제거 구매 안했다면 카운팅
+            ++OutGameMoney.Inst.showInterstitialAdCount;
+        }
 
         if(OutGameMoney.Inst.showInterstitialAdCount>=3)
         {
@@ -497,25 +501,7 @@ public class GameManager : MonoBehaviour
         upgradeFireMenu.SetActive(false);
         upgradeBulletLevelMenu.SetActive(false);
 
-        purchaseUI.SetActive(true);
+        IAPManager.Inst.purchaseUI.SetActive(true);
     }
-    public void ClosePurchaseUI()
-    {
-        //if(Inst.isGameOver)
-        {
-            startMenu.SetActive(true);
-            upgradePencilMenu.SetActive(true);
-            upgradeFireMenu.SetActive(true);
-            upgradeBulletLevelMenu.SetActive(true);
-        }
-        //else
-        //{
-        //    startMenu.SetActive(false);
-        //    upgradePencilMenu.SetActive(false);
-        //    upgradeFireMenu.SetActive(false);
-        //    upgradeBulletLevelMenu.SetActive(false);
-        //}
-
-        purchaseUI.SetActive(false);
-    }
+    
 }
