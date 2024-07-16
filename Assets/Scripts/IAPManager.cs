@@ -14,8 +14,8 @@ public class IAPManager : MonoBehaviour, IStoreListener
 
     public GameObject purchaseUI;
 
-    private string noADs = "noads_package_001";
-    bool once=true;
+    private string noADs = "mazedefense_no_ads_package";
+
     void Awake()
     {
         if (Inst == null)
@@ -34,12 +34,11 @@ public class IAPManager : MonoBehaviour, IStoreListener
 
     private void Start()
     {
-        if(storeController == null)
+        //if(storeController == null)
         {
             InitIAP();
-            once = false;
         }
-        else
+        //else
         {
             CheckPurchaseStatus();
         }
@@ -94,6 +93,9 @@ public class IAPManager : MonoBehaviour, IStoreListener
             OutGameMoney.Inst.isPurchased = true;
             //생성된 배너 파괴
             OutGameMoney.Inst.admob.DestroyBannerView();
+            //보너스 코인 +100
+            OutGameMoney.Inst.money += 100;
+            GameManager.Inst.goldAmountTmp.text = (OutGameMoney.Inst.money).ToString();
         }
 
         return PurchaseProcessingResult.Complete;
@@ -148,11 +150,11 @@ public class IAPManager : MonoBehaviour, IStoreListener
             Product product = storeController.products.WithID(noADs);
             if (product != null && product.hasReceipt)
             {
-                PlayerPrefs.SetInt("NoAds", 1);
+                OutGameMoney.Inst.isPurchased = true;
             }
             else
             {
-                PlayerPrefs.SetInt("NoAds", 0);
+                OutGameMoney.Inst.isPurchased = false;
             }
         }
     }
