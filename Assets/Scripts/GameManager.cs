@@ -74,11 +74,6 @@ public class GameManager : MonoBehaviour
         admob = OutGameMoney.Inst.admob;
     }
 
-    private void Start()
-    {
-        DontShowPurchaseIcon();
-    }
-
     private void Update()
     {
         gameTime += Time.deltaTime;
@@ -94,15 +89,6 @@ public class GameManager : MonoBehaviour
     {
         // goldCountText의 text 속성을 업데이트
         goldTmp.text = "+ "+ goldCount.ToString();
-    }
-
-    public void DontShowPurchaseIcon()
-    {
-        if (OutGameMoney.Inst.isPurchased)
-        {
-            //씬 로드 후 결제된 상태면 인앱 구매 아이콘 안보이게 하기
-            noADsButton.SetActive(false);
-        }
     }
 
     public void GameEnd()

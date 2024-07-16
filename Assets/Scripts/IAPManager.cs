@@ -96,6 +96,8 @@ public class IAPManager : MonoBehaviour, IStoreListener
             //보너스 코인 +100
             OutGameMoney.Inst.money += 100;
             GameManager.Inst.goldAmountTmp.text = (OutGameMoney.Inst.money).ToString();
+            //구매직후 코인+100원 저장
+            OutGameMoney.Inst.SaveInfo();
         }
 
         return PurchaseProcessingResult.Complete;
